@@ -1,0 +1,22 @@
+// src/components/JetBrainsPluginCard/components/PluginCardFooter/PluginCardFooter.module.scss
+.footer {
+  margin-top: 8px;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: hsl(var(--foreground-subtle));
+
+    .colInline {
+      .downloads {
+        display: inline-block;
+      }
+
+      .pricing {
+        display: inline-block;
+      }
+    }
+  }
+}

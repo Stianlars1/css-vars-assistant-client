@@ -1,0 +1,26 @@
+.navbar {
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .image {
+
+    }
+
+
+    .name {
+      font-size: 20px;
+
+      font-weight: 700;
+      letter-spacing: -1px;
+      font-family: var(--font-geist-mono);
+    }
+
+  }
+}

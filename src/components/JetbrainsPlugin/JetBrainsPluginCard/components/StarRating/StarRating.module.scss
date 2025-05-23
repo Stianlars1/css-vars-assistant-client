@@ -1,0 +1,38 @@
+// src/components/JetBrainsPluginCard/components/StarRating/StarRating.module.scss
+.stars {
+  display: inline-flex;
+
+  .starWrapper {
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+    margin-right: 2px;
+
+    .starGroup {
+      position: relative;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+
+      .starBackground {
+        width: 100%;
+        height: 100%;
+        fill: hsl(var(--gray-5));
+      }
+
+      .coverClip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        overflow: hidden;
+
+        .starCover {
+          width: 16px;
+          height: 16px;
+          fill: hsl(var(--warning));
+        }
+      }
+    }
+  }
+}

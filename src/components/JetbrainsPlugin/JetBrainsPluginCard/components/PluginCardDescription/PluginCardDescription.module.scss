@@ -1,0 +1,12 @@
+// src/components/JetBrainsPluginCard/components/PluginCardDescription/PluginCardDescription.module.scss
+.description {
+  margin-top: 24px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: hsl(var(--foreground));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

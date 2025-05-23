@@ -1,0 +1,38 @@
+// src/components/JetBrainsPluginCard/JetBrainsPluginCard.module.scss
+.cardContainer {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.card {
+  display: block;
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  padding: var(--padding-md);
+  color: hsl(var(--foreground));
+  text-decoration: none;
+  transition: border-color 0.2s ease-in-out;
+  overflow: hidden;
+
+  &:hover {
+    border-color: hsl(var(--primary));
+  }
+}
+
+.loading {
+  padding: var(--padding-sm);
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  text-align: center;
+  background-color: hsl(var(--background));
+}
+
+.error {
+  padding: var(--padding-sm);
+  border: 1px solid hsl(var(--error));
+  border-radius: var(--radius);
+  text-align: center;
+  color: hsl(var(--error-foreground));
+  background-color: hsl(var(--background));
+}
