@@ -14,6 +14,7 @@
   text-decoration: none;
   transition: border-color 0.2s ease-in-out;
   overflow: hidden;
+  max-width: 600px;
 
   &:hover {
     border-color: hsl(var(--primary));

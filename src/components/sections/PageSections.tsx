@@ -6,7 +6,7 @@ import ScreenshotsSection from "@/components/sections/screenshotsSection/screens
 import InstallationSection from "@/components/sections/installationSection/installationSection";
 import { PluginInfo } from "@/types/plugin";
 import { PluginStats } from "@/lib/utils/pluginStats";
-
+import styles from "./PageSections.module.scss";
 interface PageSectionsProps {
   pluginData: PluginInfo | null;
   pluginStats: PluginStats | null;
@@ -14,12 +14,12 @@ interface PageSectionsProps {
 
 export const PageSections = ({ pluginData }: PageSectionsProps) => {
   return (
-    <>
+    <div className={styles.sections}>
       <HeroSection />
       <CardSection />
       <FeaturesSection />
       <ScreenshotsSection pluginInfo={pluginData} />
       <InstallationSection />
-    </>
+    </div>
   );
 };

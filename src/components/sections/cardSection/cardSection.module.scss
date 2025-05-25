@@ -1,2 +1,15 @@
 .cardSection {
+  .title {
+    font-size: 4.5rem;
+    width: 500px;
+    letter-spacing: -3.5px;
+    font-family: var(--font-geist-mono), var(--font-geist-sans), system-ui, sans-serif;
+    line-height: 0.75;
+    margin-bottom: 32px;
+
+    background: linear-gradient(to right, #ff8b1a 0%, #fb0040 50%,#e703f6 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
 }
