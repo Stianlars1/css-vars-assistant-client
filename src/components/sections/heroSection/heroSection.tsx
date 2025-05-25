@@ -15,7 +15,7 @@ export const HeroSection = () => {
         </div>
 
         <Interactive3DPreview
-          src="/static/completions2.png"
+          src="/static/completions/completions_non-color.png"
           alt="CSS Variables Assistant logo"
           width={2430}
           height={1404}
