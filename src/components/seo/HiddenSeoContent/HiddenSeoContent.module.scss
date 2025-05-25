@@ -1,0 +1,99 @@
+// HiddenSeoContent.module.scss
+.seoContent {
+  // Visually hidden but accessible to search engines
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+
+  // Alternative approach - display none (choose one)
+  // display: none;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+
+    .title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.2;
+    }
+
+    .sectionTitle {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+      line-height: 1.3;
+    }
+
+    .description {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .featuresList {
+      list-style: disc;
+      margin: var(--spacing-md) 0;
+      padding-left: var(--spacing-lg);
+
+      .feature {
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin-bottom: var(--spacing-sm);
+      }
+    }
+
+    .idesList {
+      list-style: none;
+      margin: var(--spacing-md) 0;
+      padding: 0;
+
+      .ide {
+        margin-bottom: var(--spacing-md);
+
+        .ideName {
+          display: block;
+          font-weight: 600;
+          color: var(--text-primary);
+          margin-bottom: var(--spacing-xs);
+        }
+
+        .ideDescription {
+          display: block;
+          font-size: 0.875rem;
+          color: var(--text-secondary);
+          line-height: 1.4;
+        }
+      }
+    }
+
+    .keywordCloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-lg);
+
+      .keyword {
+        display: inline-block;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        background: var(--color-primary-light);
+        color: var(--color-primary);
+        border-radius: var(--border-radius-sm);
+        font-size: 0.75rem;
+        font-weight: 500;
+        line-height: 1;
+      }
+    }
+  }
+}

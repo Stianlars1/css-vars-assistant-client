@@ -1,0 +1,72 @@
+.previewWrapper {
+  perspective: 1200px;
+  perspective-origin: center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 64px 32px;
+  margin: unset;
+  position: relative;
+  overflow: visible;
+
+  > * {
+    pointer-events: none;
+  }
+  .preview {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    transform-style: preserve-3d;
+    border: 1px solid #391fbd;
+    border-radius: 12px;
+
+    // Default state - your original 3D perspective
+    transform: rotateX(25deg) rotateY(-15deg) rotateZ(5deg);
+    transition: transform 0.15s cubic-bezier(0.23, 1, 0.32, 1);
+    // Interactive state - faster, smoother transitions for mouse movement
+    &.interactive {
+      transition:
+        transform 0.1s cubic-bezier(0.23, 1, 0.32, 1),
+        scale 0.2s ease;
+
+      scale: 1.05;
+    }
+  }
+
+  // Optional: Add a subtle glow effect when hovering
+  &:hover .preview {
+    box-shadow:
+      0 25px 50px -12px rgba(57, 31, 189, 0.25),
+      0 0 0 1px rgba(57, 31, 189, 0.05);
+  }
+}
+
+@media (max-width: 1024px) {
+  .previewWrapper {
+    padding: 32px 16px;
+
+    .preview {
+      &.interactive {
+        scale: 1;
+      }
+    }
+  }
+}
+
+// Optional: Custom cursor effect
+/*.previewWrapper::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #391fbd;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}*/
+
+/*.previewWrapper:hover::after {
+  opacity: 0.6;
+}*/

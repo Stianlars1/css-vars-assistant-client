@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 import styles from "./PageContainer.module.scss";
-import { cx } from "@/utils/cx";
+import { cx } from "@/lib/utils/cx";
 
 type PageContainerProps = {
   children: ReactNode;

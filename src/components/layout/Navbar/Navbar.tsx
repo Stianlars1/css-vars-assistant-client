@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./Navbar.module.scss";
+import JetBrainsPluginButton from "@/components/JetbrainsPlugin/JetBrainsPluginButton/JetBrainsPluginButton";
 
 export const Navbar = () => {
   return (
@@ -16,7 +17,11 @@ export const Navbar = () => {
         <code className={styles.name}>CSS Variables Assistant</code>
       </div>
       <nav>
-        <button>Download</button>
+        <JetBrainsPluginButton
+          ariaLabel={"Click to install plugin now from JetBrains Marketplace"}
+          variant={"default"}
+          buttonText={"Install now"}
+        />
       </nav>
     </header>
   );

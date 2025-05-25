@@ -1,4 +1,12 @@
 // src/components/JetBrainsPluginButton/JetBrainsPluginButton.module.scss
+.defaultButton {
+  padding: 8px 16px;
+  background: hsl(var(--blue));
+  color: hsl(var(--white));
+  text-decoration: none;
+  border-radius: 8px;
+}
+
 .buttonContainer {
   display: inline-block;
 
@@ -10,32 +18,27 @@
     justify-content: center;
     width: 100%;
     height: 48px;
-    font-size: 15px !important;
+    font-size: 15px;
     line-height: 1.6;
-    color: hsl(var(--white)) !important;
+    color: hsl(var(--prima));
     background: hsl(var(--black)) url("/static/jetbrains/button-install.png")
       no-repeat;
     background-size: contain;
-    border-radius: var(--radius);
-    box-shadow: 0 1px 2px 0 hsla(var(--black), 0.25);
+    border-radius: 9999px;
+    box-shadow: 0 0 0 1px hsl(var(--foreground));
+
     cursor: pointer;
     transition: background-color 0.2s ease;
     user-select: none;
     font-family:
-      "JetBrains Sans",
-      Inter,
+      var(--font-geist-sans),
+      var(--font-dm-sans),
       system-ui,
       -apple-system,
       BlinkMacSystemFont,
       "Segoe UI",
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      "Droid Sans",
-      "Helvetica Neue",
-      Arial,
-      sans-serif;
+      Roboto;
+    -moz-outline-radius: 999px;
 
     .ideText {
       display: flex;
@@ -43,9 +46,36 @@
       justify-content: center;
       width: 100%;
       height: 100%;
-      color: hsl(var(--white)) !important;
+      color: hsl(var(--white));
       text-decoration: none;
       font-weight: 400;
+      -moz-outline-radius: 999px;
+    }
+
+    /*    &.sm {
+      height: 50px;
+      font-size: 15px;
+      font-weight: 400;
+      border: 1px solid hsl(var(--foreground));
+      border-radius: 999px;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+
+      &::after {
+        position: absolute;
+        content: "";
+        inset: 0;
+        background: hsl(var(--background));
+        z-index: -1;
+        opacity: 0.5;
+      }
+    }*/
+
+    &.md {
+      height: 40px;
+      font-size: 15px;
+      line-height: 1.6;
     }
   }
 }
