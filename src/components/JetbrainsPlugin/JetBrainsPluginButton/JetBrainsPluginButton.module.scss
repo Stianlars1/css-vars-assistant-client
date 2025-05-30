@@ -5,6 +5,7 @@
   color: hsl(var(--white));
   text-decoration: none;
   border-radius: 8px;
+  white-space: nowrap;
 }
 
 .buttonContainer {
@@ -21,11 +22,21 @@
     font-size: 15px;
     line-height: 1.6;
     color: hsl(var(--prima));
-    background: hsl(var(--black)) url("/static/jetbrains/button-install.png")
-      no-repeat;
-    background-size: contain;
+    background: hsl(var(--black));
+
     border-radius: 9999px;
     box-shadow: 0 0 0 1px hsl(var(--foreground));
+
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("/static/jetbrains/button-install.png") no-repeat;
+      background-size: contain;
+      z-index: 0;
+      opacity: 0.25;
+    }
 
     cursor: pointer;
     transition: background-color 0.2s ease;
@@ -50,6 +61,7 @@
       text-decoration: none;
       font-weight: 400;
       -moz-outline-radius: 999px;
+      z-index: 10;
     }
 
     /*    &.sm {

@@ -24,23 +24,9 @@ export const HeroSection = ({
           <div className={styles.heroHeaderMain}>
             <GradientText variant={"gradients.spectrum.prismBreak"}>
               <h1 className={styles.title}>
-                <span
-                  style={{
-                    whiteSpace: "nowrap",
-                    width: "fit-content",
-                  }}
-                >
-                  CSS Variables
-                </span>
+                <span className={styles.titleInner}>CSS Variables</span>
                 <br />
-                <span
-                  style={{
-                    whiteSpace: "nowrap",
-                    width: "fit-content",
-                  }}
-                >
-                  Assistant
-                </span>
+                <span>Assistant</span>
               </h1>
             </GradientText>
             <div className={styles.titleBackground} />

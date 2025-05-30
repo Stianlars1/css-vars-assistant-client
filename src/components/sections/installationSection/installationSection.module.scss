@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  max-width: var(--landing-site-section-max-width);
+  width: min(var(--max-width), 100%);
   margin: 0 auto;
 
   .guideSteps {

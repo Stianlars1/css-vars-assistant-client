@@ -11,7 +11,7 @@
   overflow: visible;
   width: 100%;
   height: 500px;
-  pointer-events: none;
+
   > * {
     pointer-events: none;
   }
@@ -57,12 +57,27 @@
 
 @media (max-width: 1024px) {
   .previewWrapper {
-    padding: 32px 16px;
-    height: 500px;
+    padding: 32px 0;
+    height: 400px;
 
     .preview {
+      height: 100%;
+      width: auto;
       &.interactive {
         scale: 1;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .previewWrapper {
+    height: 300px;
+    width: 85%;
+    .preview {
+      height: auto;
+      width: 100%;
+      &.interactive {
       }
     }
   }

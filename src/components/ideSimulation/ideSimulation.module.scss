@@ -1,0 +1,394 @@
+// src/components/sections/featuresSection/ideSimulation/ideSimulation.module.scss
+
+.ideContainer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  pointer-events: none;
+}
+
+.ide {
+  width: 100%;
+  max-width: 500px;
+  background: hsl(240, 22%, 12%);
+  border: 1px solid hsl(240, 22%, 20%);
+  border-radius: 12px;
+
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.3),
+    0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.ideHeader {
+  background: hsl(240, 22%, 8%);
+  border-bottom: 1px solid hsl(240, 22%, 20%);
+
+  padding: 0;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+}
+
+.ideTab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  height: 100%;
+  background: hsl(240, 22%, 12%);
+  border-right: 1px solid hsl(240, 22%, 20%);
+  font-size: 13px;
+  color: hsl(0, 0%, 90%);
+  border-top-left-radius: 12px;
+}
+
+.ideTabIcon {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.ideTabTitle {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+
+.ideEditor {
+  padding: 16px 0;
+  font-family: "JetBrains Mono", "Consolas", "Monaco", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  position: relative;
+}
+
+.codeLine {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  min-height: 24px;
+}
+
+.lineNumber {
+  width: 50px;
+  text-align: right;
+  padding-right: 20px;
+  color: hsl(240, 10%, 40%);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+// Syntax highlighting
+.selector {
+  color: #ffa657; // Orange for selectors
+}
+
+.property {
+  color: #57c7ff; // Blue for properties
+}
+
+.colon {
+  color: hsl(0, 0%, 60%);
+}
+
+.value {
+  color: #f3f99d; // Yellow for values
+}
+
+.variable {
+  color: #57c7ff; // Blue for variables
+  position: relative;
+}
+
+.bracket {
+  color: hsl(0, 0%, 60%);
+}
+
+// Autocomplete dropdown
+.autocompleteList {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 4px;
+  background: hsl(240, 22%, 16%);
+  border: 1px solid hsl(240, 22%, 25%);
+  border-radius: 8px;
+  padding: 4px;
+  width: min(450px, 100%);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.3),
+    0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.autocompleteItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  color: hsl(0, 0%, 90%);
+  font-size: 13px;
+  transition: background-color 0.1s ease;
+
+  &[data-selected] {
+    background: hsl(217, 99%, 62%, 0.2);
+    color: hsl(217, 99%, 85%);
+  }
+
+  &:hover {
+    background: hsl(240, 22%, 20%);
+  }
+}
+
+.autocompleteIcon {
+  opacity: 0.8;
+  width: 20px;
+  aspect-ratio: 1;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.autocompleteName {
+  font-weight: 500;
+  color: #57c7ff;
+  min-width: 120px;
+}
+
+.autocompleteDesc {
+  color: hsl(0, 0%, 60%);
+  flex: 1;
+}
+
+.autocompleteValue {
+  color: #f3f99d;
+  font-weight: 500;
+  margin-left: auto;
+  padding-left: 16px;
+}
+
+// Documentation popup
+.documentationPopup {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: hsl(240, 22%, 18%);
+  border: 1px solid hsl(240, 22%, 30%);
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 425px;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.4),
+    0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  z-index: 20;
+}
+
+.docHeader {
+  font-size: 16px;
+  font-weight: 600;
+  color: hsl(0, 0%, 95%);
+  margin-bottom: 16px;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.docSection {
+  margin-bottom: 16px;
+}
+
+.docSectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: hsl(0, 0%, 80%);
+  margin: 0 0 8px 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.docTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+
+  th {
+    text-align: left;
+    padding: 8px 12px;
+    background: hsl(240, 22%, 14%);
+    color: hsl(0, 0%, 70%);
+    font-weight: 600;
+    border-bottom: 1px solid hsl(240, 22%, 25%);
+
+    &:first-child {
+      border-radius: 6px 0 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 6px 0 0;
+    }
+  }
+
+  td {
+    padding: 10px 12px;
+    background: hsl(240, 22%, 12%);
+    color: hsl(0, 0%, 85%);
+    border-bottom: 1px solid hsl(240, 22%, 20%);
+
+    &:last-child {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+    }
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+
+    &:first-child {
+      border-radius: 0 0 0 6px;
+    }
+
+    &:last-child {
+      border-radius: 0 0 6px 0;
+    }
+  }
+}
+
+.colorSwatch {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  margin-right: 8px;
+  vertical-align: middle;
+  border: 1px solid hsl(240, 22%, 30%);
+}
+
+.docLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid hsl(240, 22%, 25%);
+}
+
+.docLink {
+  color: #57c7ff;
+  text-decoration: none;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #8cc8ff;
+    text-decoration: underline;
+  }
+}
+
+// Scope demo styles
+.scopeContent {
+  padding: 24px;
+}
+
+.scopeOption {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: hsl(240, 22%, 14%);
+  border: 1px solid hsl(240, 22%, 20%);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: hsl(240, 22%, 16%);
+    border-color: hsl(240, 22%, 25%);
+  }
+
+  &[data-scope="2"] {
+    border-color: #57c7ff;
+    background: hsl(217, 99%, 62%, 0.1);
+  }
+}
+
+.scopeRadio {
+  font-size: 16px;
+  color: #57c7ff;
+  margin-top: 2px;
+}
+
+.scopeInfo {
+  flex: 1;
+
+  h4 {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: hsl(0, 0%, 90%);
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+      sans-serif;
+  }
+
+  p {
+    margin: 0;
+    font-size: 13px;
+    color: hsl(0, 0%, 60%);
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+      sans-serif;
+  }
+}
+
+.reindexButton {
+  width: 100%;
+  padding: 12px;
+  margin-top: 16px;
+  background: #57c7ff;
+  color: hsl(240, 22%, 12%);
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  &:hover {
+    background: #8cc8ff;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Sorting demo specific
+.sortingHeader {
+  padding: 8px 12px;
+  font-size: 12px;
+  color: hsl(0, 0%, 50%);
+  font-style: italic;
+  border-bottom: 1px solid hsl(240, 22%, 20%);
+  margin-bottom: 4px;
+}
+
+@media (max-width: 500px) {
+  .documentationPopup {
+    min-width: unset;
+    width: min(400px, 100%);
+  }
+}

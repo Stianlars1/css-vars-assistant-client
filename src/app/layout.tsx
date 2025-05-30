@@ -7,6 +7,7 @@ import { Navbar } from "@/components/layout/Navbar/Navbar";
 import type { Metadata } from "next";
 import { OG_IMAGE_URL, TWITTER_CARD_URL } from "@/lib/constants";
 import { HOST } from "@/lib/config";
+import Head from "next/head";
 
 const PLUGIN_NAME = "CSS Variables Assistant";
 const CURRENT_VERSION = "1.2.0";
@@ -190,6 +191,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        {/* Light mode toolbar */}
+        <meta
+          name="theme-color"
+          content="#faf9f9"
+          media="(prefers-color-scheme: light)"
+        />
+        {/* Dark mode toolbar */}
+        <meta
+          name="theme-color"
+          content="#050505"
+          media="(prefers-color-scheme: dark)"
+        />
+        {/* iOS Safari status-bar style */}
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+        <link rel="manifest" href="/public/manifest.json" />
+      </Head>
       <body
         className={cx(
           geistSans.variable,

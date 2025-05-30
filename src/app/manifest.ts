@@ -8,8 +8,11 @@ export default function manifest(): MetadataRoute.Manifest {
       "Advanced CSS custom properties plugin for JetBrains IDEs. Intelligent autocomplete, documentation, color swatches, and @import resolution.",
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#4A9EFF",
+    background_color: "#faf9f9",
+    theme_color: "#faf9f9",
+    //  --background-ligh: #faf9f9;
+    //   --background-dark: #050505;
+
     icons: [
       {
         src: "/favicon.ico",
@@ -20,11 +23,13 @@ export default function manifest(): MetadataRoute.Manifest {
         src: "/web-app-manifest-192x192.png",
         sizes: "192x192",
         type: "image/png",
+        purpose: "maskable",
       },
       {
         src: "/web-app-manifest-512x512.png",
         sizes: "512x512",
         type: "image/png",
+        purpose: "maskable",
       },
     ],
     categories: ["developer", "productivity", "utilities"],

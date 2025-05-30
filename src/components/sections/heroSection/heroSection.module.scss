@@ -31,14 +31,19 @@
         .title {
           font-size: 4.5rem;
           letter-spacing: -3px;
+          padding-right: 3px;
           line-height: 1;
           font-weight: 900;
-          font-family: var(--font-geist-sans), serif;
-          margin: 0;
-
+          font-family: var(--font-geist-sans), system-ui, sans-serif;
+          width: fit-content;
           position: relative;
           overflow: visible;
           z-index: 0;
+
+          .titleInner {
+            width: 500px;
+            text-wrap: nowrap;
+          }
         }
 
         .titleBackground {
@@ -60,7 +65,7 @@
               transparent 65%
             );
             z-index: -20;
-            opacity: 0.3;
+            opacity: 0.18;
             transform: scaleY(1.4) scaleX(3);
           }
           &::before {
@@ -78,7 +83,7 @@
               transparent 55%
             );
             z-index: -10;
-            opacity: 0.25;
+            opacity: 0.2;
             transform: rotate(25deg) scaleY(2.5) scaleX(1.25);
           }
         }
@@ -90,15 +95,22 @@
 @media (max-width: 1024px) {
   .hero {
     margin-top: 64px;
+
     .heroContent {
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 32px;
+      gap: 64px;
 
-      .downloadArea {
-        justify-content: center;
-        margin: 0 auto;
+      .heroHeader {
+        .heroHeaderMain {
+          .title {
+          }
+          .downloadArea {
+            justify-content: center;
+            margin: 0 auto;
+          }
+        }
       }
     }
   }
@@ -108,12 +120,67 @@
   .hero {
     .heroContent {
       flex-direction: column;
-      gap: 2rem;
       text-align: center;
       align-items: center;
 
       .heroHeader {
         align-items: center;
+        .heroHeaderMain {
+          .title {
+            font-size: 4rem;
+          }
+          .downloadArea {
+            justify-content: center;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .hero {
+    .heroContent {
+      .heroHeader {
+        .heroHeaderMain {
+          .title {
+            font-size: 55px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .hero {
+    .heroContent {
+      .heroHeader {
+        .heroHeaderMain {
+          .title {
+            font-size: 50px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .hero {
+    .heroContent {
+      .heroHeader {
+        .heroHeaderMain {
+          .title {
+            font-size: 50px;
+
+            .titleInner {
+              text-wrap: unset;
+              white-space: unset;
+            }
+          }
+        }
       }
     }
   }

@@ -36,6 +36,6 @@ export const GradientText: React.FC<GradientTextProps> = ({
       ...(children.props.style || {}),
       ...gradientStyles,
     },
-    className: cx(className, children.props.className),
+    className: cx(children.props.className, className),
   } as Partial<HTMLAttributes<HTMLElement>>);
 };
