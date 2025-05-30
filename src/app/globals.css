@@ -164,6 +164,12 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 html {
   color-scheme: light;
 }
@@ -184,6 +190,7 @@ body {
     var(--font-geist-sans),
     var(--font-inter),
     var(--font-dm-sans),
+    sans-serif,
     -apple-system,
     system-ui,
     BlinkMacSystemFont,
@@ -204,12 +211,7 @@ body {
     "liga" 1,
     "calt" 1;
   text-rendering: optimizeLegibility;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  scroll-behavior: smooth;
 }
 
 @media (prefers-color-scheme: dark) {

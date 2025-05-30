@@ -21,9 +21,7 @@ export default async function JetBrainsPluginButton({
   ariaLabel,
 }: JetBrainsPluginButtonProps) {
   // Fetch basic plugin data to get the link URL
-  const pluginInfo = await fetchPluginData(
-    CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID,
-  );
+  const pluginInfo = await fetchPluginData();
 
   if (!pluginInfo) {
     return null;

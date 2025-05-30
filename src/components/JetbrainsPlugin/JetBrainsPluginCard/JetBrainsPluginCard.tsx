@@ -4,17 +4,12 @@ import PluginCardDescription from "@/components/JetbrainsPlugin/JetBrainsPluginC
 import PluginCardFooter from "@/components/JetbrainsPlugin/JetBrainsPluginCard/components/PluginCardFooter/PluginCardFooter";
 import Link from "next/link";
 import { fetchPluginData } from "@/app/actions/plugin/fetchPluginData";
-import { CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID } from "@/lib/constants";
 
 export default async function JetBrainsPluginCard() {
-  const pluginInfo = await fetchPluginData(
-    CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID,
-  );
+  const pluginInfo = await fetchPluginData();
 
   if (!pluginInfo) return <></>;
   const { pluginData, pluginRating } = pluginInfo;
-
-  console.log("Plugin Data:", pluginData);
 
   return (
     <div className={styles.cardContainer}>

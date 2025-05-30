@@ -2,7 +2,6 @@
 import type { Metadata } from "next";
 import { OG_IMAGE_URL } from "@/lib/constants";
 import { fetchPluginData } from "@/app/actions/plugin/fetchPluginData";
-import { CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID } from "@/lib/constants";
 import { extractPluginStats } from "@/lib/utils/pluginStats";
 import { HOST } from "@/lib/config";
 
@@ -11,9 +10,7 @@ const CURRENT_VERSION = "1.2.0";
 
 export async function generateMetadataRoot(): Promise<Metadata> {
   // Fetch real plugin data for dynamic metadata
-  const pluginData = await fetchPluginData(
-    CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID,
-  );
+  const pluginData = await fetchPluginData();
   const pluginStats = extractPluginStats(pluginData);
 
   // Dynamic titles based on real data

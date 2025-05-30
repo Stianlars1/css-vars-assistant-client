@@ -1,3 +1,8 @@
+export interface PluginVersion {
+  id: number;
+  version: string;
+  channel: string;
+}
 export interface PluginData {
   id: number;
   name: string;
@@ -58,6 +63,8 @@ export interface PluginData {
   isMonetizationAvailable: boolean;
   isBlocked: boolean;
   isModificationAllowed: boolean;
+  versions: PluginVersion[];
+  latestVersion: PluginVersion | null;
 }
 
 export interface PluginRating {

@@ -22,7 +22,8 @@
 
   .subTitle {
     color: hsl(var(--foreground) / 0.85);
-    font-family: var(--font-geist-mono), var(--font-geist-sans), Helvetica;
+    font-family:
+      var(--font-geist-mono), var(--font-geist-sans), sans-serif, Helvetica;
 
     font-size: 1.2rem;
     font-weight: 400;

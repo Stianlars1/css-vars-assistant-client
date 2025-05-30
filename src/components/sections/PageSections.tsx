@@ -15,7 +15,7 @@ interface PageSectionsProps {
 export const PageSections = ({ pluginData }: PageSectionsProps) => {
   return (
     <div className={styles.sections}>
-      <HeroSection />
+      <HeroSection pluginData={pluginData} />
       <CardSection />
       <FeaturesSection />
       <ScreenshotsSection pluginInfo={pluginData} />

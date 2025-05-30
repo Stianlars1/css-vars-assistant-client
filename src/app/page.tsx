@@ -2,10 +2,8 @@
 import { fetchPluginData } from "@/app/actions/plugin/fetchPluginData";
 import { CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID } from "@/lib/constants";
 import type { Metadata, ResolvingMetadata } from "next";
-import styles from "./page.module.scss";
 import { extractPluginStats } from "@/lib/utils/pluginStats";
 import { StructuredData } from "@/components/seo/StructuredData/StructuredData";
-import { PageContainer } from "@/components/layout/PageContainer/PageContainer";
 import { PageSections } from "@/components/sections/PageSections";
 import { HiddenSeoContent } from "@/components/seo/HiddenSeoContent/HiddenSeoContent";
 
@@ -15,9 +13,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   // Fetch real plugin data for dynamic metadata
-  const pluginData = await fetchPluginData(
-    CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID,
-  );
+  const pluginData = await fetchPluginData();
   const pluginStats = extractPluginStats(pluginData);
 
   // Access parent metadata to inherit and extend
@@ -95,9 +91,7 @@ export async function generateMetadata(
 }
 
 export default async function Home() {
-  const pluginData = await fetchPluginData(
-    CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID,
-  );
+  const pluginData = await fetchPluginData();
   const pluginStats = extractPluginStats(pluginData);
 
   return (

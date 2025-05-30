@@ -8,6 +8,7 @@ type PageContainerProps = {
   className?: string;
   sitePadding?: boolean;
   as?: "div" | "main" | "section" | "ul";
+  index?: number;
 };
 
 export const PageContainer = ({
@@ -15,6 +16,7 @@ export const PageContainer = ({
   as = "div",
   className,
   sitePadding = true,
+  index = 0,
 }: PageContainerProps) => {
   const Component = as;
   return (
@@ -24,6 +26,7 @@ export const PageContainer = ({
         className,
         sitePadding && styles.sitePadding,
       )}
+      style={{ zIndex: index }}
     >
       {children}
     </Component>

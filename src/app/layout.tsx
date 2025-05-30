@@ -199,11 +199,13 @@ export default function RootLayout({
           assistant.variable,
         )}
       >
-        <PageContainer as={"div"}>
+        <PageContainer as={"div"} index={1}>
           <Navbar />
         </PageContainer>
 
-        <PageContainer as={"main"}>{children}</PageContainer>
+        <PageContainer index={0} as={"main"}>
+          {children}
+        </PageContainer>
       </body>
     </html>
   );

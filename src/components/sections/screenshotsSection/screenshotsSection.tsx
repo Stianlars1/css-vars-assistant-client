@@ -11,7 +11,6 @@ export default function ScreenshotsSection({
 }: {
   pluginInfo: PluginInfo | null;
 }) {
-  console.log(pluginInfo);
   const screenshots =
     pluginInfo?.pluginData.screens.map(
       (link) => `${JETBRAINS_PLUGINS_HREF}/${link.url.toString()}`,

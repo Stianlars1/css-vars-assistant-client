@@ -12,50 +12,76 @@
     gap: 3rem;
 
     .heroHeader {
-      display: inline-flex;
-      width: fit-content;
+      display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      gap: 32px;
+      gap: 8px;
 
-      .title {
-        font-size: 4rem;
-        letter-spacing: -3px;
-        line-height: 1;
-        font-family: var(--font-geist-sans);
-        font-weight: 900;
-        margin: 0;
-        text-wrap: balance;
-        width: 450px;
+      .badgeVersion {
+        color: hsl(var(--foreground));
+      }
 
-        /* Vibrant gradient background */
-        background: linear-gradient(
-          135deg,
-          #fa1173 0%,
-          #fd7831 15%,
-          #ffd00b 30%,
-          #3ccc62 45%,
-          #298fff 60%,
-          #571dee 75%,
-          #fa1173 100%
-        );
+      .heroHeaderMain {
+        display: inline-flex;
+        width: fit-content;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+        position: relative;
 
-        background: linear-gradient(
-          135deg,
-          #fa1173 0%,
-          #298fff 30%,
-          #571dee 60%,
-          #fd7831 100%
-        );
-        background-size: 150% 200%;
+        .title {
+          font-size: 4.5rem;
+          letter-spacing: -3px;
+          line-height: 1;
+          font-weight: 900;
+          font-family: var(--font-geist-sans), serif;
+          margin: 0;
 
-        /* Apply gradient to text */
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+          position: relative;
+          overflow: visible;
+          z-index: 0;
+        }
 
-        /* Smooth animation for extra flair */
-        //background-size: 200% 200%;
+        .titleBackground {
+          position: absolute;
+          z-index: -1;
+          pointer-events: none;
+          &::after {
+            pointer-events: none;
+            content: "";
+            position: absolute;
+            inset: 0;
+            top: -250px;
+            left: -250px;
+            width: 750px;
+            height: 750px;
+            background: radial-gradient(
+              circle at 50% 50%,
+              #6e28f5 0%,
+              transparent 65%
+            );
+            z-index: -20;
+            opacity: 0.3;
+            transform: scaleY(1.4) scaleX(3);
+          }
+          &::before {
+            pointer-events: none;
+            content: "";
+            position: absolute;
+            inset: 0;
+            top: -100px;
+            left: 100px;
+            width: 800px;
+            height: 450px;
+            background: radial-gradient(
+              ellipse at 50% 0%,
+              #2dc77f 0%,
+              transparent 55%
+            );
+            z-index: -10;
+            opacity: 0.25;
+            transform: rotate(25deg) scaleY(2.5) scaleX(1.25);
+          }
+        }
       }
     }
   }

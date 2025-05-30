@@ -1,21 +1,54 @@
 import JetBrainsPluginButton from "@/components/JetbrainsPlugin/JetBrainsPluginButton/JetBrainsPluginButton";
 import styles from "./heroSection.module.scss";
 import { Interactive3DPreview } from "@/components/sections/heroSection/Interactive3DPreview";
+import { PluginInfo } from "@/types/plugin";
+import { Badge } from "@/components/ui/Badge/Badge";
+import { GradientText } from "@/components/ui/GradientText/GradientText";
+import { LatestVersionBadge } from "@/components/LatestVersionBadge/LatestVersionBadge";
 
-export const HeroSection = () => {
+export const HeroSection = ({
+  pluginData,
+}: {
+  pluginData: PluginInfo | null;
+}) => {
   const multipleImages = [
     "/static/completions/completions_non-color.png",
     "/static/completions/completions_color.png",
-    "/static/docs/docs.png",
+    "/static/documentation/documentation_non-color.png",
   ];
+
   return (
     <section className={styles.hero}>
       <div className={styles.heroContent}>
         <div className={styles.heroHeader}>
-          <h1 className={styles.title}>CSS Variables Assistant</h1>
+          <div className={styles.heroHeaderMain}>
+            <GradientText variant={"gradients.spectrum.prismBreak"}>
+              <h1 className={styles.title}>
+                <span
+                  style={{
+                    whiteSpace: "nowrap",
+                    width: "fit-content",
+                  }}
+                >
+                  CSS Variables
+                </span>
+                <br />
+                <span
+                  style={{
+                    whiteSpace: "nowrap",
+                    width: "fit-content",
+                  }}
+                >
+                  Assistant
+                </span>
+              </h1>
+            </GradientText>
+            <div className={styles.titleBackground} />
 
-          <div className={styles.downloadArea}>
-            <JetBrainsPluginButton />
+            <div className={styles.downloadArea}>
+              <JetBrainsPluginButton />
+            </div>
+            {/*<LatestVersionBadge pluginData={pluginData?.pluginData} />*/}
           </div>
         </div>
 

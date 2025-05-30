@@ -31,13 +31,16 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background: hsl(var(--accent));
+      background: hsl(var(--primary));
       margin-bottom: 1rem;
 
       .icon {
         width: 32px;
         height: 32px;
-        color: hsl(var(--accent-foreground));
+        color: hsl(var(--accent-contrast));
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
 
