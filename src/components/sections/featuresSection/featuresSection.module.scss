@@ -237,7 +237,7 @@
     .featureDescription {
       font-size: 0.875rem;
       line-height: 1.6;
-      color: hsl(var(--gray-11));
+      color: hsl(var(--gray-12) / 0.95);
       margin-top: 8px;
     }
 
@@ -264,7 +264,7 @@
     .featureDetail {
       font-size: 0.8125rem;
       line-height: 1.5;
-      color: hsl(var(--gray-10));
+      color: hsl(var(--gray-11));
       position: relative;
       padding-left: 20px;
 
