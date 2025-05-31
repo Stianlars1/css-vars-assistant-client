@@ -8,6 +8,7 @@ import type { Metadata } from "next";
 import { OG_IMAGE_URL, TWITTER_CARD_URL } from "@/lib/constants";
 import { HOST } from "@/lib/config";
 import Head from "next/head";
+import { GoogleAnalyticsProvider } from "@/lib/analytics/GoogleAnalyticsProvider";
 
 const PLUGIN_NAME = "CSS Variables Assistant";
 const CURRENT_VERSION = "1.2.0";
@@ -227,6 +228,8 @@ export default function RootLayout({
         <PageContainer index={0} as={"main"}>
           {children}
         </PageContainer>
+
+        <GoogleAnalyticsProvider />
       </body>
     </html>
   );
