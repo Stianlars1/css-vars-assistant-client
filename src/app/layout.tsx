@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { assistant, dmSans, geistMono, geistSans, inter } from "@/fonts";
 import { cx } from "@/lib/utils/cx";
 import { PageContainer } from "@/components/layout/PageContainer/PageContainer";
@@ -235,6 +236,7 @@ export default function RootLayout({
         </PageContainer>
 
         <GoogleAnalyticsProvider />
+        <Analytics />
       </body>
     </html>
   );
