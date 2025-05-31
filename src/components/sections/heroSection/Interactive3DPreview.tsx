@@ -71,10 +71,8 @@ export const Interactive3DPreview: React.FC<Interactive3DPreviewProps> = ({
           width={2430}
           height={1404}
           quality={quality}
-          // Use priority for the first image (LCP optimization)
           priority={true}
-          // Use eager loading for active image, lazy for others
-          // Add sizes attribute for responsive loading
+          fetchPriority={"high"}
           sizes="(max-width: 768px) 85vw, (max-width: 1024px) 90vw, 700px"
           className={`
             ${styles.preview}

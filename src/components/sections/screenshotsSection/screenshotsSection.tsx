@@ -5,6 +5,7 @@ import { useState } from "react";
 import styles from "./screenshotsSection.module.scss";
 import { PluginInfo } from "@/types/plugin";
 import { JETBRAINS_PLUGINS_HREF } from "@/lib/urls";
+import Image from "next/image";
 
 export default function ScreenshotsSection({
   pluginInfo,
@@ -53,7 +54,7 @@ export default function ScreenshotsSection({
           </svg>
         </button>
 
-        <img
+        <Image
           src={screenshots[currentIndex]}
           alt={`Plugin screenshot ${currentIndex + 1}`}
           className={styles.mainImage}
