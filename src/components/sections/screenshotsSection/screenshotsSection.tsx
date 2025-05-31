@@ -59,7 +59,9 @@ export default function ScreenshotsSection({
           alt={`Plugin screenshot ${currentIndex + 1}`}
           width={900}
           height={500}
-          loading={currentIndex === 0 ? "eager" : "lazy"}
+          loading={"lazy"}
+          fetchPriority={"auto"}
+          priority={false}
           className={styles.mainImage}
         />
 

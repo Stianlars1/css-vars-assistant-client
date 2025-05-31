@@ -3,7 +3,7 @@ import { fetchPluginData } from "@/app/actions/plugin/fetchPluginData";
 import type { Metadata, ResolvingMetadata } from "next";
 import { extractPluginStats } from "@/lib/utils/pluginStats";
 import { StructuredData } from "@/components/seo/StructuredData/StructuredData";
-import { PageSections } from "@/components/sections/PageSections";
+import PageSections from "@/components/sections/PageSections";
 import { HiddenSeoContent } from "@/components/seo/HiddenSeoContent/HiddenSeoContent";
 
 // ✅ CORRECT: Proper SEO-friendly titles

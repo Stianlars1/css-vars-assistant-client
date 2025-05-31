@@ -3,7 +3,7 @@
 --------------------------------------------------------------------------- */
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import styles from "./featuresSection.module.scss";
 import hoverStyles from "./featureCardHover.module.scss";
 
@@ -15,7 +15,6 @@ import { SectionHeader } from "@/components/sections/SectionHeader/SectionHeader
 import { cx } from "@/lib/utils/cx";
 import { IdeSimulation } from "@/components/ideSimulation/ideSimulation";
 import { ShowAnimationCheckbox } from "@/components/sections/featuresSection/components/showAnimationCheckbox/showAnimationCheckbox";
-import { useTouchDevice } from "@/hooks/useTouchDevice";
 
 /* ------------------------------------------------------------------ */
 
@@ -23,64 +22,46 @@ export const FeaturesSection = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
   const [isAnimationsEnabled, setIsAnimationsEnabled] = useState(true);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [touchedIndex, setTouchedIndex] = useState<number | null>(null);
 
-  const canHover = !useTouchDevice();
+  const canHover = useMemo(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches,
+    [],
+  );
 
   /* click / touch toggler */
   const handleCardActivate = useCallback(
     (idx: number) => {
+      console.log("handleCardActivate", idx, activeIndex);
       if (activeIndex === idx) {
+        console.log("Toggling off feature card", idx);
         setActiveIndex(null); // second tap closes
       } else {
+        console.log("Activating feature card", idx);
         setActiveIndex(idx); // first tap opens
       }
     },
     [activeIndex],
   );
-
-  /* Handle touch feedback */
-  const handleTouchStart = useCallback((idx: number) => {
-    setTouchedIndex(idx);
-  }, []);
-
-  const handleTouchEnd = useCallback(() => {
-    setTouchedIndex(null);
-  }, []);
-
-  /* Close the panel when the user taps outside on mobile */
-  useEffect(() => {
+  /* close the panel when the user taps outside on mobile */
+  /*  useEffect(() => {
     if (activeIndex === null || canHover) return;
 
-    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
-      if (!featuresRef.current) return;
-
-      const target = e.target as Node;
-      const activeCard = featuresRef.current.querySelector(
-        `.${styles.feature}:nth-child(${activeIndex + 1})`,
-      );
-
-      if (activeCard && !activeCard.contains(target)) {
-        setActiveIndex(null);
-      }
+    const close = () => {
+      console.log("Closing feature card on pointer down outside");
+      if (activeIndex)
+      setActiveIndex(null);
     };
+    window.addEventListener("pointerdown", close, { passive: false });
 
-    // Small delay to prevent immediate closing on the same tap
-    const timer = setTimeout(() => {
-      document.addEventListener("click", handleOutsideClick, true);
-      document.addEventListener("touchend", handleOutsideClick, true);
-    }, 100);
-
-    return () => {
-      clearTimeout(timer);
-      document.removeEventListener("click", handleOutsideClick, true);
-      document.removeEventListener("touchend", handleOutsideClick, true);
-    };
-  }, [activeIndex, canHover]);
+    return () => window.removeEventListener("pointerdown", close);
+  }, [activeIndex, canHover]);*/
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!featuresRef.current || !canHover) return;
+    if (!featuresRef.current) return;
 
+    // 👇 tell TS the node-list contains HTMLElements
     const cards = featuresRef.current.querySelectorAll<HTMLElement>(
       `.${styles.feature}`,
     );
@@ -96,6 +77,8 @@ export const FeaturesSection = () => {
       );
     });
   };
+
+  console.log("activeIndex", activeIndex);
 
   return (
     <section className={styles.featuresSection}>
@@ -136,15 +119,11 @@ export const FeaturesSection = () => {
                 activeIndex !== null &&
                 activeIndex !== idx &&
                 hoverStyles.inactive,
-              !canHover && touchedIndex === idx && styles.touched, // Add this style to your SCSS
             )}
             data-card-color={feature.hoverColor}
             onMouseEnter={canHover ? () => setActiveIndex(idx) : undefined}
             onMouseLeave={canHover ? () => setActiveIndex(null) : undefined}
             onClick={!canHover ? () => handleCardActivate(idx) : undefined}
-            onTouchStart={!canHover ? () => handleTouchStart(idx) : undefined}
-            onTouchEnd={!canHover ? handleTouchEnd : undefined}
-            onTouchCancel={!canHover ? handleTouchEnd : undefined}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
@@ -152,9 +131,9 @@ export const FeaturesSection = () => {
               }
             }}
             tabIndex={0}
-            role="button"
             aria-expanded={activeIndex === idx}
             aria-label={`${feature.title} feature. ${activeIndex === idx ? "Tap to close" : "Tap to view animation"}`}
+            role="button"
           >
             {/* ------------------------ FRONT CONTENT ------------------- */}
             <div className={hoverStyles.content}>

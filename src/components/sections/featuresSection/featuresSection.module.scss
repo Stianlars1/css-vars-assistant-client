@@ -72,6 +72,11 @@
       }
     }
 
+    &.touched {
+      transform: scale(0.98);
+      transition: transform 0.1s ease;
+    }
+
     grid-template-columns: repeat(12, 1fr);
     gap: 20px;
 

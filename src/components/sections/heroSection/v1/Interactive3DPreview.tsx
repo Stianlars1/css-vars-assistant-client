@@ -1,10 +1,9 @@
-// Updated Interactive3DPreview.tsx with proper Next.js Image optimization
 "use client";
 
 import { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./Interactive3DPreview.module.scss";
-import useCarousel from "./useCarousel";
+import useCarousel from "../useCarousel";
 
 interface Interactive3DPreviewProps {
   srcs: string[];
@@ -66,10 +65,10 @@ export const Interactive3DPreview: React.FC<Interactive3DPreviewProps> = ({
           key={src}
           src={src}
           alt={alt}
-          width={2430}
-          height={1404}
+          width={800}
+          height={600}
           quality={quality}
-          priority={true}
+          priority={idx === 0}
           fetchPriority={"high"}
           sizes="(max-width: 768px) 85vw, (max-width: 1024px) 90vw, 700px"
           className={`

@@ -1,20 +1,9 @@
-import JetBrainsPluginButton from "@/components/JetbrainsPlugin/JetBrainsPluginButton/JetBrainsPluginButton";
 import styles from "./heroSection.module.scss";
-import { Interactive3DPreview } from "@/components/sections/heroSection/Interactive3DPreview";
-import { PluginInfo } from "@/types/plugin";
 import { GradientText } from "@/components/ui/GradientText/GradientText";
+import JetBrainsPluginButton from "@/components/JetbrainsPlugin/JetBrainsPluginButton/JetBrainsPluginButton";
+import ClientHero from "@/components/sections/heroSection/v1/ClientHero";
 
-export const HeroSection = ({
-  pluginData,
-}: {
-  pluginData: PluginInfo | null;
-}) => {
-  const multipleImages = [
-    "/static/completions/completions_non-color.png",
-    "/static/completions/completions_color.png",
-    "/static/documentation/documentation_non-color.png",
-  ];
-
+export default function HeroSection() {
   return (
     <section className={styles.hero}>
       <div className={styles.heroContent}>
@@ -36,14 +25,8 @@ export const HeroSection = ({
           </div>
         </div>
 
-        <Interactive3DPreview
-          srcs={multipleImages}
-          alt="Product gallery"
-          width={700}
-          height={700}
-          quality={100}
-        />
+        <ClientHero />
       </div>
     </section>
   );
-};
+}

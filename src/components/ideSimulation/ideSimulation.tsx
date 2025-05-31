@@ -23,7 +23,10 @@ export function IdeSimulation({ feature, isActive }: IdeSimulationProps) {
         timelineRef.current.kill();
       }
 
-      if (!isActive) return;
+      if (!isActive) {
+        console.log("Not active");
+        return;
+      }
 
       const tl = gsap.timeline({
         defaults: { ease: "power2.inOut" },
