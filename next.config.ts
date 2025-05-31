@@ -21,12 +21,19 @@ const nextConfig: NextConfig = {
   // Image optimization
 
   images: {
-    formats: ["image/webp"],
+    formats: ["image/webp", "image/avif"],
     minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year
     remotePatterns: [
       {
         protocol: "https",
         hostname: "plugins.jetbrains.com",
+        pathname: "/**",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "downloads.marketplace.jetbrains.com",
+        pathname: "/**",
         port: "",
       },
     ],
