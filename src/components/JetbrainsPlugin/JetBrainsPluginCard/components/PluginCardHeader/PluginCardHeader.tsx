@@ -1,18 +1,18 @@
 // src/components/JetBrainsPluginCard/components/PluginCardHeader/PluginCardHeader.tsx
-import styles from './PluginCardHeader.module.scss'
-import StarRating from '../StarRating/StarRating'
+import styles from "./PluginCardHeader.module.scss";
+import StarRating from "../StarRating/StarRating";
 
 interface PluginCardHeaderProps {
-  name: string
-  icon: string
-  rating: number
+  name: string;
+  icon: string;
+  rating: number;
 }
 
 export default function PluginCardHeader({
-                                           name,
-                                           icon,
-                                           rating
-                                         }: PluginCardHeaderProps) {
+  name,
+  icon,
+  rating,
+}: PluginCardHeaderProps) {
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -27,5 +27,5 @@ export default function PluginCardHeader({
         </div>
       </div>
     </div>
-  )
+  );
 }

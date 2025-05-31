@@ -2,9 +2,7 @@ import JetBrainsPluginButton from "@/components/JetbrainsPlugin/JetBrainsPluginB
 import styles from "./heroSection.module.scss";
 import { Interactive3DPreview } from "@/components/sections/heroSection/Interactive3DPreview";
 import { PluginInfo } from "@/types/plugin";
-import { Badge } from "@/components/ui/Badge/Badge";
 import { GradientText } from "@/components/ui/GradientText/GradientText";
-import { LatestVersionBadge } from "@/components/LatestVersionBadge/LatestVersionBadge";
 
 export const HeroSection = ({
   pluginData,
@@ -37,16 +35,6 @@ export const HeroSection = ({
             {/*<LatestVersionBadge pluginData={pluginData?.pluginData} />*/}
           </div>
         </div>
-
-        {/*
-        <Interactive3DPreview
-          src="/static/completions/completions_non-color.png"
-          alt="CSS Variables Assistant logo"
-          width={2430}
-          height={1404}
-          quality={100}
-        />
-*/}
 
         <Interactive3DPreview
           srcs={multipleImages}

@@ -2,7 +2,6 @@
 import styles from "./JetBrainsPluginButton.module.scss";
 import { fetchPluginData } from "@/app/actions/plugin/fetchPluginData";
 import Link from "next/link";
-import { CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID } from "@/lib/constants";
 import { cx } from "@/lib/utils/cx";
 
 interface JetBrainsPluginButtonProps {

@@ -18,8 +18,6 @@ interface Interactive3DPreviewProps {
 export const Interactive3DPreview: React.FC<Interactive3DPreviewProps> = ({
   srcs,
   alt = "",
-  width = 700,
-  height = 700,
   quality = 75, // Reduced from 100 for better performance
   interval = 4000,
 }) => {

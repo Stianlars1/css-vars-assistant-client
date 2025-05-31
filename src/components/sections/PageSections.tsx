@@ -7,6 +7,7 @@ import InstallationSection from "@/components/sections/installationSection/insta
 import { PluginInfo } from "@/types/plugin";
 import { PluginStats } from "@/lib/utils/pluginStats";
 import styles from "./PageSections.module.scss";
+
 interface PageSectionsProps {
   pluginData: PluginInfo | null;
   pluginStats: PluginStats | null;
