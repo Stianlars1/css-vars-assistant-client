@@ -1,3 +1,4 @@
+// Updated Interactive3DPreview.tsx with proper Next.js Image optimization
 "use client";
 
 import { useCallback, useRef, useState } from "react";
@@ -6,14 +7,11 @@ import styles from "./Interactive3DPreview.module.scss";
 import useCarousel from "./useCarousel";
 
 interface Interactive3DPreviewProps {
-  /** One or more image URLs */
   srcs: string[];
-  /** Optional alt text used for every slide */
   alt?: string;
   width?: number;
   height?: number;
   quality?: number;
-  /** ms between slides */
   interval?: number;
 }
 
@@ -22,7 +20,7 @@ export const Interactive3DPreview: React.FC<Interactive3DPreviewProps> = ({
   alt = "",
   width = 700,
   height = 700,
-  quality = 100,
+  quality = 75, // Reduced from 100 for better performance
   interval = 4000,
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -31,9 +29,6 @@ export const Interactive3DPreview: React.FC<Interactive3DPreviewProps> = ({
     "rotateX(25deg) rotateY(-15deg) rotateZ(5deg)",
   );
 
-  /* ------------------------------------------------------------------ */
-  /* 3-D tilt (exactly like your original component)                    */
-  /* ------------------------------------------------------------------ */
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!wrapperRef.current) return;
     const rect = wrapperRef.current.getBoundingClientRect();
@@ -58,9 +53,6 @@ export const Interactive3DPreview: React.FC<Interactive3DPreviewProps> = ({
     setTransform("rotateX(25deg) rotateY(-15deg) rotateZ(5deg) ");
   }, []);
 
-  /* ------------------------------------------------------------------ */
-  /*  🔄  tiny carousel                                                 */
-  /* ------------------------------------------------------------------ */
   const activeIndex = useCarousel(srcs.length, interval);
 
   return (
@@ -72,20 +64,28 @@ export const Interactive3DPreview: React.FC<Interactive3DPreviewProps> = ({
       onMouseLeave={handleMouseLeave}
     >
       {srcs.map((src, idx) => (
-        <img
+        <Image
           key={src}
           src={src}
           alt={alt}
           width={2430}
           height={1404}
-          fetchPriority="high"
-          loading="eager"
+          quality={quality}
+          // Use priority for the first image (LCP optimization)
+          priority={idx === 0}
+          // Use eager loading for active image, lazy for others
+          loading={idx === activeIndex ? "eager" : "lazy"}
+          // Add sizes attribute for responsive loading
+          sizes="(max-width: 768px) 85vw, (max-width: 1024px) 90vw, 700px"
           className={`
             ${styles.preview}
             ${idx === activeIndex ? styles.active : styles.inactive}
             ${isHovered ? styles.interactive : ""}
           `}
           style={{ transform }}
+          // Add blur placeholder for better perceived performance
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
         />
       ))}
     </div>

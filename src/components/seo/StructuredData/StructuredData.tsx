@@ -1,6 +1,6 @@
 // src/components/seo/StructuredData/StructuredData.tsx
 import Script from "next/script";
-import { jsonLd } from "@/app/jsonld";
+import { jsonLd } from "@/app/jsonLd";
 
 interface StructuredDataProps {
   pluginStats?: {

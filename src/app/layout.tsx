@@ -4,16 +4,15 @@ import { cx } from "@/lib/utils/cx";
 import { PageContainer } from "@/components/layout/PageContainer/PageContainer";
 import { Navbar } from "@/components/layout/Navbar/Navbar";
 // src/app/layout.tsx (Not page.tsx!)
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { OG_IMAGE_URL, TWITTER_CARD_URL } from "@/lib/constants";
-import { HOST } from "@/lib/config";
+import { CURRENT_VERSION, HOST } from "@/lib/config";
 import Head from "next/head";
 import { GoogleAnalyticsProvider } from "@/lib/analytics/GoogleAnalyticsProvider";
+import { viewportRoot } from "@/app/viewportRoot";
 
 const PLUGIN_NAME = "CSS Variables Assistant";
-const CURRENT_VERSION = "1.2.0";
 
-// ⚠️ IMPORTANT: This should be in layout.tsx, not page.tsx!
 export const metadata: Metadata = {
   // metadataBase should be set once in root layout
   metadataBase: new URL(HOST),
@@ -185,6 +184,8 @@ export const metadata: Metadata = {
     "last-updated": new Date().toISOString().split("T")[0],
   },
 };
+
+export const viewport: Viewport = viewportRoot;
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -199,18 +200,22 @@ export default function RootLayout({
           content="#faf9f9"
           media="(prefers-color-scheme: light)"
         />
-        {/* Dark mode toolbar */}
         <meta
           name="theme-color"
           content="#050505"
           media="(prefers-color-scheme: dark)"
+        />
+        {/* iOS Safari status‑bar */}
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
         />
         {/* iOS Safari status-bar style */}
         <meta
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
-        <link rel="manifest" href="/public/manifest.json" />
+        <link rel="manifest" href="/manifest.json" />
       </Head>
       <body
         className={cx(

@@ -14,11 +14,10 @@ export const viewportRoot: Viewport = {
   // Theme color for mobile browsers
   themeColor: [
     // Default theme color
-    /*    { color: "#faf9f9" },
-    // Dark mode theme color
-    { color: "#010205", media: "(prefers-color-scheme: dark)" },
+    { color: "#faf9f9" },
+    { color: "#050505", media: "(prefers-color-scheme: dark)" },
     // Light mode theme color
-    { color: "#faf9f9", media: "(prefers-color-scheme: light)" },*/
+    { color: "#faf9f9", media: "(prefers-color-scheme: light)" },
   ],
 
   // Color scheme preference

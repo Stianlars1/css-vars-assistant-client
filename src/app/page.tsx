@@ -1,6 +1,5 @@
 // src/app/page.tsx (Page-level dynamic metadata)
 import { fetchPluginData } from "@/app/actions/plugin/fetchPluginData";
-import { CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID } from "@/lib/constants";
 import type { Metadata, ResolvingMetadata } from "next";
 import { extractPluginStats } from "@/lib/utils/pluginStats";
 import { StructuredData } from "@/components/seo/StructuredData/StructuredData";
@@ -85,6 +84,19 @@ export async function generateMetadata(
         "quality:rating": pluginStats.rating.toString(),
         "downloads:total": pluginStats.downloads.toString(),
         "last-updated": new Date().toISOString().split("T")[0],
+        "plugin:version": pluginStats.version.toString() || "1.3.1",
+        "software:version": pluginStats.version.toString() || "1.3.1",
+
+        "article:author": "Stian Larsen",
+        "article:publisher": "Stian Larsen",
+        "software:operating-system": "Windows, macOS, Linux",
+        "software:programming-language": "Kotlin, TypeScript",
+        "software:application-category": "DeveloperApplication",
+
+        // Plugin-specific metadata
+        "plugin:ide": "IntelliJ IDEA, WebStorm, PyCharm, PhpStorm, RubyMine",
+        "plugin:compatibility": "JetBrains 2025.1+",
+        "plugin:languages": "CSS, SCSS, SASS, LESS, JavaScript, TypeScript",
       },
     }),
   };
