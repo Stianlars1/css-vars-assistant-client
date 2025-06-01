@@ -27,13 +27,6 @@ export const jsonLd = {
     name: "Stian Larsen",
     url: "https://github.com/stianlars1",
   },
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-    availability: "https://schema.org/InStock",
-    url: "https://plugins.jetbrains.com/plugin/27392-css-variables-assistant",
-  },
   description:
     "Professional CSS variables plugin for JetBrains IDEs. Smart autocomplete, live documentation, color swatches, and @import resolution for CSS, SCSS, SASS, and LESS.",
   features: [
@@ -75,14 +68,31 @@ export const jsonLd = {
     name: "JetBrains IDEs",
     applicationCategory: "IDE",
     operatingSystem: ["Windows", "macOS", "Linux"],
+    softwareVersion: "2025.1+",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: 4.6,
+      ratingCount: 8864,
+    },
+    offers: {
+      "@type": "Offer",
+      price: 0,
+      priceCurrency: "USD",
+      url: "https://plugins.jetbrains.com/plugin/27392-css-variables-assistant",
+      availability: "https://schema.org/InStock",
+    },
   },
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: "4.0",
-    bestRating: "5",
-    worstRating: "1",
-    ratingCount: "15",
-    reviewCount: "15",
+    ratingValue: 4.6,
+    ratingCount: 8864,
+  },
+  offers: {
+    "@type": "Offer",
+    price: 0,
+    priceCurrency: "USD",
+    url: "https://plugins.jetbrains.com/plugin/27392-css-variables-assistant",
+    availability: "https://schema.org/InStock",
   },
   review: [
     {

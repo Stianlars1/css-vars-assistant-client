@@ -10,6 +10,7 @@ import { CURRENT_VERSION, HOST } from "@/lib/config";
 import Head from "next/head";
 import { GoogleAnalyticsProvider } from "@/lib/analytics/GoogleAnalyticsProvider";
 import { viewportRoot } from "@/app/viewportRoot";
+import { InitialRenders } from "@/components/InitialRenders";
 
 const PLUGIN_NAME = "CSS Variables Assistant";
 
@@ -226,6 +227,12 @@ export default function RootLayout({
           href="https://downloads.marketplace.jetbrains.com"
           crossOrigin=""
         />
+        <link
+          rel="preload"
+          as="image"
+          href="/static/completions/completions_non-color.png"
+          media="(min-width: 0)"
+        />
       </Head>
       <body
         className={cx(
@@ -246,6 +253,7 @@ export default function RootLayout({
 
         <GoogleAnalyticsProvider />
         <Analytics />
+        <InitialRenders />
       </body>
     </html>
   );

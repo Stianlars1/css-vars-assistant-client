@@ -124,6 +124,7 @@ export const FeaturesSection = () => {
         ref={featuresRef}
         className={styles.features}
         onMouseMove={handleMouseMove}
+        role={"list"}
       >
         {featuresSectionData.map((feature, idx) => (
           <article
@@ -152,8 +153,8 @@ export const FeaturesSection = () => {
               }
             }}
             tabIndex={0}
-            role="button"
-            aria-expanded={activeIndex === idx}
+            role="listitem"
+            aria-current={activeIndex === idx}
             aria-label={`${feature.title} feature. ${activeIndex === idx ? "Tap to close" : "Tap to view animation"}`}
           >
             {/* ------------------------ FRONT CONTENT ------------------- */}

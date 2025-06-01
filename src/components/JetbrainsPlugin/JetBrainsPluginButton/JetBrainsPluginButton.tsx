@@ -1,8 +1,8 @@
 // src/components/JetBrainsPluginButton/JetBrainsPluginButton.tsx
 import styles from "./JetBrainsPluginButton.module.scss";
-import { fetchPluginData } from "@/app/actions/plugin/fetchPluginData";
 import Link from "next/link";
 import { cx } from "@/lib/utils/cx";
+import { PLUGIN_URL } from "@/lib/urls";
 
 interface JetBrainsPluginButtonProps {
   buttonText?: string;
@@ -19,14 +19,7 @@ export default async function JetBrainsPluginButton({
   variant = "jetbrains",
   ariaLabel,
 }: JetBrainsPluginButtonProps) {
-  // Fetch basic plugin data to get the link URL
-  const pluginInfo = await fetchPluginData();
-
-  if (!pluginInfo) {
-    return null;
-  }
-
-  const pluginUrl = `https://plugins.jetbrains.com${pluginInfo.pluginData.link}`;
+  const pluginUrl = PLUGIN_URL;
 
   if (variant === "default") {
     return (

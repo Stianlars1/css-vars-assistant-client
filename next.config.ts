@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
     // Add optimizations for production
     optimizePackageImports: ["lucide-react", "gsap", "@gsap/react", "radix-ui"],
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   sassOptions: {
     includePaths: [path.resolve(process.cwd(), "src")],
   },
@@ -69,6 +69,13 @@ const nextConfig: NextConfig = {
           key: "Permissions-Policy",
           value: "camera=(), microphone=(), geolocation=()",
         },
+      ],
+    },
+
+    {
+      source: "/static/(.*)",
+      headers: [
+        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
       ],
     },
   ],
