@@ -8,8 +8,8 @@ export const viewportRoot: Viewport = {
 
   // Prevent users from zooming on mobile as it can break the audio player interface
   // Remove this if you want to allow zooming for accessibility
-  maximumScale: 1,
-  userScalable: false,
+  maximumScale: 5,
+  userScalable: true,
 
   // Theme color for mobile browsers
   themeColor: [

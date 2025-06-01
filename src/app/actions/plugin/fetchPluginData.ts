@@ -10,7 +10,7 @@ export async function fetchPluginData(): Promise<PluginInfo | null> {
     const pluginResponse = await fetch(
       `https://plugins.jetbrains.com/api/plugins/${pluginId}`,
       {
-        next: { revalidate: 3600 }, // Cache for 1 hour
+        next: { revalidate: 60 * 30 }, // Cache for 30 minutes
       },
     );
 
@@ -23,7 +23,7 @@ export async function fetchPluginData(): Promise<PluginInfo | null> {
       `https://plugins.jetbrains.com/api/plugins/${CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID}/updateVersions`,
 
       {
-        next: { revalidate: 3600 }, // Cache for 1 hour
+        next: { revalidate: 60 * 30 }, // Cache for 30 minutes
       },
     );
 
@@ -40,7 +40,7 @@ export async function fetchPluginData(): Promise<PluginInfo | null> {
     const ratingResponse = await fetch(
       `https://plugins.jetbrains.com/api/plugins/${pluginId}/rating`,
       {
-        next: { revalidate: 3600 }, // Cache for 1 hour
+        next: { revalidate: 60 * 30 }, // Cache for 30 minutes
       },
     );
 

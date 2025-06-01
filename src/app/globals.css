@@ -1,4 +1,7 @@
 :root {
+  --test: #2b58b7;
+  --test: #2d6df6;
+  --test: #3c77f6;
   /* == Sizes ==*/
   /* = heights = */
   --nav-height: 65px;

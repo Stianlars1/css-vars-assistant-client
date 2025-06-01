@@ -5,7 +5,7 @@ import { Interactive3DPreview } from "@/components/sections/heroSection/v1/Inter
 export default function ClientHero() {
   const images = [
     "/static/completions/completions_non-color.png",
-    "/static/completions/completions_color.png", // <-- the “hero” frame
+    "/static/completions/completions_color.png",
     "/static/documentation/documentation_non-color.png",
   ];
 
@@ -13,19 +13,20 @@ export default function ClientHero() {
     <Suspense
       fallback={
         <ServerPreview
-          src={images[1]} // first thing the user sees
+          src={images[0]}
           alt="Product screenshot"
-          width={700}
-          height={700}
+          width={800}
+          height={500}
+          quality={80}
         />
       }
     >
       <Interactive3DPreview
         srcs={images}
         alt="Product gallery"
-        width={700}
-        height={700}
-        quality={75}
+        width={800}
+        height={500}
+        quality={80}
       />
     </Suspense>
   );

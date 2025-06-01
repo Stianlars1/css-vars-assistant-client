@@ -57,8 +57,8 @@ export default function ScreenshotsSection({
         <Image
           src={screenshots[currentIndex]}
           alt={`Plugin screenshot ${currentIndex + 1}`}
-          width={900}
-          height={500}
+          width={1200}
+          height={760}
           loading={"lazy"}
           fetchPriority={"auto"}
           priority={false}
