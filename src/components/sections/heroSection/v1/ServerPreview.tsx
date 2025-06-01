@@ -17,9 +17,10 @@ export default function ServerPreview(props: {
         width={props.width}
         height={props.height}
         quality={props.quality}
-        priority
-        fetchPriority="high"
         placeholder="empty"
+        priority={true}
+        fetchPriority={"high"}
+        loading={"eager"}
         style={{
           transform: "rotateX(25deg) rotateY(-15deg) rotateZ(5deg)",
           containIntrinsicSize: `${props.width}px ${props.height}px`,
