@@ -14,8 +14,8 @@ export default function ClientHero() {
       fallback={
         <ServerPreview
           src={images[0]}
-          alt="Product screenshot"
-          width={800}
+          alt="Product gallery"
+          width={827}
           height={500}
           quality={80}
         />
@@ -24,7 +24,7 @@ export default function ClientHero() {
       <Interactive3DPreview
         srcs={images}
         alt="Product gallery"
-        width={800}
+        width={827}
         height={500}
         quality={80}
       />

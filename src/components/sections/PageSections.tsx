@@ -18,7 +18,7 @@ export default async function PageSections({ pluginData }: PageSectionsProps) {
   return (
     <div className={styles.sections}>
       <HeroSection />
-      <CardSection />
+      {pluginData && <CardSection pluginInfo={pluginData} />}
       <FeaturesSection />
       <ScreenshotsSection pluginInfo={pluginData} />
       <InstallationSection />

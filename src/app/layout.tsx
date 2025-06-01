@@ -4,7 +4,6 @@ import { assistant, dmSans, geistMono, geistSans, inter } from "@/fonts";
 import { cx } from "@/lib/utils/cx";
 import { PageContainer } from "@/components/layout/PageContainer/PageContainer";
 import { Navbar } from "@/components/layout/Navbar/Navbar";
-// src/app/layout.tsx (Not page.tsx!)
 import type { Metadata, Viewport } from "next";
 import { OG_IMAGE_URL, TWITTER_CARD_URL } from "@/lib/constants";
 import { CURRENT_VERSION, HOST } from "@/lib/config";
@@ -216,7 +215,17 @@ export default function RootLayout({
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <link
+          rel="preconnect"
+          href="https://plugins.jetbrains.com"
+          crossOrigin=""
+        />
+        <link
+          rel="preconnect"
+          href="https://downloads.marketplace.jetbrains.com"
+          crossOrigin=""
+        />
       </Head>
       <body
         className={cx(

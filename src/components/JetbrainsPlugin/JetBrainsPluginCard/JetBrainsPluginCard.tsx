@@ -3,11 +3,13 @@ import PluginCardHeader from "@/components/JetbrainsPlugin/JetBrainsPluginCard/c
 import PluginCardDescription from "@/components/JetbrainsPlugin/JetBrainsPluginCard/components/PluginCardDescription/PluginCardDescription";
 import PluginCardFooter from "@/components/JetbrainsPlugin/JetBrainsPluginCard/components/PluginCardFooter/PluginCardFooter";
 import Link from "next/link";
-import { fetchPluginData } from "@/app/actions/plugin/fetchPluginData";
+import { PluginInfo } from "@/types/plugin";
 
-export default async function JetBrainsPluginCard() {
-  const pluginInfo = await fetchPluginData();
-
+export default async function JetBrainsPluginCard({
+  pluginInfo,
+}: {
+  pluginInfo?: PluginInfo;
+}) {
   if (!pluginInfo) return <></>;
   const { pluginData, pluginRating } = pluginInfo;
 
@@ -21,7 +23,6 @@ export default async function JetBrainsPluginCard() {
       >
         <PluginCardHeader
           name={pluginData.name}
-          icon={`https://plugins.jetbrains.com${pluginData.icon}`}
           rating={pluginRating?.meanRating || 0}
         />
         <PluginCardDescription description={pluginData.preview} />

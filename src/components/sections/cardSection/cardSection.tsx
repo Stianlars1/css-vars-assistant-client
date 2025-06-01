@@ -2,8 +2,9 @@ import JetBrainsPluginCard from "@/components/JetbrainsPlugin/JetBrainsPluginCar
 
 import styles from "./cardSection.module.scss";
 import { SectionHeader } from "@/components/sections/SectionHeader/SectionHeader";
+import { PluginInfo } from "@/types/plugin";
 
-export const CardSection = () => {
+export const CardSection = ({ pluginInfo }: { pluginInfo?: PluginInfo }) => {
   return (
     <section className={styles.cardSection}>
       <SectionHeader gradient={"gradients.spectrum.jetbrainsMarketplace"}>
@@ -13,7 +14,7 @@ export const CardSection = () => {
           Marketplace
         </span>
       </SectionHeader>
-      <JetBrainsPluginCard />
+      <JetBrainsPluginCard pluginInfo={pluginInfo} />
     </section>
   );
 };
