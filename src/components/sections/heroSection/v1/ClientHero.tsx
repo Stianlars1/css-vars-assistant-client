@@ -15,8 +15,8 @@ export default function ClientHero() {
         <ServerPreview
           src={images[0]}
           alt="Product gallery"
-          width={827}
-          height={500}
+          width={1200}
+          height={760}
           quality={80}
         />
       }
@@ -24,8 +24,8 @@ export default function ClientHero() {
       <Interactive3DPreview
         srcs={images}
         alt="Product gallery"
-        width={827}
-        height={500}
+        width={1200}
+        height={760}
         quality={80}
       />
     </Suspense>
