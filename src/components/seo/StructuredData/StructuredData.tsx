@@ -22,12 +22,14 @@ export const StructuredData = ({ pluginStats }: StructuredDataProps) => {
         "@type": "AggregateRating",
         ratingValue: pluginStats.rating.toFixed(1),
         ratingCount: Math.round(pluginStats.downloads * 0.15).toString(),
+        bestRating: "5",
       },
       supportingData: {
         aggregateRating: {
           "@type": "AggregateRating",
           ratingValue: pluginStats.rating.toFixed(1),
           ratingCount: Math.round(pluginStats.downloads * 0.15).toString(),
+          bestRating: "5",
         },
         offers: {
           "@type": "Offer",

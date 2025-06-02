@@ -4,12 +4,11 @@ import { assistant, dmSans, geistMono, geistSans, inter } from "@/fonts";
 import { cx } from "@/lib/utils/cx";
 import { PageContainer } from "@/components/layout/PageContainer/PageContainer";
 import { Navbar } from "@/components/layout/Navbar/Navbar";
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { OG_IMAGE_URL, TWITTER_CARD_URL } from "@/lib/constants";
 import { CURRENT_VERSION, HOST } from "@/lib/config";
 import Head from "next/head";
 import { GoogleAnalyticsProvider } from "@/lib/analytics/GoogleAnalyticsProvider";
-import { viewportRoot } from "@/app/viewportRoot";
 import { InitialRenders } from "@/components/InitialRenders";
 
 const PLUGIN_NAME = "CSS Variables Assistant";
@@ -186,7 +185,6 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = viewportRoot;
 export default function RootLayout({
   children,
 }: Readonly<{

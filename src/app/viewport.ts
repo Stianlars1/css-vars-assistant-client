@@ -1,6 +1,6 @@
 import type { Viewport } from "next";
 
-export const viewportRoot: Viewport = {
+export const viewport: Viewport = {
   // Ensures proper width and initial scale on mobile devices
   width: "device-width",
   initialScale: 1,

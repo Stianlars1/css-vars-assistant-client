@@ -73,6 +73,7 @@ export const jsonLd = {
       "@type": "AggregateRating",
       ratingValue: 4.6,
       ratingCount: 8864,
+      bestRating: 5,
     },
     offers: {
       "@type": "Offer",
@@ -101,13 +102,11 @@ export const jsonLd = {
         "@type": "Person",
         name: "Developer",
       },
-      datePublished: "2025-03-15",
       reviewBody:
         "Essential plugin for CSS development. The autocomplete saves so much time!",
       reviewRating: {
         "@type": "Rating",
         ratingValue: "5",
-        bestRating: "5",
       },
     },
   ],
