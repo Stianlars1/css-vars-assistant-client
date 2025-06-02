@@ -84,8 +84,8 @@ export async function generateMetadata(
         "quality:rating": pluginStats.rating.toString(),
         "downloads:total": pluginStats.downloads.toString(),
         "last-updated": new Date().toISOString().split("T")[0],
-        "plugin:version": pluginStats.version.toString() || "1.3.1",
-        "software:version": pluginStats.version.toString() || "1.3.1",
+        "plugin:version": pluginStats.version.toString() || "1.4.0",
+        "software:version": pluginStats.version.toString() || "1.4.0",
 
         "article:author": "Stian Larsen",
         "article:publisher": "Stian Larsen",

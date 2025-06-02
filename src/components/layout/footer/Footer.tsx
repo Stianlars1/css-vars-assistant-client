@@ -3,10 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Footer.module.scss";
 import { GradientText } from "@/components/ui/GradientText/GradientText";
+import { fetchPluginData } from "@/app/actions/plugin/fetchPluginData";
 
-export const Footer = () => {
+export default async function Footer() {
+  const pluginData = await fetchPluginData();
   const currentYear = new Date().getFullYear();
 
+  const data = pluginData?.pluginData;
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -26,6 +29,12 @@ export const Footer = () => {
                 <h3 className={styles.brandName}>CSS Variables Assistant</h3>
               </GradientText>
             </div>
+
+            {data && data.latestVersion && (
+              <p className={styles.description}>
+                Latest version: <strong>{data.latestVersion.version}</strong>
+              </p>
+            )}
             <p className={styles.description}>
               Professional CSS custom properties plugin for JetBrains IDEs.
               Intelligent autocomplete, documentation, and color swatches for
@@ -36,73 +45,74 @@ export const Footer = () => {
               <span className={styles.stat}>JetBrains Marketplace</span>
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div className={styles.section}>
-            <h4 className={styles.sectionTitle}>Quick Links</h4>
-            <nav className={styles.linkList}>
-              <a href="#features" className={styles.link}>
-                Features
-              </a>
-              <a href="#screenshots" className={styles.link}>
-                Preview
-              </a>
-              <a href="#installation" className={styles.link}>
-                Installation
-              </a>
-            </nav>
-          </div>
-
-          {/* Supported IDEs */}
-          <div className={styles.section}>
-            <h4 className={styles.sectionTitle}>Supported IDEs</h4>
-            <div className={styles.linkList}>
-              <span className={styles.ideItem}>IntelliJ IDEA</span>
-              <span className={styles.ideItem}>WebStorm</span>
-              <span className={styles.ideItem}>PyCharm</span>
-              <span className={styles.ideItem}>PhpStorm</span>
-              <span className={styles.ideItem}>RubyMine</span>
-              <span className={styles.ideItem}>GoLand</span>
+          <div className={styles.sections}>
+            {/* Quick Links */}
+            <div className={styles.section}>
+              <h4 className={styles.sectionTitle}>Quick Links</h4>
+              <nav className={styles.linkList}>
+                <Link href="/#features" className={styles.link}>
+                  Features
+                </Link>
+                <Link href="/#screenshots" className={styles.link}>
+                  Preview
+                </Link>
+                <Link href="/#installation" className={styles.link}>
+                  Installation
+                </Link>
+              </nav>
             </div>
-          </div>
 
-          {/* Resources */}
-          <div className={styles.section}>
-            <h4 className={styles.sectionTitle}>Resources</h4>
-            <nav className={styles.linkList}>
-              <Link
-                href="https://plugins.jetbrains.com/plugin/27392-css-variables-assistant"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.link}
-              >
-                JetBrains Marketplace
-              </Link>
-              <Link
-                href="https://github.com/stianlars1/css-vars-assistant"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.link}
-              >
-                GitHub Repository
-              </Link>
-              <Link
-                href="https://github.com/stianlars1/css-vars-assistant#readme"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.link}
-              >
-                Documentation
-              </Link>
-              <Link
-                href="https://github.com/stianlars1/css-vars-assistant/issues"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.link}
-              >
-                Report Issues
-              </Link>
-            </nav>
+            {/* Supported IDEs */}
+            <div className={styles.section}>
+              <h4 className={styles.sectionTitle}>Supported IDEs</h4>
+              <div className={styles.linkList}>
+                <span className={styles.ideItem}>IntelliJ IDEA</span>
+                <span className={styles.ideItem}>WebStorm</span>
+                <span className={styles.ideItem}>PyCharm</span>
+                <span className={styles.ideItem}>PhpStorm</span>
+                <span className={styles.ideItem}>RubyMine</span>
+                <span className={styles.ideItem}>GoLand</span>
+              </div>
+            </div>
+
+            {/* Resources */}
+            <div className={styles.section}>
+              <h4 className={styles.sectionTitle}>Resources</h4>
+              <nav className={styles.linkList}>
+                <Link
+                  href="https://plugins.jetbrains.com/plugin/27392-css-variables-assistant"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.link}
+                >
+                  JetBrains Marketplace
+                </Link>
+                <Link
+                  href="https://github.com/stianlars1/css-vars-assistant"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.link}
+                >
+                  GitHub Repository
+                </Link>
+                <Link
+                  href="https://github.com/stianlars1/css-vars-assistant#readme"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.link}
+                >
+                  Documentation
+                </Link>
+                <Link
+                  href="https://github.com/stianlars1/css-vars-assistant/issues"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.link}
+                >
+                  Report Issues
+                </Link>
+              </nav>
+            </div>
           </div>
         </div>
 
@@ -176,4 +186,4 @@ export const Footer = () => {
       </div>
     </footer>
   );
-};
+}

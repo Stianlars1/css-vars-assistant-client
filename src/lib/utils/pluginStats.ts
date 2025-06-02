@@ -29,7 +29,7 @@ export function extractPluginStats(
     description: data.preview,
     ratingCount: Math.round(data.downloads * 0.15), // Estimate based on typical conversion rates
     tags: data.tags.map((tag) => tag.name),
-    version: "1.3.1", // Could be extracted from data if available
+    version: data.latestVersion?.version ?? "1.4.0", // Could be extracted from data if available
     lastUpdated: new Date(data.cdate).toISOString().split("T")[0],
   };
 }

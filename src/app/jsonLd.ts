@@ -10,7 +10,7 @@ export const jsonLd = {
       applicationCategory: "Developer Tools",
       applicationSubCategory: "IDE Plugin",
       operatingSystem: ["Windows", "macOS", "Linux"],
-      softwareVersion: "1.3.1",
+      softwareVersion: "1.4.0",
       datePublished: "2025-03-01",
       dateModified: "2025-06-02",
       author: {

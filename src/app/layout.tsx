@@ -10,7 +10,7 @@ import { CURRENT_VERSION, HOST } from "@/lib/config";
 import Head from "next/head";
 import { GoogleAnalyticsProvider } from "@/lib/analytics/GoogleAnalyticsProvider";
 import { InitialRenders } from "@/components/InitialRenders";
-import { Footer } from "@/components/layout/footer/Footer";
+import Footer from "@/components/layout/footer/Footer";
 
 const PLUGIN_NAME = "CSS Variables Assistant";
 
