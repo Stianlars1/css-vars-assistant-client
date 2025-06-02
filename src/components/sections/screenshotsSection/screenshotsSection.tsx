@@ -6,6 +6,7 @@ import styles from "./screenshotsSection.module.scss";
 import { PluginInfo } from "@/types/plugin";
 import { JETBRAINS_PLUGINS_HREF } from "@/lib/urls";
 import Image from "next/image";
+import { SectionHeader } from "@/components/sections/SectionHeader/SectionHeader";
 
 export default function ScreenshotsSection({
   pluginInfo,
@@ -39,7 +40,14 @@ export default function ScreenshotsSection({
   }
 
   return (
-    <div className={styles.gallery}>
+    <section id={"screenshots"} className={styles.gallery}>
+      <SectionHeader
+        subtitle={"Explore the plugin's features through these screenshots."}
+        gradient={"gradients.spectrum.vibrantSpectrum"}
+        className={styles.header}
+      >
+        Preview
+      </SectionHeader>
       <div className={styles.mainImageContainer}>
         <button
           className={`${styles.navButton} ${styles.prev}`}
@@ -103,6 +111,6 @@ export default function ScreenshotsSection({
           </button>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

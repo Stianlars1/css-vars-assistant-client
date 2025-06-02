@@ -98,7 +98,7 @@ export const FeaturesSection = () => {
   };
 
   return (
-    <section className={styles.featuresSection}>
+    <section id={"features"} className={styles.featuresSection}>
       <SectionHeader
         title="Features"
         subtitle="Professional CSS custom properties development for JetBrains IDEs"

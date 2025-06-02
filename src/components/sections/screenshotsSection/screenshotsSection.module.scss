@@ -1,10 +1,16 @@
 // src/components/ScreenshotGallery/ScreenshotGallery.module.scss
 .gallery {
-  width: min(var(--width-l), 100%);
-  aspect-ratio: 1200 / 760;
-  margin: 0 auto;
-
+  .header {
+    text-align: center;
+    margin: 0 auto 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .mainImageContainer {
+    width: min(var(--width-l), 100%);
+    aspect-ratio: 1200 / 760;
+    margin: 0 auto;
     position: relative;
     border-radius: 12px;
     overflow: hidden;
@@ -56,6 +62,8 @@
   }
 
   .thumbnails {
+    width: min(var(--width-l), 100%);
+    margin: 0 auto;
     display: flex;
     gap: 8px;
     margin-top: 16px;

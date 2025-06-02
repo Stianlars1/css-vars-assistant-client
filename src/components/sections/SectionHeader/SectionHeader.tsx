@@ -9,24 +9,26 @@ type SectionHeaderProps =
       children: ReactNode;
       gradient?: GradientVariant;
       subtitle?: string;
+      className?: string;
     }
   | {
       title: string;
       gradient?: GradientVariant;
       subtitle?: string;
+      className?: string;
     };
 export const SectionHeader = (props: SectionHeaderProps) => {
   const subtitle = props.subtitle;
   if (props.gradient) {
     return (
-      <>
+      <div className={props?.className}>
         <GradientText variant={props.gradient}>
           <h2 className={cx(styles.title)}>
             {"title" in props ? props.title : props.children}
           </h2>
         </GradientText>
         {subtitle && <p className={styles.subTitle}>{subtitle}</p>}
-      </>
+      </div>
     );
   }
   return (
