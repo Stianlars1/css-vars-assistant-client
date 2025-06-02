@@ -3,13 +3,13 @@ import type { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "CSS Variables Assistant",
-    short_name: "CSS Vars",
+    short_name: "CSS",
     description:
       "Advanced CSS custom properties plugin for JetBrains IDEs. Intelligent autocomplete, documentation, color swatches, and @import resolution.",
     start_url: "/",
     display: "standalone",
     background_color: "#faf9f9",
-    theme_color: "#faf9f9",
+    theme_color: "#050505",
 
     icons: [
       {
