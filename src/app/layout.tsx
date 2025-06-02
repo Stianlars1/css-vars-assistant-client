@@ -157,7 +157,7 @@ export const metadata: Metadata = {
   },
 
   // Manifest for PWA features
-  manifest: "/manifest.json",
+  manifest: "/manifest.webmanifest",
 
   // Verification for search engines
   verification: {
@@ -231,7 +231,16 @@ export default function RootLayout({
           rel="preload"
           as="image"
           href="/static/completions/completions_non-color.png"
-          media="(min-width: 0)"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/static/completions/completions_color.png"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/static/documentation/documentation_non-color.png"
         />
       </Head>
       <body
