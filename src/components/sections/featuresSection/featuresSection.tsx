@@ -98,7 +98,13 @@ export const FeaturesSection = () => {
   };
 
   return (
-    <section id={"features"} className={styles.featuresSection}>
+    <section
+      style={{
+        marginBlockStart: "40px",
+      }}
+      id={"features"}
+      className={styles.featuresSection}
+    >
       <SectionHeader
         title="Features"
         subtitle="Professional CSS custom properties development for JetBrains IDEs"

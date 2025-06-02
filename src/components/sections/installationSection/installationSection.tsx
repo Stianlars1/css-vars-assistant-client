@@ -4,7 +4,13 @@ import { SectionHeader } from "@/components/sections/SectionHeader/SectionHeader
 
 export default function InstallationSection() {
   return (
-    <section id={"installation"} className={styles.guideSection}>
+    <section
+      style={{
+        marginBlockStart: "40px",
+      }}
+      id={"installation"}
+      className={styles.guideSection}
+    >
       <SectionHeader
         gradient={"gradients.warm.warmSunset"}
         subtitle={

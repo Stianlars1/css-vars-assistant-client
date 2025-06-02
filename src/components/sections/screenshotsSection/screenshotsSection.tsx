@@ -40,7 +40,13 @@ export default function ScreenshotsSection({
   }
 
   return (
-    <section id={"screenshots"} className={styles.gallery}>
+    <section
+      style={{
+        marginBlockStart: "40px",
+      }}
+      id={"screenshots"}
+      className={styles.gallery}
+    >
       <SectionHeader
         subtitle={"Explore the plugin's features through these screenshots."}
         gradient={"gradients.spectrum.vibrantSpectrum"}
