@@ -138,12 +138,6 @@ export const metadata: Metadata = {
     creator: "@litehode",
   },
 
-  // Icons for branding and recognition
-  icons: {
-    apple: "/apple-icon.png",
-    shortcut: "/favicon.ico",
-  },
-
   // Manifest for PWA features
   manifest: "/manifest.webmanifest",
 
