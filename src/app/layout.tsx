@@ -223,10 +223,7 @@ export default function RootLayout({
           as="image"
           href="/static/documentation/documentation_non-color.png"
         />
-        <meta
-          name="apple-mobile-web-app-title"
-          content="CSS Variables Assistant"
-        />
+        <meta name="apple-mobile-web-app-title" content="CSS" />
       </Head>
       <body
         className={cx(
