@@ -1,0 +1,104 @@
+.simpleFeedback {
+  margin: 1rem 0;
+  padding: 8px;
+  border-radius: 4px;
+  text-align: left;
+  width: fit-content;
+}
+
+.simpleFeedbackWithIcon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.error {
+  background-color: hsl(var(--error));
+  color: hsl(var(--error-foreground));
+  border: 1px solid hsl(354 70% 54% / 0.5);
+}
+
+.errorIcon {
+  color: hsl(var(--error-foreground));
+}
+
+.info {
+  color: hsl(var(--blue-foreground));
+  background-color: hsl(var(--blue));
+  border: 1px solid hsl(var(--blue-foreground) / 0.5);
+}
+
+.infoIcon {
+  color: hsl(var(--blue-foreground));
+}
+
+.warning {
+  color: hsl(var(--warning-foreground));
+  background-color: hsl(var(--warning));
+  border: 1px solid hsl(var(--warning-foreground) / 0.5);
+}
+
+.warningIcon {
+  color: hsl(var(--warning-foreground));
+}
+
+.success {
+  background-color: hsl(var(--success));
+  color: hsl(var(--success-foreground));
+  border: 1px solid hsl(var(--success-foreground) / 0.5);
+}
+
+.successIcon {
+  color: hsl(var(--success-foreground));
+}
+
+.checkmarkWrapper {
+  background: hsl(var(--success));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+
+  .checkmark {
+    color: inherit;
+    fill: currentColor;
+  }
+}
+
+.icon-sm {
+  width: 14px;
+  height: 14px;
+}
+.icon-md {
+  width: 18px;
+  height: 18px;
+}
+.icon-lg {
+  width: 24px;
+  height: 24px;
+}
+
+.sm {
+  font-size: 12px;
+  gap: 4px;
+  padding: 2px 8px;
+  font-weight: 600;
+}
+.md {
+  font-size: 16px;
+  gap: 6px;
+  padding: 6px 12px;
+  font-weight: 400;
+}
+.lg {
+  font-size: 20px;
+  gap: 8px;
+  padding: 8px 16px;
+  font-weight: 400;
+}
+
+.noMargin {
+  margin: 0;
+}

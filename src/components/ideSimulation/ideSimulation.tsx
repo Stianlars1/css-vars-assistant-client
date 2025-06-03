@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import styles from "./ideSimulation.module.scss";
 import Image from "next/image";
+import { SimpleFeedback } from "@/components/ui/feedback/simpleFeedback/simpleFeedback";
 
 interface IdeSimulationProps {
   feature: "autocomplete" | "documentation" | "scope" | "sorting";
@@ -24,7 +25,6 @@ export function IdeSimulation({ feature, isActive }: IdeSimulationProps) {
       }
 
       if (!isActive) {
-        console.log("Not active");
         return;
       }
 
@@ -279,17 +279,44 @@ function ScopeDemo() {
             <p>Index only current project variables</p>
           </div>
         </div>
-        <div className={styles.scopeOption} data-scope="2" data-selected>
-          <div className={styles.scopeRadio}>●</div>
+        <div className={styles.scopeOption} data-scope="2">
+          <div className={styles.scopeRadio}>○</div>
           <div className={styles.scopeInfo}>
-            <h4>PROJECT + IMPORTS</h4>
+            <h4
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              PROJECT + IMPORTS{" "}
+              <SimpleFeedback noMargin={true} size={"sm"} variant={"warning"}>
+                ️ experimental
+              </SimpleFeedback>
+            </h4>
             <p>Include @import and linked stylesheets</p>
           </div>
         </div>
-        <div className={styles.scopeOption} data-scope="3">
-          <div className={styles.scopeRadio}>○</div>
+        <div className={styles.scopeOption} data-scope="3" data-selected>
+          <div className={styles.scopeRadio}>●</div>
           <div className={styles.scopeInfo}>
-            <h4>GLOBAL</h4>
+            <h4
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              GLOBAL{" "}
+              <SimpleFeedback
+                noMargin={true}
+                size={"sm"}
+                variant={"info"}
+                icon={false}
+              >
+                default
+              </SimpleFeedback>
+            </h4>
             <p>Full node_modules and external dependencies</p>
           </div>
         </div>

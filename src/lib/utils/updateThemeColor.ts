@@ -7,7 +7,6 @@ export const useUpdateThemeColor = () => {
   const isDark = useDarkMode();
 
   useEffect(() => {
-    console.log("Updating theme color", isDark ? "dark" : "light");
     if (typeof window === "undefined") return;
     // First, remove existing meta tags
     document

@@ -1,19 +1,12 @@
 .badge {
   width: fit-content;
 
-  font-weight: 600;
-  font-size: 0.9rem;
-  line-height: 1rem;
-  padding: 0.125rem 0.625rem;
-
   display: inline-block;
 
   background: light-dark(hsl(var(--gray-2)), hsl(var(--gray-4)));
   color: light-dark(hsl(var(--gray-10)), hsl(var(--gray-11)));
 
   border: 1px solid light-dark(hsl(var(--gray-8)), hsl(var(--gray-7)));
-  border-radius: 0.25rem;
-  letter-spacing: 1.5px;
 
   // Subtle animation
   transition: all 0.2s ease;
@@ -28,4 +21,31 @@
 
   &:hover {
   }
+}
+
+.sm {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.1;
+  padding: 0.1rem 0.45rem;
+  border-radius: 0.15rem;
+  letter-spacing: 1;
+}
+
+.md {
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1rem;
+  padding: 0.125rem 0.625rem;
+  border-radius: 0.25rem;
+  letter-spacing: 1.5px;
+}
+
+.lg {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  letter-spacing: 1.5px;
 }
