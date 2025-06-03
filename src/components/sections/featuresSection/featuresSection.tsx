@@ -16,7 +16,6 @@ import { cx } from "@/lib/utils/cx";
 import { IdeSimulation } from "@/components/ideSimulation/ideSimulation";
 import { ShowAnimationCheckbox } from "@/components/sections/featuresSection/components/showAnimationCheckbox/showAnimationCheckbox";
 import { useTouchDevice } from "@/hooks/useTouchDevice";
-import { SimpleFeedback } from "@/components/ui/feedback/simpleFeedback/simpleFeedback";
 
 /* ------------------------------------------------------------------ */
 

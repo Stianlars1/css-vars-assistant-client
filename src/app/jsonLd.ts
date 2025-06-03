@@ -13,6 +13,12 @@ export const jsonLd = {
       softwareVersion: "1.4.0",
       datePublished: "2025-03-01",
       dateModified: "2025-06-02",
+      releaseNotes: "https://www.css-variables-assistant.dev/changelog",
+      hasPart: {
+        "@type": "WebPage",
+        "@id": "https://www.css-variables-assistant.dev/changelog",
+        name: "Changelog",
+      },
       author: {
         "@type": "Person",
         name: "Stian Larsen",

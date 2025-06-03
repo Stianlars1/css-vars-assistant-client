@@ -1,8 +1,14 @@
 // src/lib/routes.ts
+import { HOST } from "@/lib/config";
+
 export const ROUTE_ROOT = "/";
+export const ROUTE_CHANGELOG = "/changelog";
 export const ROUTE_FEATURES = `${ROUTE_ROOT}#features`;
 export const ROUTE_INSTALLATION = `${ROUTE_ROOT}#installation`;
 export const ROUTE_SCREENSHOTS = `${ROUTE_ROOT}#screenshots`;
+
+// Host urls
+export const changelogUrl = `${HOST}/changelog`;
 
 // External URLs - using real plugin data
 export const JETBRAINS_MARKETPLACE_URL =

@@ -33,9 +33,8 @@ export async function generateMetadata(
 
     // Enhanced description with real stats
     description: pluginStats
-      ? `Advanced CSS custom properties plugin for IntelliJ IDEA, WebStorm & JetBrains IDEs. Rated ${pluginStats.rating.toFixed(1)}/5.0 with ${pluginStats.downloads}+ downloads. Intelligent autocomplete, documentation, color swatches, and @import resolution. Supports CSS, SCSS, SASS, LESS.`
-      : undefined, // Will use parent description
-
+      ? `CSS Variables plugin for JetBrains IDEs. ${pluginStats.rating.toFixed(1)}/5★ rating, ${pluginStats.downloads}+ downloads. Smart autocomplete, docs & color swatches.`
+      : undefined,
     // INHERIT and EXTEND keywords (not replace)
     keywords: [
       ...(Array.isArray(existingKeywords) ? existingKeywords : []),

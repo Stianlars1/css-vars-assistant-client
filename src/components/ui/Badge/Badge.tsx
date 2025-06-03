@@ -4,7 +4,6 @@ import { cx } from "@/lib/utils/cx";
 export const Badge = ({
   children,
   size = "md",
-  variant,
 }: {
   children: React.ReactNode;
   size?: "sm" | "md" | "lg";

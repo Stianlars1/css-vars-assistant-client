@@ -1,0 +1,38 @@
+.backLink {
+  margin-top: 24px;
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  text-wrap: nowrap;
+  gap: 4px;
+  text-decoration: none;
+  color: hsl(var(--link-color));
+
+  &:hover {
+    text-decoration: underline;
+    color: hsl(var(--primary));
+  }
+}
+.page {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 92px;
+
+  > h1 {
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    .item {
+      &:not(:last-child) {
+        border-bottom: 1px solid hsl(var(--border));
+        padding-bottom: 32px;
+      }
+    }
+  }
+}

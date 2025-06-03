@@ -4,6 +4,11 @@ import Image from "next/image";
 import styles from "./Footer.module.scss";
 import { GradientText } from "@/components/ui/GradientText/GradientText";
 import { fetchPluginData } from "@/app/actions/plugin/fetchPluginData";
+import {
+  ROUTE_CHANGELOG,
+  ROUTE_FEATURES,
+  ROUTE_INSTALLATION,
+} from "@/lib/routes";
 
 export default async function Footer() {
   const pluginData = await fetchPluginData();
@@ -50,13 +55,16 @@ export default async function Footer() {
             <div className={styles.section}>
               <h4 className={styles.sectionTitle}>Quick Links</h4>
               <nav className={styles.linkList}>
-                <Link href="/#features" className={styles.link}>
+                <Link href={ROUTE_CHANGELOG} className={styles.link}>
+                  Changelog
+                </Link>
+                <Link href={ROUTE_FEATURES} className={styles.link}>
                   Features
                 </Link>
-                <Link href="/#screenshots" className={styles.link}>
+                <Link href={ROUTE_INSTALLATION} className={styles.link}>
                   Preview
                 </Link>
-                <Link href="/#installation" className={styles.link}>
+                <Link href={ROUTE_FEATURES} className={styles.link}>
                   Installation
                 </Link>
               </nav>

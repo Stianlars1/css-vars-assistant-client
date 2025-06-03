@@ -13,7 +13,10 @@
     "@radix-ui/react-switch": "^1.2.5",
     "@vercel/analytics": "^1.5.0",
     "babel-plugin-react-compiler": "^19.1.0-rc.2",
+    "fast-xml-parser": "^5.2.3",
     "gsap": "^3.13.0",
+    "html-react-parser": "^5.2.5",
+    "isomorphic-dompurify": "^2.25.0",
     "lucide-react": "^0.511.0",
     "next": "15.3.2",
     "radix-ui": "^1.4.2",
@@ -21,13 +24,15 @@
     "react-dom": "^19.0.0",
     "sass": "^1.89.0",
     "schema-dts": "^1.1.5",
-    "sharp": "^0.34.2"
+    "sharp": "^0.34.2",
+    "string-strip-html": "^13.4.12"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/react-html-parser": "^2.0.7",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
     "prettier": "^3.5.3",

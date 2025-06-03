@@ -1,7 +1,6 @@
+@import "@/components/typography/styles/variables.css";
+
 :root {
-  --test: #2b58b7;
-  --test: #2d6df6;
-  --test: #3c77f6;
   /* == Sizes ==*/
   /* = heights = */
   --nav-height: 65px;
@@ -104,6 +103,7 @@
     --error-foreground: 0 0% 100%;
 
     --link-color: 218 100% 69%;
+
     --background: 0 0% 2%;
     --foreground: 210 5.6% 92.9%;
     --foreground-subtle: 220 1.3% 46.9%;

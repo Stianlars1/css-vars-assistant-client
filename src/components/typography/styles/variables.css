@@ -1,0 +1,211 @@
+/* src/styles/typography/variables.css */
+:root {
+    /* ────────────────────── Font families ────────────────────── */
+
+    /**
+     * Primary sans-serif stack
+     * @tokens Font family
+     * @value var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif
+     */
+    --font-sans-primary: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /**
+     * Secondary sans-serif stack
+     * @tokens Font family
+     * @value var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif
+     */
+    --font-sans-secondary: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /**
+     * Tertiary sans-serif stack
+     * @tokens Font family
+     * @value var(--font-dm-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif
+     */
+    --font-sans-tertiary: var(--font-dm-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /**
+     * Alternative sans-serif stack
+     * @tokens Font family
+     * @value var(--font-assistant), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif
+     */
+    --font-sans-alternative: var(--font-assistant), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /**
+     * Monospace stack
+     * @tokens Font family
+     * @value var(--font-geist-mono), 'Consolas', monospace
+     */
+    --font-mono: var(--font-geist-mono), 'Consolas', monospace;
+
+
+    /* ─────────────────────── Type scale ─────────────────────── */
+
+    /**
+     * Modular-scale ratio (Major-third)
+     * @tokens Misc
+     * @value 1.25
+     */
+    --font-ratio: 1.25;
+
+
+    /* ===== Font sizes (fluid with clamp()) ===== */
+
+    /**
+     * xs – 12 px
+     * @tokens Font size
+     * @value clamp(0.75rem, 0.75rem, 0.75rem)
+     */
+    --fs-xs: clamp(0.75rem, 0.75rem, 0.75rem);
+
+    /**
+     * sm – 14 px
+     * @tokens Font size
+     * @value clamp(0.875rem, 0.875rem, 0.875rem)
+     */
+    --fs-sm: clamp(0.875rem, 0.875rem, 0.875rem);
+
+    /**
+     * base – 16 px
+     * @tokens Font size
+     * @value clamp(1rem, 1rem, 1rem)
+     */
+    --fs-base: clamp(1rem, 1rem, 1rem); /* 16 px */
+
+    /**
+     * lg – 18 px
+     * @tokens Font size
+     * @value clamp(1.125rem, 1.125rem, 1.125rem)
+     */
+    --fs-lg: clamp(1.125rem, 1.125rem, 1.125rem);
+
+    /**
+     * xl – 20 px fluid
+     * @tokens Font size
+     * @value clamp(1.25rem, 1.15rem + 0.5vw, 1.25rem)
+     */
+    --fs-xl: clamp(1.25rem, 1.15rem + 0.5vw, 1.25rem);
+
+    /**
+     * 2xl – 24-25 px fluid
+     * @tokens Font size
+     * @value clamp(1.5rem, 1.3rem + 1vw, 1.563rem)
+     */
+    --fs-2xl: clamp(1.5rem, 1.3rem + 1vw, 1.563rem);
+
+    /**
+     * 3xl – 28-31 px fluid
+     * @tokens Font size
+     * @value clamp(1.75rem, 1.5rem + 1.25vw, 1.953rem)
+     */
+    --fs-3xl: clamp(1.75rem, 1.5rem + 1.25vw, 1.953rem);
+
+    /**
+     * 4xl – 32-39 px fluid
+     * @tokens Font size
+     * @value clamp(2rem, 1.75rem + 1.5vw, 2.441rem)
+     */
+    --fs-4xl: clamp(2rem, 1.75rem + 1.5vw, 2.441rem);
+
+    /**
+     * 5xl – 40-49 px fluid
+     * @tokens Font size
+     * @value clamp(2.5rem, 2rem + 2.5vw, 3.052rem)
+     */
+    --fs-5xl: clamp(2.5rem, 2rem + 2.5vw, 3.052rem);
+
+    /**
+     * 6xl – 48-61 px fluid
+     * @tokens Font size
+     * @value clamp(3rem, 2.5rem + 3vw, 3.815rem)
+     */
+    --fs-6xl: clamp(3rem, 2.5rem + 3vw, 3.815rem);
+
+
+    /* ───────────────────── Font weights ───────────────────── */
+
+    /** Thin (200) @tokens Font weight @value 200 */
+    --fw-thin: 200;
+
+    /** Light (300) @tokens Font weight @value 300 */
+    --fw-light: 300;
+
+    /** Regular (400) @tokens Font weight @value 400 */
+    --fw-regular: 400;
+
+    /** Medium (500) @tokens Font weight @value 500 */
+    --fw-medium: 500;
+
+    /** Semi-bold (600) @tokens Font weight @value 600 */
+    --fw-semibold: 600;
+
+    /** Bold (700) @tokens Font weight @value 700 */
+    --fw-bold: 700;
+
+    /** Extra-bold (800) @tokens Font weight @value 800 */
+    --fw-extrabold: 800;
+
+
+    /* ───────────────────── Line heights ───────────────────── */
+
+    /** None @tokens Line height @value 1 */
+    --lh-none: 1;
+
+    /** Tight @tokens Line height @value 1.2 */
+    --lh-tight: 1.2;
+
+    /** Snug @tokens Line height @value 1.375 */
+    --lh-snug: 1.375;
+
+    /** Normal @tokens Line height @value 1.5 */
+    --lh-normal: 1.5;
+
+    /** Relaxed @tokens Line height @value 1.625 */
+    --lh-relaxed: 1.625;
+
+    /** Loose @tokens Line height @value 2 */
+    --lh-loose: 2;
+
+
+    /* ─────────────────── Letter-spacing ─────────────────── */
+
+    /** Tighter @tokens Letter spacing @value -0.05em */
+    --ls-tighter: -0.05em;
+
+    /** Tight @tokens Letter spacing @value -0.025em */
+    --ls-tight: -0.025em;
+
+    /** Normal @tokens Letter spacing @value 0em */
+    --ls-normal: 0em;
+
+    /** Wide @tokens Letter spacing @value 0.025em */
+    --ls-wide: 0.025em;
+
+    /** Wider @tokens Letter spacing @value 0.05em */
+    --ls-wider: 0.05em;
+
+    /** Widest @tokens Letter spacing @value 0.1em */
+    --ls-widest: 0.1em;
+
+
+    /* ───────────── Paragraph spacing & line widths ───────────── */
+
+    /** WCAG paragraph spacing (2 × font-size) @tokens Misc @value 2em */
+    --paragraph-spacing: 2em;
+
+    /** xs – 20 ch @tokens Line width @value 20ch */
+    --line-width-xs: 20ch;
+
+    /** sm – 45 ch @tokens Line width @value 45ch */
+    --line-width-sm: 45ch;
+
+    /** md – 60 ch @tokens Line width @value 60ch */
+    --line-width-md: 60ch;
+
+    /** lg – 75 ch @tokens Line width @value 75ch */
+    --line-width-lg: 75ch;
+
+    /** xl – 90 ch @tokens Line width @value 90ch */
+    --line-width-xl: 90ch;
+}
+
+
