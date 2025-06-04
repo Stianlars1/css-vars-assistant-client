@@ -17,10 +17,6 @@
       flex-direction: column;
       gap: 8px;
 
-      .badgeVersion {
-        color: hsl(var(--foreground));
-      }
-
       .heroHeaderMain {
         display: inline-flex;
         width: fit-content;

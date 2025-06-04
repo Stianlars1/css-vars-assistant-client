@@ -1,5 +1,5 @@
 "use client";
-import { usePageTracking } from "@/lib/analytics/usePageTrracking";
+import { usePageTracking } from "@/lib/analytics/usePageTracking";
 
 export default function PageTracking() {
   usePageTracking();

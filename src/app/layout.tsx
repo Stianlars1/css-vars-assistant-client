@@ -211,17 +211,17 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="/static/completions/completions_non-color.png"
+          href="/static/completions/completions_non-color.webp"
         />
         <link
           rel="preload"
           as="image"
-          href="/static/completions/completions_color.png"
+          href="/static/completions/completions_color.webp"
         />
         <link
           rel="preload"
           as="image"
-          href="/static/documentation/documentation_non-color.png"
+          href="/static/documentation/documentation_non-color.webp"
         />
         <meta name="apple-mobile-web-app-title" content="CSS" />
       </Head>

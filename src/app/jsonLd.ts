@@ -50,19 +50,19 @@ export const jsonLd = {
       screenshot: [
         {
           "@type": "ImageObject",
-          url: "https://www.css-variables-assistant.dev/static/completions/completions_non-color.png",
+          url: "https://www.css-variables-assistant.dev/static/completions/completions_non-color.webp",
           caption:
             "CSS Variables Assistant autocomplete feature for non-color variables",
         },
         {
           "@type": "ImageObject",
-          url: "https://www.css-variables-assistant.dev/static/completions/completions_color.png",
+          url: "https://www.css-variables-assistant.dev/static/completions/completions_color.webp",
           caption:
             "CSS Variables Assistant autocomplete feature for color swatches",
         },
         {
           "@type": "ImageObject",
-          url: "https://www.css-variables-assistant.dev/static/documentation/documentation_non-color.png",
+          url: "https://www.css-variables-assistant.dev/static/documentation/documentation_non-color.webp",
           caption: "Documentation popup with color swatches",
         },
       ],

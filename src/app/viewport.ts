@@ -6,8 +6,6 @@ export const viewport: Viewport = {
   initialScale: 1,
   minimumScale: 1,
 
-  // Prevent users from zooming on mobile as it can break the audio player interface
-  // Remove this if you want to allow zooming for accessibility
   maximumScale: 5,
   userScalable: true,
 

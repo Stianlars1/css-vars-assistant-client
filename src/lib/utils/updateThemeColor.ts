@@ -27,13 +27,14 @@ export const useUpdateThemeColor = () => {
       const darkTag = document.createElement("meta");
       darkTag.setAttribute("name", "theme-color");
       darkTag.setAttribute("media", "(prefers-color-scheme: dark)");
-      darkTag.setAttribute("content", darkColor); // Use current theme color instead of darkColor
+      darkTag.setAttribute("content", darkColor);
       document.head.appendChild(darkTag);
 
       const lightTag = document.createElement("meta");
       lightTag.setAttribute("name", "theme-color");
       lightTag.setAttribute("media", "(prefers-color-scheme: light)");
       lightTag.setAttribute("content", lightColor);
+      document.head.appendChild(lightTag);
     } else {
       // In light mode, Safari behaves normally
       const baseTag = document.createElement("meta");

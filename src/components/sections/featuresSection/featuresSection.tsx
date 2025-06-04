@@ -20,7 +20,7 @@ import { useTouchDevice } from "@/hooks/useTouchDevice";
 /* ------------------------------------------------------------------ */
 
 export const FeaturesSection = () => {
-  const featuresRef = useRef<HTMLDivElement>(null);
+  const featuresRef = useRef<HTMLUListElement>(null);
   const [isAnimationsEnabled, setIsAnimationsEnabled] = useState(true);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [touchedIndex, setTouchedIndex] = useState<number | null>(null);
@@ -78,7 +78,7 @@ export const FeaturesSection = () => {
     };
   }, [activeIndex, canHover]);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLUListElement>) => {
     if (!featuresRef.current || !canHover) return;
 
     const cards = featuresRef.current.querySelectorAll<HTMLElement>(
@@ -126,14 +126,13 @@ export const FeaturesSection = () => {
       <ShowAnimationCheckbox
         onChange={(checked: boolean) => setIsAnimationsEnabled(checked)}
       />
-      <div
+      <ul
         ref={featuresRef}
         className={styles.features}
         onMouseMove={handleMouseMove}
-        role={"list"}
       >
         {featuresSectionData.map((feature, idx) => (
-          <article
+          <li
             key={idx}
             className={cx(
               styles.feature,
@@ -159,7 +158,6 @@ export const FeaturesSection = () => {
               }
             }}
             tabIndex={0}
-            role="listitem"
             aria-current={activeIndex === idx}
             aria-label={`${feature.title} feature. ${activeIndex === idx ? "Tap to close" : "Tap to view animation"}`}
           >
@@ -211,9 +209,9 @@ export const FeaturesSection = () => {
                 />
               </div>
             )}
-          </article>
+          </li>
         ))}
-      </div>
+      </ul>
 
       <div className={styles.featuresFooter}>
         <p>

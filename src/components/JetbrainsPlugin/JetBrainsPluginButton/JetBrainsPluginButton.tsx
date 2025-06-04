@@ -9,7 +9,6 @@ interface JetBrainsPluginButtonProps {
   size?: "sm" | "md" | "lg";
   width?: number;
   variant?: "default" | "jetbrains";
-  ariaLabel?: string;
 }
 
 export default async function JetBrainsPluginButton({
@@ -17,7 +16,6 @@ export default async function JetBrainsPluginButton({
   size,
   width = 245,
   variant = "jetbrains",
-  ariaLabel,
 }: JetBrainsPluginButtonProps) {
   const pluginUrl = PLUGIN_URL;
 
@@ -28,7 +26,6 @@ export default async function JetBrainsPluginButton({
         href={pluginUrl}
         rel="noopener noreferrer"
         target="_blank"
-        aria-label={ariaLabel}
       >
         {buttonText}
       </Link>
@@ -53,7 +50,6 @@ export default async function JetBrainsPluginButton({
         data-control-type="install"
         role="button"
         tabIndex={-1}
-        aria-label={ariaLabel}
       >
         <Link
           className={styles.ideText}

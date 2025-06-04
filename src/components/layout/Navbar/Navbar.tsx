@@ -19,11 +19,7 @@ export const Navbar = () => {
         <code className={styles.name}>CSS Variables Assistant</code>
       </Link>
       <nav>
-        <JetBrainsPluginButton
-          ariaLabel={"Click to install plugin now from JetBrains Marketplace"}
-          variant={"default"}
-          buttonText={"Install now"}
-        />
+        <JetBrainsPluginButton variant={"default"} buttonText={"Install now"} />
       </nav>
     </header>
   );

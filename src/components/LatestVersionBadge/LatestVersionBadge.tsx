@@ -1,6 +1,6 @@
 import { PluginData } from "@/types/plugin";
 import { Badge } from "@/components/ui/Badge/Badge";
-import styles from "@/components/sections/heroSection/v2/heroSection.module.scss";
+import styles from "./LatestVersionBadge.module.scss";
 
 export const LatestVersionBadge = ({
   pluginData,

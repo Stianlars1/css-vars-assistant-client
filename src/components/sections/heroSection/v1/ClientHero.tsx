@@ -4,9 +4,9 @@ import { Interactive3DPreview } from "@/components/sections/heroSection/v1/Inter
 
 export default function ClientHero() {
   const images = [
-    "/static/completions/completions_non-color.png",
-    "/static/completions/completions_color.png",
-    "/static/documentation/documentation_non-color.png",
+    "/static/completions/completions_non-color.webp",
+    "/static/completions/completions_color.webp",
+    "/static/documentation/documentation_non-color.webp",
   ];
 
   return (
