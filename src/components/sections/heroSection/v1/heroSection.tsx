@@ -1,10 +1,10 @@
+"use server";
 import styles from "./heroSection.module.scss";
 import { GradientText } from "@/components/ui/GradientText/GradientText";
 import JetBrainsPluginButton from "@/components/JetbrainsPlugin/JetBrainsPluginButton/JetBrainsPluginButton";
 import ClientHero from "@/components/sections/heroSection/v1/ClientHero";
 
-export const revalidate = 60 * 60 * 24 * 7 * 4; // 4 weeks
-export default function HeroSection() {
+export default async function HeroSection() {
   return (
     <section className={styles.hero}>
       <div className={styles.heroContent}>
