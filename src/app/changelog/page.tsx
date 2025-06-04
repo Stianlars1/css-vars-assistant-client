@@ -21,7 +21,9 @@ export default async function ChangelogPage() {
         <ChevronLeft size={18} className={styles.chevron} /> home
       </Link>
       <div className={styles.page}>
-        <Heading1>Changelog</Heading1>
+        <div className={styles.header}>
+          <Heading1 className={styles.title}>Changelog</Heading1>
+        </div>
 
         {changelogs.length === 0 ? (
           <Paragraph>No changelogs available at the moment.</Paragraph>

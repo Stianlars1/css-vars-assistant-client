@@ -49,6 +49,21 @@ export default async function Footer() {
               <span className={styles.stat}>Free & Open Source</span>
               <span className={styles.stat}>JetBrains Marketplace</span>
             </div>
+
+            <div>
+              <Link
+                href="https://www.buymeacoffee.com/stianlarsen"
+                target="_blank"
+                className={styles.buyMeACoffeeLink}
+              >
+                <Image
+                  width={144}
+                  height={40}
+                  src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+                  alt="Buy Me A Coffee"
+                />
+              </Link>
+            </div>
           </div>
           <div className={styles.sections}>
             {/* Quick Links */}

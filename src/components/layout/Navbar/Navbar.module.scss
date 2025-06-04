@@ -28,4 +28,20 @@
         var(--font-geist-mono), var(--font-geist-sans), system-ui, sans-serif;
     }
   }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    .link {
+      text-decoration: none;
+      color: hsl(var(--foreground));
+      padding: 8px 16px;
+
+      &:hover {
+        color: hsl(var(--link-color));
+        text-decoration: underline;
+      }
+    }
+  }
 }

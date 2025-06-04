@@ -34,6 +34,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "cdn.buymeacoffee.com",
+        pathname: "/**",
+        port: "",
+      },
+      {
+        protocol: "https",
         hostname: "downloads.marketplace.jetbrains.com",
         pathname: "/**",
         port: "",

@@ -7,12 +7,14 @@
   gap: 4px;
   text-decoration: none;
   color: hsl(var(--link-color));
+  width: fit-content;
 
   &:hover {
     text-decoration: underline;
     color: hsl(var(--primary));
   }
 }
+
 .page {
   margin-top: 64px;
   display: flex;
@@ -20,7 +22,18 @@
   gap: 32px;
   margin-bottom: 92px;
 
-  > h1 {
+  .header {
+    display: flex;
+    position: relative;
+    height: 120px;
+
+    .title {
+      position: sticky;
+      height: fit-content;
+      top: 0;
+      margin: 0;
+      padding: 8px 0 0;
+    }
   }
 
   .list {
@@ -29,9 +42,35 @@
     gap: 32px;
 
     .item {
+      &:first-child {
+        h2 {
+          margin-top: 0;
+        }
+      }
       &:not(:last-child) {
         border-bottom: 1px solid hsl(var(--border));
         padding-bottom: 32px;
+      }
+
+      > h2 {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          height: 100%;
+          left: 0;
+          width: 100%;
+          background: hsl(var(--background) / 0.5);
+          backdrop-filter: blur(4px);
+          z-index: -1;
+        }
+
+        > * {
+          z-index: 0;
+        }
       }
     }
   }

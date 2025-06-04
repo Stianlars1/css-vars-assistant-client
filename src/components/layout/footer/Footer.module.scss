@@ -234,6 +234,12 @@
   }
 }
 
+.buyMeACoffeeLink {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 // Responsive Design
 @media (max-width: 1024px) {
   .footer {
@@ -296,6 +302,12 @@
         justify-content: center;
       }
     }
+  }
+
+  .buyMeACoffeeLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 

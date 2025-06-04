@@ -3,8 +3,9 @@ import styles from "./Navbar.module.scss";
 import JetBrainsPluginButton from "@/components/JetbrainsPlugin/JetBrainsPluginButton/JetBrainsPluginButton";
 import Link from "next/link";
 import { ROUTE_ROOT } from "@/lib/routes";
+import { ChangelogLink } from "@/components/layout/Navbar/components/changelogLink";
 
-export const Navbar = () => {
+export default async function Navbar() {
   return (
     <header className={styles.navbar}>
       <Link href={ROUTE_ROOT} className={styles.logo}>
@@ -18,9 +19,10 @@ export const Navbar = () => {
         />
         <code className={styles.name}>CSS Variables Assistant</code>
       </Link>
-      <nav>
+      <nav className={styles.nav}>
+        <ChangelogLink className={styles.link} />
         <JetBrainsPluginButton variant={"default"} buttonText={"Install now"} />
       </nav>
     </header>
   );
-};
+}

@@ -3,7 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { assistant, dmSans, geistMono, geistSans, inter } from "@/fonts";
 import { cx } from "@/lib/utils/cx";
 import { PageContainer } from "@/components/layout/PageContainer/PageContainer";
-import { Navbar } from "@/components/layout/Navbar/Navbar";
+import Navbar from "@/components/layout/Navbar/Navbar";
 import type { Metadata } from "next";
 import { OG_IMAGE_URL, TWITTER_CARD_URL } from "@/lib/constants";
 import { CURRENT_VERSION, HOST } from "@/lib/config";
