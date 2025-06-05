@@ -1,5 +1,5 @@
 // app/changelog/page.tsx  (server component)
-import { getPlugin } from "@/app/actions/fetchJetBrainsPlugin";
+import fetchPlugin from "@/app/actions/fetchJetBrainsPlugin";
 import styles from "./page.module.scss";
 import { ChangeNotes } from "@/components/changeNotes/changeNotes";
 import StructuredDataChangelog from "@/components/seo/StructuredData/StructuredDataChangelog";
@@ -8,9 +8,9 @@ import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { ROUTE_ROOT } from "@/lib/routes";
 
-export const revalidate = 86400;
+export const revalidate = 3600;
 export default async function ChangelogPage() {
-  const changelogs = await getPlugin();
+  const changelogs = await fetchPlugin();
 
   return (
     <>

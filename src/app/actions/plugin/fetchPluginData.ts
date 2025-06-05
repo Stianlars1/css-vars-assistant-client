@@ -1,7 +1,10 @@
 "use server";
 
 import { PluginData, PluginInfo, PluginVersion } from "@/types/plugin";
-import { CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID } from "@/lib/constants";
+import {
+  CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID,
+  MINUTES_30,
+} from "@/lib/constants";
 
 export async function fetchPluginData(): Promise<PluginInfo | null> {
   const pluginId = CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID;
@@ -10,7 +13,7 @@ export async function fetchPluginData(): Promise<PluginInfo | null> {
     const pluginResponse = await fetch(
       `https://plugins.jetbrains.com/api/plugins/${pluginId}`,
       {
-        next: { revalidate: 60 * 30 }, // Cache for 30 minutes
+        next: { revalidate: MINUTES_30 }, // Cache for 30 minutes
       },
     );
 
@@ -23,7 +26,7 @@ export async function fetchPluginData(): Promise<PluginInfo | null> {
       `https://plugins.jetbrains.com/api/plugins/${CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID}/updateVersions`,
 
       {
-        next: { revalidate: 60 * 30 }, // Cache for 30 minutes
+        next: { revalidate: MINUTES_30 }, // Cache for 30 minutes
       },
     );
 
@@ -40,7 +43,7 @@ export async function fetchPluginData(): Promise<PluginInfo | null> {
     const ratingResponse = await fetch(
       `https://plugins.jetbrains.com/api/plugins/${pluginId}/rating`,
       {
-        next: { revalidate: 60 * 30 }, // Cache for 30 minutes
+        next: { revalidate: MINUTES_30 }, // Cache for 30 minutes
       },
     );
 

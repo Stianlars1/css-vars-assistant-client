@@ -1,7 +1,10 @@
 "use server";
 
 import { XMLParser } from "fast-xml-parser";
-import { CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID } from "@/lib/constants";
+import {
+  CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID,
+  MINUTES_30,
+} from "@/lib/constants";
 
 export interface IdeaPlugin {
   downloads: number;
@@ -19,13 +22,13 @@ export interface IdeaPlugin {
   ideaVersion: { min?: string; max?: string; sinceBuild?: string };
 }
 
-async function fetchPlugin(): Promise<IdeaPlugin[]> {
+export default async function fetchPlugin(): Promise<IdeaPlugin[]> {
   const res = await fetch(
     `https://plugins.jetbrains.com/plugins/list?pluginId=${CSS_VARIABLES_ASSISTANT_JETBRAINS_PLUGIN_ID}`,
     {
       headers: { Accept: "application/xml" },
       // re-use the response for an hour (adjust as you like)
-      next: { revalidate: 60 * 30 },
+      next: { revalidate: MINUTES_30 },
     },
   );
   if (!res.ok) throw new Error(`JetBrains API ${res.status}`);
@@ -69,8 +72,4 @@ async function fetchPlugin(): Promise<IdeaPlugin[]> {
       sinceBuild: p["idea-version"]?.sinceBuild,
     },
   }));
-}
-
-export async function getPlugin() {
-  return fetchPlugin(); // serialisable → fine to return
 }
