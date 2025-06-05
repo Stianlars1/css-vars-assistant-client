@@ -20,7 +20,7 @@ interface PageSectionsProps {
 export default async function PageSections({ pluginData }: PageSectionsProps) {
   return (
     <div className={styles.sections}>
-      <HeroSection />
+      <HeroSection pluginInfo={pluginData} />
       {pluginData && <CardSection pluginInfo={pluginData} />}
       <FeaturesSection />
       <DynamicScreenShotsSection pluginInfo={pluginData} />

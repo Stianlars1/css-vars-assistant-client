@@ -3,8 +3,14 @@ import styles from "./heroSection.module.scss";
 import { GradientText } from "@/components/ui/GradientText/GradientText";
 import JetBrainsPluginButton from "@/components/JetbrainsPlugin/JetBrainsPluginButton/JetBrainsPluginButton";
 import ClientHero from "@/components/sections/heroSection/v1/ClientHero";
+import { PluginInfo } from "@/types/plugin";
+import { Badge } from "@/components/ui/Badge/Badge";
 
-export default async function HeroSection() {
+export default async function HeroSection({
+  pluginInfo,
+}: {
+  pluginInfo?: PluginInfo | null;
+}) {
   return (
     <section className={styles.hero}>
       <div className={styles.heroContent}>
@@ -23,6 +29,14 @@ export default async function HeroSection() {
               <JetBrainsPluginButton />
             </div>
             {/*<LatestVersionBadge pluginData={pluginData?.pluginData} />*/}
+
+            {/*{pluginInfo &&*/}
+            {/*  pluginInfo.pluginData &&*/}
+            {/*  pluginInfo.pluginData.downloads && (*/}
+            {/*    <Badge variant={"fancy"}>*/}
+            {/*      {pluginInfo.pluginData.downloads}*/}
+            {/*    </Badge>*/}
+            {/*  )}*/}
           </div>
         </div>
 

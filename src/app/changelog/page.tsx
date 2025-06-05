@@ -7,8 +7,41 @@ import { Heading1, Paragraph } from "@/components/typography/Typography";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { ROUTE_ROOT } from "@/lib/routes";
+import { Metadata, ResolvingMetadata } from "next";
+import { APP_NAME } from "@/lib/config";
+import { OG_CHANGELOG_URL } from "@/lib/constants";
 
 export const revalidate = 3600;
+
+export async function generateMetadata(
+  props: any,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const parentMeta = await parent;
+
+  return {
+    title: "Changelog",
+    description: "Latest updates and version history for our product",
+    alternates: {
+      canonical: "/changelog", // Explicit canonical URL
+    },
+    openGraph: {
+      ...(parentMeta.openGraph as any), // Inherit parent OpenGraph settings
+      images: [
+        {
+          url: OG_CHANGELOG_URL,
+          width: 1200,
+          height: 630,
+          alt: `${APP_NAME} - Product Changelog`,
+          type: "image/webp",
+        },
+      ],
+      title: `Product Changelog - ${APP_NAME}`,
+      description: "Stay updated with our latest features and improvements",
+    },
+  };
+}
+
 export default async function ChangelogPage() {
   const changelogs = await fetchPlugin();
 
