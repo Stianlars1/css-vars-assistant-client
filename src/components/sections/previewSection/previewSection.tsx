@@ -2,13 +2,13 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./screenshotsSection.module.scss";
+import styles from "./previewSection.module.scss";
 import { PluginInfo } from "@/types/plugin";
 import { JETBRAINS_PLUGINS_HREF } from "@/lib/urls";
 import Image from "next/image";
 import { SectionHeader } from "@/components/sections/SectionHeader/SectionHeader";
 
-export default function ScreenshotsSection({
+export default function PreviewSection({
   pluginInfo,
 }: {
   pluginInfo: PluginInfo | null;
@@ -44,7 +44,7 @@ export default function ScreenshotsSection({
       style={{
         marginBlockStart: "40px",
       }}
-      id={"screenshots"}
+      id={"preview"}
       className={styles.gallery}
     >
       <SectionHeader

@@ -10,7 +10,7 @@ import HeroSection from "@/components/sections/heroSection/v1/heroSection";
 import dynamic from "next/dynamic";
 
 const DynamicScreenShotsSection = dynamic(
-  () => import("@/components/sections/screenshotsSection/screenshotsSection"),
+  () => import("@/components/sections/previewSection/previewSection"),
 );
 interface PageSectionsProps {
   pluginData: PluginInfo | null;

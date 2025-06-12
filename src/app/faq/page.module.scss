@@ -1,0 +1,104 @@
+.backLink {
+  margin-top: 24px;
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: hsl(var(--link-color));
+  width: fit-content;
+
+  &:hover {
+    text-decoration: underline;
+    color: hsl(var(--primary));
+  }
+}
+
+.page {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 92px;
+  position: relative;
+
+  .header {
+    padding: 8px 0 16px;
+  }
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.faqItem {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 12px;
+  transition: border-color 0.2s ease;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 32px;
+
+  &:hover {
+    border-color: hsl(var(--primary) / 0.3);
+  }
+
+  .question {
+    &.question {
+      margin: unset;
+    }
+  }
+
+  .answer {
+    margin: 0;
+    color: hsl(var(--gray-11));
+    line-height: 1.6;
+
+    a {
+      color: hsl(var(--link-color));
+      text-decoration: underline;
+
+      &:hover {
+        color: hsl(var(--primary));
+      }
+    }
+  }
+}
+
+.helpSection {
+  padding: 32px;
+  background: hsl(var(--accent-2));
+  border: 1px solid hsl(var(--accent-6));
+  border-radius: 12px;
+  text-align: center;
+
+  h3 {
+    margin: 0 0 16px 0;
+    color: hsl(var(--foreground));
+  }
+
+  a {
+    color: hsl(var(--link-color));
+    text-decoration: underline;
+
+    &:hover {
+      color: hsl(var(--primary));
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .faqItem {
+    padding: 24px;
+  }
+
+  .helpSection {
+    padding: 24px;
+  }
+}

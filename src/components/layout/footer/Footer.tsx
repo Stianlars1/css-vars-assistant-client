@@ -8,6 +8,7 @@ import {
   ROUTE_CHANGELOG,
   ROUTE_FEATURES,
   ROUTE_INSTALLATION,
+  ROUTE_PREVIEW,
 } from "@/lib/routes";
 
 export default async function Footer() {
@@ -76,10 +77,10 @@ export default async function Footer() {
                 <Link href={ROUTE_FEATURES} className={styles.link}>
                   Features
                 </Link>
-                <Link href={ROUTE_INSTALLATION} className={styles.link}>
+                <Link href={ROUTE_PREVIEW} className={styles.link}>
                   Preview
                 </Link>
-                <Link href={ROUTE_FEATURES} className={styles.link}>
+                <Link href={ROUTE_INSTALLATION} className={styles.link}>
                   Installation
                 </Link>
               </nav>

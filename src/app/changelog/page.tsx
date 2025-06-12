@@ -23,7 +23,7 @@ export async function generateMetadata(
     title: "Changelog",
     description: "Latest updates and version history for our product",
     alternates: {
-      canonical: "/changelog", // Explicit canonical URL
+      canonical: "/changelog",
     },
     openGraph: {
       ...(parentMeta.openGraph as any), // Inherit parent OpenGraph settings
@@ -51,7 +51,7 @@ export default async function ChangelogPage() {
       <StructuredDataChangelog versions={changelogs} />
 
       <Link href={ROUTE_ROOT} className={styles.backLink}>
-        <ChevronLeft size={18} className={styles.chevron} /> home
+        <ChevronLeft size={18} className={styles.chevron} /> Back to home
       </Link>
       <div className={styles.page}>
         <div className={styles.header}>

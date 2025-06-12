@@ -10,13 +10,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${HOST}#features`,
+      url: `${HOST}/faq`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${HOST}#installation`,
+      url: `${HOST}/changelog`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${HOST}#features`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
@@ -25,13 +31,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${HOST}#screenshots`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 08,
     },
     {
-      url: `${HOST}/changelog`,
+      url: `${HOST}#installation`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.9,
+      priority: 0.8,
     },
   ];
 }
