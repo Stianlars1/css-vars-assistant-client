@@ -31,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${HOST}#screenshots`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 08,
+      priority: 0.8,
     },
     {
       url: `${HOST}#installation`,
