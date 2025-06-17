@@ -223,6 +223,11 @@ export default function RootLayout({
           as="image"
           href="/static/documentation/documentation_non-color.webp"
         />
+        <link
+          rel="preload"
+          as="image"
+          href="/static/documentation/documentation_color.png"
+        />
         <meta name="apple-mobile-web-app-title" content="CSS" />
       </Head>
       <body

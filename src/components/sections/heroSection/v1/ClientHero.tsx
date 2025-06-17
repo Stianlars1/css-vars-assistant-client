@@ -7,6 +7,7 @@ export default function ClientHero() {
     "/static/completions/completions_non-color.webp",
     "/static/completions/completions_color.webp",
     "/static/documentation/documentation_non-color.webp",
+    "/static/documentation/documentation_color.png",
   ];
 
   return (
