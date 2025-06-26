@@ -2,8 +2,9 @@
 import styles from "./heroSection.module.scss";
 import { GradientText } from "@/components/ui/GradientText/GradientText";
 import JetBrainsPluginButton from "@/components/JetbrainsPlugin/JetBrainsPluginButton/JetBrainsPluginButton";
+import { HeroPreviewAnimations } from "@/components/sections/heroSection/v2/components/HeroPreviewAnimations/HeroPreviewAnimations";
 
-export default async function HeroSection() {
+export default async function HeroSectionV2() {
   return (
     <section className={styles.hero}>
       <div className={styles.heroContent}>
@@ -21,17 +22,13 @@ export default async function HeroSection() {
             <div className={styles.downloadArea}>
               <JetBrainsPluginButton />
             </div>
-            {/*<LatestVersionBadge pluginData={pluginData?.pluginData} />*/}
-
-            {/*{pluginInfo &&*/}
-            {/*  pluginInfo.pluginData &&*/}
-            {/*  pluginInfo.pluginData.downloads && (*/}
-            {/*    <Badge variant={"fancy"}>*/}
-            {/*      {pluginInfo.pluginData.downloads}*/}
-            {/*    </Badge>*/}
-            {/*  )}*/}
           </div>
         </div>
+
+        <HeroPreviewAnimations
+          isActive={true}
+          feature={"autocompleteWithSettings"}
+        />
       </div>
     </section>
   );

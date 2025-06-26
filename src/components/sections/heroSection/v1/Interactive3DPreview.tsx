@@ -3,7 +3,7 @@
 import { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./Interactive3DPreview.module.scss";
-import useCarousel from "../useCarousel";
+import useCarousel from "./useCarousel";
 
 interface Interactive3DPreviewProps {
   srcs: string[];

@@ -1,0 +1,107 @@
+.ideContainer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  pointer-events: none;
+}
+
+.ide {
+  width: 100%;
+  max-width: 500px;
+  background: hsl(240, 22%, 12%);
+  border: 1px solid hsl(240, 22%, 20%);
+  border-radius: 12px;
+
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.3),
+    0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.ideHeader {
+  background: hsl(240, 22%, 8%);
+  border-bottom: 1px solid hsl(240, 22%, 20%);
+
+  padding: 0;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+}
+
+.ideTab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  height: 100%;
+  background: hsl(240, 22%, 12%);
+  border-right: 1px solid hsl(240, 22%, 20%);
+  font-size: 13px;
+  color: hsl(0, 0%, 90%);
+  border-top-left-radius: 12px;
+}
+
+.ideTabIcon {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.ideTabTitle {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+
+.ideEditor {
+  padding: 16px 0;
+  font-family: "JetBrains Mono", "Consolas", "Monaco", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  position: relative;
+}
+
+.codeLine {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  min-height: 24px;
+}
+
+.lineNumber {
+  width: 50px;
+  text-align: right;
+  padding-right: 20px;
+  color: hsl(240, 10%, 40%);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+// Syntax highlighting
+.selector {
+  color: #ffa657; // Orange for selectors
+}
+
+.property {
+  color: #57c7ff; // Blue for properties
+}
+
+.colon {
+  color: hsl(0, 0%, 60%);
+}
+
+.value {
+  color: #f3f99d; // Yellow for values
+}
+
+.variable {
+  color: #57c7ff; // Blue for variables
+  position: relative;
+}
+
+.bracket {
+  color: hsl(0, 0%, 60%);
+}

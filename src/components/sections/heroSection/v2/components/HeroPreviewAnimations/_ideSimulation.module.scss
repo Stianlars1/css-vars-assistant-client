@@ -1,8 +1,7 @@
-// src/components/sections/featuresSection/ideSimulation/_ideSimulation.module.scss
-
 .ideContainer {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  width: min(800px, 100%);
+  height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,7 +43,14 @@
   border-right: 1px solid hsl(240, 22%, 20%);
   font-size: 13px;
   color: hsl(0, 0%, 90%);
-  border-top-left-radius: 12px;
+
+  &:first-child {
+    border-top-left-radius: 12px;
+  }
+}
+
+.activeTab {
+  background: hsl(240, 20%, 20%);
 }
 
 .ideTabIcon {
@@ -162,7 +168,7 @@
 
 .autocompleteDesc {
   color: hsl(0, 0%, 60%);
-  flex: 1;
+  width: fit-content;
 }
 
 .autocompleteValue {
