@@ -1,7 +1,10 @@
 import {
   ArrowDownNarrowWide,
   AtSign,
+  Bug,
   Code,
+  Folders,
+  Network,
   SquareMenu,
   Workflow,
 } from "lucide-react";
@@ -19,6 +22,13 @@ export function getIconForFeature(iconName: string) {
       return <AtSign />;
     case "sorting":
       return <ArrowDownNarrowWide />;
+
+    case "dynamicDocs":
+      return <Network />;
+    case "importSupport":
+      return <Folders />;
+    case "debugTools":
+      return <Bug />;
 
     default:
       return null;
@@ -108,6 +118,70 @@ export const featuresSectionData = [
       "Color values grouped and sorted by hue/lightness",
       "Alphabetical fallback for complex values",
       "Configurable sorting preferences in settings",
+    ],
+  },
+
+  {
+    title: "CSS Import Debug & Settings",
+    description:
+      "Run the Import Resolution Debug directly from a stylesheet via right-click. See a start/finish notification and a detailed result dialog with root file, depth, files and summary. Re-index and fine-tune settings as needed.",
+    icon: "debugTools",
+    brandColor: "gradients.warm.sunsetGlow",
+    hoverColor: "#93CA42",
+    keywords: [
+      "debug tools",
+      "import resolution",
+      "notifications",
+      "result dialog",
+      "re-index",
+    ],
+    details: [
+      "Right-click inside a stylesheet to start the debug tool",
+      "Bottom-right notifications indicate start and finish",
+      "Modal dialog summarises root file, depth, files and variables",
+      "Pair with re-index and settings for full control",
+    ],
+  },
+  {
+    title: "Advanced Import & Preprocessor Support",
+    description:
+      "Deep import resolution across CSS, SCSS, SASS and LESS with a dedicated preprocessor index. Configure import depth and scope for precise variable discovery.",
+    icon: "importSupport",
+    brandColor: "gradients.classic.natureFresh",
+    hoverColor: "#8D1DBA",
+    keywords: [
+      "advanced import resolution",
+      "preprocessor support",
+      "preprocessor index",
+      "import depth",
+      "import scope",
+    ],
+    details: [
+      "Resolves @import chains across CSS, SCSS, SASS and LESS",
+      "Handles node_modules packages and scoped imports",
+      "Dedicated index for preprocessor variables ensures instant look-ups",
+      "Configurable indexing scope and import depth",
+    ],
+  },
+  {
+    title: "Dynamic & Customizable Documentation",
+    description:
+      "Documentation popups now adapt to your needs: choose which columns appear, see pixel equivalents, hex values and WCAG contrast, and follow the entire resolution chain for any variable.",
+    icon: "dynamicDocs",
+    brandColor: "gradients.classic.oceanBreeze",
+    hoverColor: "#F96633",
+    keywords: [
+      "dynamic documentation",
+      "customizable docs",
+      "pixel equivalents",
+      "resolution chain",
+      "WCAG contrast",
+    ],
+    details: [
+      "Customizable columns for context, value, source and WCAG contrast",
+      "Automatic pixel, hex and contrast columns when relevant",
+      "Resolution chain tooltip reveals how the final value is derived",
+      "Winner-first tables with clean layout",
     ],
   },
 ];

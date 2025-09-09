@@ -89,6 +89,7 @@
 
 .property {
   color: #57c7ff; // Blue for properties
+  margin-left: 16px;
 }
 
 .colon {
@@ -97,6 +98,7 @@
 
 .value {
   color: #f3f99d; // Yellow for values
+  margin-left: 8px;
 }
 
 .variable {
@@ -106,6 +108,9 @@
 
 .bracket {
   color: hsl(0, 0%, 60%);
+  &[data-bracket-indent="true"] {
+    margin-left: 8px;
+  }
 }
 
 // Autocomplete dropdown
@@ -260,16 +265,6 @@
   }
 }
 
-.colorSwatch {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  border-radius: 3px;
-  margin-right: 8px;
-  vertical-align: middle;
-  border: 1px solid hsl(240, 22%, 30%);
-}
-
 .docLinks {
   display: flex;
   flex-direction: column;
@@ -384,6 +379,233 @@
   font-style: italic;
   border-bottom: 1px solid hsl(240, 22%, 20%);
   margin-bottom: 4px;
+}
+
+// new stuff
+/* --- Dynamic docs table --- */
+
+.ideEditor {
+  .dataPointer {
+    position: absolute;
+    font-size: 16px;
+    inset: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    fill: hsl(var(--black));
+    color: hsl(var(--white));
+    stroke-width: 1px;
+  }
+}
+.dynamicDocsTable {
+  width: 100%;
+  border-collapse: collapse;
+
+  .tableHeader {
+    border-bottom: 2px solid hsl(var(--gray-8));
+  }
+
+  th,
+  td {
+    padding: 6px 10px;
+    border-bottom: 1px solid hsl(240, 22%, 24%);
+    text-align: left;
+    font-size: 13px;
+    vertical-align: middle;
+    color: hsl(0, 0%, 90%);
+    white-space: nowrap;
+  }
+
+  tr,
+  td {
+    border: none;
+  }
+
+  th {
+    color: hsl(0, 0%, 80%);
+    font-weight: 600;
+  }
+}
+
+.colorSwatch {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  border-radius: 4px; // optional, for rounded corners
+  vertical-align: middle;
+  border: 1px solid #e0e0e0; // optional, for better visibility
+  align-self: center;
+  vertical-align: middle;
+}
+
+/* --- Import tree list --- */
+.importTree {
+  margin-top: 12px;
+  padding-left: 18px;
+  color: hsl(0, 0%, 80%);
+
+  li {
+    margin: 2px 0;
+  }
+}
+
+/* --- At-rule styling (used for @import) --- */
+.atRule {
+  color: #ff79c6; // pink/purple accent for at-rules
+}
+
+/* --- Reusable small button look for demo actions --- */
+.button {
+  pointer-events: auto; /* enable clicks inside demo */
+  background: hsl(240, 22%, 16%);
+  border: 1px solid hsl(240, 22%, 28%);
+  color: hsl(0, 0%, 92%);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  margin-right: 8px;
+  transition:
+    transform 0.12s ease,
+    background 0.12s ease;
+
+  &:hover {
+    background: hsl(240, 22%, 20%);
+    transform: translateY(-1px);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* --- Context menu --- */
+.contextMenu {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  width: 260px;
+  background: hsl(240, 22%, 12%);
+  border: 1px solid hsl(240, 22%, 20%);
+  border-radius: 8px;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.35);
+  padding: 6px 0;
+  pointer-events: none; // demo-only; animation shows it
+}
+
+.contextMenuItem {
+  padding: 8px 12px;
+  font-size: 13px;
+  color: hsl(0, 0%, 90%);
+  transition:
+    background 0.12s ease,
+    color 0.12s ease;
+
+  &[data-active] {
+    background: hsl(240, 22%, 18%);
+    color: hsl(217, 99%, 85%);
+  }
+}
+
+.contextMenuSeparator {
+  height: 1px;
+  background: hsl(240, 22%, 20%);
+  margin: 6px 0;
+}
+
+/* --- Toasts (bottom-right) --- */
+.toastStack {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.toast {
+  background: hsl(240, 22%, 14%);
+  border: 1px solid hsl(240, 22%, 24%);
+  color: hsl(0, 0%, 92%);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 12px;
+  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.35);
+}
+
+.toastSub {
+  opacity: 0.75;
+  font-size: 11px;
+}
+
+/* --- Modal --- */
+.modalBackdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.modalWindow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(740px, 96%);
+  background: hsl(240, 22%, 12%);
+  border: 1px solid hsl(240, 22%, 20%);
+  border-radius: 10px;
+  box-shadow: 0 18px 28px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.modalHeader {
+  padding: 12px 14px;
+  font-weight: 600;
+  color: hsl(0, 0%, 95%);
+  background: hsl(240, 22%, 10%);
+  border-bottom: 1px solid hsl(240, 22%, 20%);
+}
+
+.modalBody {
+  padding: 12px 14px;
+  font-family: "JetBrains Mono", "Consolas", monospace;
+  font-size: 12px;
+  color: hsl(0, 0%, 90%);
+}
+
+.monoLine {
+  margin: 2px 0;
+}
+
+.fileList {
+  margin: 8px 0 10px 0;
+}
+
+.modalActions {
+  padding: 10px 14px;
+  border-top: 1px solid hsl(240, 22%, 20%);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button {
+  pointer-events: auto;
+  background: hsl(240, 22%, 16%);
+  border: 1px solid hsl(240, 22%, 28%);
+  color: hsl(0, 0%, 92%);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  transition:
+    transform 0.12s ease,
+    background 0.12s ease;
+
+  &:hover {
+    background: hsl(240, 22%, 20%);
+    transform: translateY(-1px);
+  }
+  &:active {
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 500px) {

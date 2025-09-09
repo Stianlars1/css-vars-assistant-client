@@ -16,13 +16,14 @@ import { cx } from "@/lib/utils/cx";
 import { IdeSimulation } from "@/components/ideSimulation/ideSimulation";
 import { ShowAnimationCheckbox } from "@/components/sections/featuresSection/components/showAnimationCheckbox/showAnimationCheckbox";
 import { useTouchDevice } from "@/hooks/useTouchDevice";
+import { HoverGraphics } from "@/components/sections/featuresSection/assets/HoverGraphics";
 
 /* ------------------------------------------------------------------ */
 
 export const FeaturesSection = () => {
   const featuresRef = useRef<HTMLUListElement>(null);
   const [isAnimationsEnabled, setIsAnimationsEnabled] = useState(true);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(6);
   const [touchedIndex, setTouchedIndex] = useState<number | null>(null);
 
   const canHover = !useTouchDevice();
@@ -145,8 +146,8 @@ export const FeaturesSection = () => {
               !canHover && touchedIndex === idx && styles.touched, // Add this style to your SCSS
             )}
             data-card-color={feature.hoverColor}
-            onMouseEnter={canHover ? () => setActiveIndex(idx) : undefined}
-            onMouseLeave={canHover ? () => setActiveIndex(null) : undefined}
+            //onMouseEnter={canHover ? () => setActiveIndex(idx) : undefined}
+            //onMouseLeave={canHover ? () => setActiveIndex(null) : undefined}
             onClick={!canHover ? () => handleCardActivate(idx) : undefined}
             onTouchStart={!canHover ? () => handleTouchStart(idx) : undefined}
             onTouchEnd={!canHover ? handleTouchEnd : undefined}
@@ -209,6 +210,12 @@ export const FeaturesSection = () => {
                 />
               </div>
             )}
+
+            {/*            {idx === 1 && (
+              <div className={styles.hoverGraphicsWrapper}>
+                <HoverGraphics className={styles.hoverGraphics} />
+              </div>
+            )}*/}
           </li>
         ))}
       </ul>

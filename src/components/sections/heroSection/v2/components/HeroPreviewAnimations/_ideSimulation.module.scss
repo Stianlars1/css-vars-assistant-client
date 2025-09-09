@@ -1,3 +1,54 @@
+// ===== IDE SIMULATION COLOR VARIABLES =====
+:root {
+  // Base IDE colors
+  --ide-bg-primary: hsl(240, 22%, 12%);
+  --ide-bg-secondary: hsl(240, 22%, 8%);
+  --ide-bg-elevated: hsl(240, 22%, 16%);
+  --ide-bg-popup: hsl(240, 22%, 18%);
+  --ide-bg-subtle: hsl(240, 22%, 14%);
+
+  // Border colors
+  --ide-border-primary: hsl(240, 22%, 20%);
+  --ide-border-secondary: hsl(240, 22%, 25%);
+  --ide-border-accent: hsl(240, 22%, 30%);
+
+  // Text colors
+  --ide-text-primary: hsl(0, 0%, 90%);
+  --ide-text-secondary: hsl(0, 0%, 85%);
+  --ide-text-muted: hsl(0, 0%, 70%);
+  --ide-text-subtle: hsl(0, 0%, 60%);
+  --ide-text-disabled: hsl(0, 0%, 50%);
+  --ide-text-high: hsl(0, 0%, 95%);
+  --ide-text-emphasis: hsl(0, 0%, 80%);
+
+  // Line numbers
+  --ide-line-number: hsl(240, 10%, 40%);
+
+  // Syntax highlighting
+  --syntax-selector: #ffa657;
+  --syntax-property: #57c7ff;
+  --syntax-value: #f3f99d;
+  --syntax-variable: #57c7ff;
+
+  // Accent colors
+  --ide-accent-primary: #57c7ff;
+  --ide-accent-hover: #8cc8ff;
+  --ide-accent-bg-light: hsl(217, 99%, 62%, 0.1);
+  --ide-accent-bg-medium: hsl(217, 99%, 62%, 0.2);
+  --ide-accent-bg-strong: hsl(217, 99%, 62%, 0.4);
+  --ide-accent-text: hsl(217, 99%, 85%);
+
+  // Shadows
+  --ide-shadow-light: rgba(0, 0, 0, 0.2);
+  --ide-shadow-medium: rgba(0, 0, 0, 0.3);
+  --ide-shadow-strong: rgba(0, 0, 0, 0.4);
+
+  // Tab states
+  --ide-tab-active: hsl(240, 20%, 20%);
+  --ide-tab-hover: hsl(240, 22%, 16%);
+}
+
+// ===== COMPONENT STYLES =====
 .ideContainer {
   position: relative;
   width: min(800px, 100%);
@@ -12,19 +63,17 @@
 .ide {
   width: 100%;
   max-width: 500px;
-  background: hsl(240, 22%, 12%);
-  border: 1px solid hsl(240, 22%, 20%);
+  background: var(--ide-bg-primary);
+  border: 1px solid var(--ide-border-primary);
   border-radius: 12px;
-
   box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.3),
-    0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    0 20px 25px -5px var(--ide-shadow-medium),
+    0 10px 10px -5px var(--ide-shadow-light);
 }
 
 .ideHeader {
-  background: hsl(240, 22%, 8%);
-  border-bottom: 1px solid hsl(240, 22%, 20%);
-
+  background: var(--ide-bg-secondary);
+  border-bottom: 1px solid var(--ide-border-primary);
   padding: 0;
   display: flex;
   align-items: center;
@@ -39,10 +88,10 @@
   gap: 8px;
   padding: 0 16px;
   height: 100%;
-  background: hsl(240, 22%, 12%);
-  border-right: 1px solid hsl(240, 22%, 20%);
+  background: var(--ide-bg-primary);
+  border-right: 1px solid var(--ide-border-primary);
   font-size: 13px;
-  color: hsl(0, 0%, 90%);
+  color: var(--ide-text-primary);
 
   &:first-child {
     border-top-left-radius: 12px;
@@ -50,7 +99,7 @@
 }
 
 .activeTab {
-  background: hsl(240, 20%, 20%);
+  background: var(--ide-tab-active);
 }
 
 .ideTabIcon {
@@ -83,35 +132,35 @@
   width: 50px;
   text-align: right;
   padding-right: 20px;
-  color: hsl(240, 10%, 40%);
+  color: var(--ide-line-number);
   user-select: none;
   flex-shrink: 0;
 }
 
 // Syntax highlighting
 .selector {
-  color: #ffa657; // Orange for selectors
+  color: var(--syntax-selector);
 }
 
 .property {
-  color: #57c7ff; // Blue for properties
+  color: var(--syntax-property);
 }
 
 .colon {
-  color: hsl(0, 0%, 60%);
+  color: var(--ide-text-subtle);
 }
 
 .value {
-  color: #f3f99d; // Yellow for values
+  color: var(--syntax-value);
 }
 
 .variable {
-  color: #57c7ff; // Blue for variables
+  color: var(--syntax-variable);
   position: relative;
 }
 
 .bracket {
-  color: hsl(0, 0%, 60%);
+  color: var(--ide-text-subtle);
 }
 
 // Autocomplete dropdown
@@ -121,14 +170,14 @@
   left: 50%;
   transform: translateX(-50%);
   margin-top: 4px;
-  background: hsl(240, 22%, 16%);
-  border: 1px solid hsl(240, 22%, 25%);
+  background: var(--ide-bg-elevated);
+  border: 1px solid var(--ide-border-secondary);
   border-radius: 8px;
   padding: 4px;
   width: min(450px, 100%);
   box-shadow:
-    0 10px 15px -3px rgba(0, 0, 0, 0.3),
-    0 4px 6px -2px rgba(0, 0, 0, 0.2);
+    0 10px 15px -3px var(--ide-shadow-medium),
+    0 4px 6px -2px var(--ide-shadow-light);
   z-index: 10;
 }
 
@@ -138,17 +187,17 @@
   gap: 8px;
   padding: 6px 10px;
   border-radius: 4px;
-  color: hsl(0, 0%, 90%);
+  color: var(--ide-text-primary);
   font-size: 13px;
   transition: background-color 0.1s ease;
 
   &[data-selected] {
-    background: hsl(217, 99%, 62%, 0.2);
-    color: hsl(217, 99%, 85%);
+    background: var(--ide-accent-bg-medium);
+    color: var(--ide-accent-text);
   }
 
   &:hover {
-    background: hsl(240, 22%, 20%);
+    background: var(--ide-tab-active);
   }
 }
 
@@ -162,17 +211,17 @@
 
 .autocompleteName {
   font-weight: 500;
-  color: #57c7ff;
+  color: var(--ide-accent-primary);
   min-width: 120px;
 }
 
 .autocompleteDesc {
-  color: hsl(0, 0%, 60%);
+  color: var(--ide-text-subtle);
   width: fit-content;
 }
 
 .autocompleteValue {
-  color: #f3f99d;
+  color: var(--syntax-value);
   font-weight: 500;
   margin-left: auto;
   padding-left: 16px;
@@ -184,25 +233,45 @@
   top: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
-
-  background: hsl(240, 22%, 18%);
-  border: 1px solid hsl(240, 22%, 30%);
+  background: var(--ide-bg-popup);
+  border: 1px solid var(--ide-border-accent);
   border-radius: 12px;
   padding: 20px;
   min-width: 425px;
   box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.4),
-    0 10px 10px -5px rgba(0, 0, 0, 0.3);
+    0 20px 25px -5px var(--ide-shadow-strong),
+    0 10px 10px -5px var(--ide-shadow-medium);
   z-index: 20;
 }
 
 .docHeader {
   font-size: 16px;
   font-weight: 600;
-  color: hsl(0, 0%, 95%);
+  color: var(--ide-text-high);
   margin-bottom: 16px;
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.docMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ide-border-secondary);
+}
+
+.docType {
+  font-size: 13px;
+  color: var(--ide-text-muted);
+}
+
+.docValue {
+  font-size: 13px;
+  color: var(--syntax-value);
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 500;
 }
 
 .docSection {
@@ -212,10 +281,46 @@
 .docSectionTitle {
   font-size: 14px;
   font-weight: 600;
-  color: hsl(0, 0%, 80%);
+  color: var(--ide-text-emphasis);
   margin: 0 0 8px 0;
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.resolutionChain {
+  padding: 12px;
+  background: var(--ide-bg-subtle);
+  border-radius: 6px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+}
+
+.resolutionStep {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.stepNumber {
+  color: var(--ide-text-subtle);
+  font-weight: 600;
+}
+
+.stepVar {
+  color: var(--ide-accent-primary);
+}
+
+.stepFinal {
+  color: var(--syntax-value);
+  font-weight: 600;
+}
+
+.resolutionArrow {
+  color: var(--ide-text-subtle);
+  text-align: center;
+  font-size: 14px;
+  padding: 2px 0;
 }
 
 .docTable {
@@ -227,10 +332,10 @@
   th {
     text-align: left;
     padding: 8px 12px;
-    background: hsl(240, 22%, 14%);
-    color: hsl(0, 0%, 70%);
+    background: var(--ide-bg-subtle);
+    color: var(--ide-text-muted);
     font-weight: 600;
-    border-bottom: 1px solid hsl(240, 22%, 25%);
+    border-bottom: 1px solid var(--ide-border-secondary);
 
     &:first-child {
       border-radius: 6px 0 0 0;
@@ -243,9 +348,9 @@
 
   td {
     padding: 10px 12px;
-    background: hsl(240, 22%, 12%);
-    color: hsl(0, 0%, 85%);
-    border-bottom: 1px solid hsl(240, 22%, 20%);
+    background: var(--ide-bg-primary);
+    color: var(--ide-text-secondary);
+    border-bottom: 1px solid var(--ide-border-primary);
 
     &:last-child {
       font-family: "JetBrains Mono", monospace;
@@ -273,7 +378,15 @@
   border-radius: 3px;
   margin-right: 8px;
   vertical-align: middle;
-  border: 1px solid hsl(240, 22%, 30%);
+  border: 1px solid var(--ide-border-accent);
+}
+
+.colorPreview {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid var(--ide-border-accent);
+  margin-left: auto;
 }
 
 .docLinks {
@@ -282,11 +395,11 @@
   gap: 8px;
   margin-top: 12px;
   padding-top: 12px;
-  border-top: 1px solid hsl(240, 22%, 25%);
+  border-top: 1px solid var(--ide-border-secondary);
 }
 
 .docLink {
-  color: #57c7ff;
+  color: var(--ide-accent-primary);
   text-decoration: none;
   font-size: 13px;
   display: flex;
@@ -295,8 +408,75 @@
   transition: color 0.2s ease;
 
   &:hover {
-    color: #8cc8ff;
+    color: var(--ide-accent-hover);
     text-decoration: underline;
+  }
+}
+
+// Settings panel styles
+.settingsContent {
+  padding: 20px;
+  color: var(--ide-text-primary);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.settingsSection {
+  margin-bottom: 24px;
+}
+
+.settingsTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ide-text-high);
+  margin-bottom: 12px;
+}
+
+.settingsOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 4px;
+  transition: background-color 0.2s ease;
+
+  input[type="checkbox"] {
+    accent-color: var(--ide-accent-primary);
+  }
+
+  label {
+    font-size: 14px;
+    color: var(--ide-text-secondary);
+    cursor: pointer;
+  }
+}
+
+.settingsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.settingsRadio {
+  .radioOption {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    transition: background-color 0.2s ease;
+
+    input[type="radio"] {
+      accent-color: var(--ide-accent-primary);
+    }
+
+    label {
+      font-size: 14px;
+      color: var(--ide-text-secondary);
+      cursor: pointer;
+    }
   }
 }
 
@@ -311,26 +491,26 @@
   gap: 12px;
   padding: 16px;
   margin-bottom: 12px;
-  background: hsl(240, 22%, 14%);
-  border: 1px solid hsl(240, 22%, 20%);
+  background: var(--ide-bg-subtle);
+  border: 1px solid var(--ide-border-primary);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    background: hsl(240, 22%, 16%);
-    border-color: hsl(240, 22%, 25%);
+    background: var(--ide-bg-elevated);
+    border-color: var(--ide-border-secondary);
   }
 
   &[data-scope="3"] {
-    border-color: #57c7ff;
-    background: hsl(217, 99%, 62%, 0.1);
+    border-color: var(--ide-accent-primary);
+    background: var(--ide-accent-bg-light);
   }
 }
 
 .scopeRadio {
   font-size: 16px;
-  color: #57c7ff;
+  color: var(--ide-accent-primary);
   margin-top: 2px;
 }
 
@@ -341,7 +521,7 @@
     margin: 0 0 4px 0;
     font-size: 14px;
     font-weight: 600;
-    color: hsl(0, 0%, 90%);
+    color: var(--ide-text-primary);
     font-family:
       -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
       sans-serif;
@@ -350,7 +530,7 @@
   p {
     margin: 0;
     font-size: 13px;
-    color: hsl(0, 0%, 60%);
+    color: var(--ide-text-subtle);
     font-family:
       -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
       sans-serif;
@@ -361,8 +541,8 @@
   width: 100%;
   padding: 12px;
   margin-top: 16px;
-  background: #57c7ff;
-  color: hsl(240, 22%, 12%);
+  background: var(--ide-accent-primary);
+  color: var(--ide-bg-primary);
   border: none;
   border-radius: 6px;
   font-size: 14px;
@@ -373,7 +553,7 @@
     -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 
   &:hover {
-    background: #8cc8ff;
+    background: var(--ide-accent-hover);
     transform: translateY(-1px);
   }
 
@@ -386,9 +566,9 @@
 .sortingHeader {
   padding: 8px 12px;
   font-size: 12px;
-  color: hsl(0, 0%, 50%);
+  color: var(--ide-text-disabled);
   font-style: italic;
-  border-bottom: 1px solid hsl(240, 22%, 20%);
+  border-bottom: 1px solid var(--ide-border-primary);
   margin-bottom: 4px;
 }
 
@@ -396,5 +576,9 @@
   .documentationPopup {
     min-width: unset;
     width: min(400px, 100%);
+  }
+
+  .settingsGrid {
+    grid-template-columns: 1fr;
   }
 }

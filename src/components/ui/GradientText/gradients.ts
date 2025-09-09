@@ -1,6 +1,5 @@
 // gradients.ts
 export const GRADIENTS = {
-  // Single Colors - Organized by warmth/mood
   colors: {
     cool: {
       purple: "#6E28F5",
@@ -8,35 +7,50 @@ export const GRADIENTS = {
       blue: "#3B98FD",
       blueGreen: "#28B7AE",
       greenBlue: "#2DC77F",
+
+      // NEW from logo
+      skyBlue: "#2293E9", // bright, clean blue
+      deepPurple: "#8D1DBA", // royal/deep purple
     },
     warm: {
       redOrange: "#F96633",
       orange: "#F8772B",
       yellowOrange: "#F1A723",
       yellow: "#E9D123",
+
+      // NEW from logo
+      amber: "#F3AF1A", // rich golden amber
     },
     vibrant: {
       pink: "#FE1F77",
       mediumPink: "#E42C95",
       pinkPurple: "#CD2FA3",
+
+      // NEW from logo
+      magenta: "#EE107A", // vivid magenta-pink
     },
     nature: {
       green: "#4BCD62",
       yellowGreen: "#93CA42",
+
+      // NEW from logo
+      mintGreen: "#67B075", // muted teal-green
     },
   },
 
-  // Gradients - Organized by mood and complexity
   gradients: {
-    // Clean, professional dual-color gradients
     classic: {
       purpleToPink: "linear-gradient(135deg, #6E28F5 0%, #E42C95 100%)",
       oceanBreeze: "linear-gradient(45deg, #3B98FD 0%, #28B7AE 100%)",
       natureFresh: "linear-gradient(135deg, #2DC77F 0%, #93CA42 100%)",
       cyberPunk: "linear-gradient(45deg, #FE1F77 0%, #3B98FD 100%)",
+
+      // NEW from logo
+      royalSky: "linear-gradient(45deg, #8D1DBA 0%, #2293E9 100%)",
+      magentaMint: "linear-gradient(45deg, #EE107A 0%, #67B075 100%)",
+      amberSky: "linear-gradient(45deg, #F3AF1A 0%, #2293E9 100%)",
     },
 
-    // Warm, cozy feeling gradients
     warm: {
       pinkFire: "linear-gradient(90deg, #FE1F77 0%, #F96633 100%)",
       sunsetGlow: "linear-gradient(90deg, #E9D123 0%, #F8772B 100%)",
@@ -49,9 +63,11 @@ export const GRADIENTS = {
         "linear-gradient(45deg, #4BCD62 0%, #93CA42 50%, #F8772B 100%)",
       magmaFlow:
         "linear-gradient(135deg, #4BCD62 0%, #E9D123 33%, #F96633 100%)",
+
+      // NEW from logo
+      amberMagenta: "linear-gradient(90deg, #F3AF1A 0%, #EE107A 100%)",
     },
 
-    // Cool, tech feeling gradients
     cool: {
       cosmicPurple:
         "linear-gradient(45deg, #6E28F5 0%, #7459E5 50%, #3B98FD 100%)",
@@ -62,18 +78,23 @@ export const GRADIENTS = {
         "linear-gradient(135deg, #28B7AE 0%, #4BCD62 50%, #93CA42 100%)",
       auroraBorealis:
         "linear-gradient(90deg, #28B7AE 0%, #2DC77F 25%, #93CA42 50%, #E9D123 100%)",
+
+      // NEW from logo
+      deepAurora:
+        "linear-gradient(45deg, #8D1DBA 0%, #2293E9 50%, #67B075 100%)",
     },
 
-    // High energy, electric gradients
     electric: {
       electricPink:
         "linear-gradient(90deg, #6E28F5 0%, #CD2FA3 50%, #FE1F77 100%)",
       electricLime: "linear-gradient(135deg, #93CA42 0%, #E42C95 100%)",
       electricForest:
         "linear-gradient(135deg, #FE1F77 0%, #CD2FA3 25%, #7459E5 50%, #3B98FD 100%)",
+
+      // NEW from logo
+      neonMagentaSky: "linear-gradient(90deg, #EE107A 0%, #2293E9 100%)",
     },
 
-    // Bold, contrasting gradients
     bold: {
       purpleFlame: "linear-gradient(135deg, #6E28F5 0%, #F8772B 100%)",
       naturePunk: "linear-gradient(90deg, #4BCD62 0%, #FE1F77 100%)",
@@ -82,9 +103,13 @@ export const GRADIENTS = {
       emeraldRush: "linear-gradient(90deg, #CD2FA3 0%, #2DC77F 100%)",
       coralReef: "linear-gradient(45deg, #F96633 0%, #28B7AE 100%)",
       amberStorm: "linear-gradient(90deg, #7459E5 0%, #F1A723 100%)",
+
+      // NEW from logo
+      amberPlum: "linear-gradient(135deg, #F3AF1A 0%, #8D1DBA 100%)",
+      mintMagenta: "linear-gradient(45deg, #67B075 0%, #EE107A 100%)",
+      royalTeal: "linear-gradient(45deg, #8D1DBA 0%, #67B075 100%)",
     },
 
-    // Complex, multi-color spectrums
     spectrum: {
       rainbowBright:
         "linear-gradient(90deg, #6E28F5 0%, #E42C95 25%, #3B98FD 50%, #2DC77F 75%, #E9D123 100%)",
@@ -100,6 +125,10 @@ export const GRADIENTS = {
         "linear-gradient(45deg, #F8772B 0%, #E42C95 20%, #6E28F5 40%, #3B98FD 60%, #2DC77F 80%, #93CA42 100%)",
       jetbrainsMarketplace:
         "linear-gradient(45deg, #ff8b1a 0%, #fb0040 50%,#e703f6 100%)",
+
+      // NEW from logo
+      royalSpectrum:
+        "linear-gradient(90deg, #8D1DBA 0%, #2293E9 33%, #67B075 66%, #F3AF1A 100%)",
     },
   },
 } as const;

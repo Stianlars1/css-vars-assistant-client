@@ -5,9 +5,17 @@ import gsap from "gsap";
 import styles from "./ideSimulation.module.scss";
 import Image from "next/image";
 import { SimpleFeedback } from "@/components/ui/feedback/simpleFeedback/simpleFeedback";
+import { MousePointer2, MousePointerClick, Pointer } from "lucide-react";
 
 interface IdeSimulationProps {
-  feature: "autocomplete" | "documentation" | "scope" | "sorting";
+  feature:
+    | "autocomplete"
+    | "documentation"
+    | "scope"
+    | "sorting"
+    | "dynamicDocs"
+    | "importSupport"
+    | "debugTools";
   isActive: boolean;
 }
 
@@ -55,6 +63,15 @@ export function IdeSimulation({ feature, isActive }: IdeSimulationProps) {
         case "sorting":
           animateSorting(tl, containerRef.current);
           break;
+        case "dynamicDocs":
+          animateDynamicDocs(tl, containerRef.current);
+          break;
+        case "importSupport":
+          animateImportSupport(tl, containerRef.current);
+          break;
+        case "debugTools":
+          animateDebugTools(tl, containerRef.current);
+          break;
       }
     },
     { dependencies: [feature, isActive], scope: containerRef },
@@ -66,6 +83,9 @@ export function IdeSimulation({ feature, isActive }: IdeSimulationProps) {
       {feature === "documentation" && <DocumentationDemo />}
       {feature === "scope" && <ScopeDemo />}
       {feature === "sorting" && <SortingDemo />}
+      {feature === "dynamicDocs" && <DynamicDocsDemo />}
+      {feature === "importSupport" && <ImportSupportDemo />}
+      {feature === "debugTools" && <DebugToolsDemo />}
     </div>
   );
 }
@@ -91,7 +111,10 @@ function AutocompleteDemo() {
         <div className={styles.codeLine}>
           <span className={styles.lineNumber}>1</span>
           <span className={styles.selector}>.button</span>
-          <span className={styles.bracket}> {"{"}</span>
+          <span className={styles.bracket} data-bracket-indent={true}>
+            {" "}
+            {"{"}
+          </span>
         </div>
         <div className={styles.codeLine}>
           <span className={styles.lineNumber}>2</span>
@@ -193,7 +216,10 @@ function DocumentationDemo() {
         <div className={styles.codeLine}>
           <span className={styles.lineNumber}>1</span>
           <span className={styles.selector}>.button</span>
-          <span className={styles.bracket}> {"{"}</span>
+          <span className={styles.bracket} data-bracket-indent={true}>
+            {" "}
+            {"{"}
+          </span>
         </div>
         <div className={styles.codeLine}>
           <span className={styles.lineNumber}>2</span>
@@ -403,8 +429,254 @@ function SortingDemo() {
     </div>
   );
 }
+// Dynamic Docs Demo Component
+function DynamicDocsDemo() {
+  return (
+    <div className={styles.ide}>
+      <div className={styles.ideHeader}>
+        <div className={styles.ideTab}>
+          <span className={styles.ideTabTitle}>Button.module.css</span>
+        </div>
+      </div>
 
-// Animation functions
+      <div className={styles.ideEditor}>
+        <div className={styles.codeLine}>
+          <span className={styles.lineNumber}>1</span>
+          <span className={styles.selector}>.button</span>
+          <span className={styles.bracket} data-bracket-indent={true}>
+            {" "}
+            {"{"}
+          </span>
+        </div>
+        <div className={styles.codeLine}>
+          <span className={styles.lineNumber}>2</span>
+          <span className={styles.property}>background</span>
+          <span className={styles.colon}>:</span>
+          <span className={styles.value}> var(</span>
+          <div className={styles.variable} data-hover>
+            --background
+            <MousePointer2 className={styles.dataPointer} data-pointer />
+          </div>
+          <span>);</span>
+
+          <div className={styles.documentationPopup} data-documentation>
+            <div className={styles.docHeader}>--background</div>
+            <div className={styles.docSection}>
+              <table className={styles.dynamicDocsTable}>
+                <thead className={styles.tableHeader}>
+                  <tr>
+                    <th>Context</th>
+                    <th>Swatch</th>
+                    <th>Value</th>
+                    <th>Hex Value</th>
+                    <th>Source</th>
+                    <th>Type</th>
+                    <th>WCAG</th>
+                  </tr>
+                </thead>
+                <tbody className={styles.tableBody}>
+                  <tr data-row>
+                    <td>Light</td>
+                    <td
+                      className={styles.colorSwatch}
+                      style={{ background: "#faf9f9" }}
+                    ></td>
+                    <td>hsl(0, 9.1%, 97.8%)</td>
+                    <td>#faf9f9</td>
+                    <td>:root</td>
+                    <td>color</td>
+                    <td>AAA</td>
+                  </tr>
+                  <tr data-row>
+                    <td>Dark</td>
+                    <td
+                      className={styles.colorSwatch}
+                      style={{ background: "#050505" }}
+                    ></td>
+                    <td>hsl(0, 0%, 2%)</td>
+                    <td>#050505</td>
+                    <td>:root</td>
+                    <td>color</td>
+                    <td>AAA</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className={styles.docLinks}>
+              <a href="#" className={styles.docLink}>
+                Check contrast on WebAIM Contrast Checker ↗
+              </a>
+              <a href="#" className={styles.docLink}>
+                &apos;var(--background)&apos; on developer.mozilla.org ↗
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className={styles.codeLine}>
+          <span className={styles.lineNumber}>3</span>
+          <span className={styles.bracket}>{"}"}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Advanced Import & Preprocessor Support Demo
+function ImportSupportDemo() {
+  return (
+    <div className={styles.ide}>
+      <div className={styles.ideHeader}>
+        <div className={styles.ideTab}>
+          <span className={styles.ideTabTitle}>app.css</span>
+        </div>
+      </div>
+
+      <div className={styles.ideEditor} data-import-demo>
+        <div className={styles.codeLine}>
+          <span className={styles.lineNumber}>1</span>
+          <span className={styles.atRule}>@import</span> {"variables.css"};
+        </div>
+        <div className={styles.codeLine}>
+          <span className={styles.lineNumber}>2</span>
+          <span className={styles.atRule}>@import</span> {"theme.less"};
+        </div>
+        <div className={styles.codeLine}>
+          <span className={styles.lineNumber}>3</span>
+          <span className={styles.selector}>.button</span> {"{"}
+        </div>
+        <div className={styles.codeLine}>
+          <span className={styles.lineNumber}>4</span>
+          <span className={styles.property}>color</span>
+          <span className={styles.colon}>:</span>{" "}
+          <span className={styles.variable}>var(--primary)</span>;
+        </div>
+        <div className={styles.codeLine}>
+          <span className={styles.lineNumber}>5</span>
+          {"}"}
+        </div>
+        {/* documentation poup..*/}
+
+        <div className={styles.documentationPopupResolutionInfo}>
+          ↗ shows a resolved value – hover it to see every step (resolution
+          chain)
+        </div>
+
+        <ul className={styles.importTree}>
+          <li data-item>variables.css</li>
+          <li data-item>theme.less</li>
+          <li data-item>node_modules/@lib/colors.css</li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+// Debug (CSS Import Resolution) Demo — mirrors right-click > menu > toasts > modal
+function DebugToolsDemo() {
+  return (
+    <div className={styles.ide}>
+      <div className={styles.ideHeader}>
+        <div className={styles.ideTab}>
+          <span className={styles.ideTabTitle}>
+            featuresSection.module.scss
+          </span>
+        </div>
+      </div>
+
+      <div className={styles.ideEditor} data-debug-demo>
+        {/* Simulated stylesheet content */}
+        <div className={styles.codeLine}>
+          <span className={styles.lineNumber}>541</span>
+          <span className={styles.selector}>.feature</span> {"{"}
+        </div>
+        <div className={styles.codeLine}>
+          <span className={styles.lineNumber}>542</span>
+          <span className={styles.property}>background</span>
+          <span className={styles.colon}>:</span>{" "}
+          <span className={styles.value}>hsl(240 22% 12%)</span>;
+        </div>
+        <div className={styles.codeLine}>
+          <span className={styles.lineNumber}>543</span>
+          {"}"}
+        </div>
+
+        {/* Context menu (appears on right-click) */}
+        <div className={styles.contextMenu} data-context-menu>
+          <div className={styles.contextMenuItem}>Show Context Actions</div>
+          <div className={styles.contextMenuItem}>Paste</div>
+          <div className={styles.contextMenuItem}>Go To</div>
+          <div className={styles.contextMenuItem}>Refactor</div>
+          <div className={styles.contextMenuItem}>Open In</div>
+          <div className={styles.contextMenuItem}>Local History</div>
+          <div className={styles.contextMenuItem}>Git</div>
+          <div className={styles.contextMenuSeparator} />
+          <div className={styles.contextMenuItem} data-menu-item data-active>
+            Debug CSS Import Resolution
+          </div>
+        </div>
+
+        {/* Toasts (bottom-right) */}
+        <div className={styles.toastStack} aria-live="polite">
+          <div className={styles.toast} data-toast="start">
+            CSS Import Debug started
+            <div className={styles.toastSub}>
+              Scanning import chain for <b>featuresSection.module.scss</b>
+            </div>
+          </div>
+          <div className={styles.toast} data-toast="done">
+            CSS Import Debug finished
+          </div>
+        </div>
+
+        {/* Modal result window */}
+        <div className={styles.modalBackdrop} data-modal-backdrop />
+        <div className={styles.modalWindow} data-modal>
+          <div className={styles.modalHeader}>
+            CSS Import Debug — featuresSection.module.scss
+          </div>
+          <div className={styles.modalBody}>
+            <div className={styles.monoLine} data-modal-line>
+              <b>=== CSS Import Resolution Debug ===</b>
+            </div>
+            <div className={styles.monoLine} data-modal-line>
+              Root file :
+              /path/to/project/src/components/sections/featuresSection/featuresSection.module.scss
+            </div>
+            <div className={styles.monoLine} data-modal-line>
+              Max depth : 20
+            </div>
+
+            <div className={styles.fileList} data-modal-line>
+              <div>📄 featuresSection.module.scss</div>
+            </div>
+
+            <div className={styles.monoLine} data-modal-line>
+              <b>=== SUMMARY ===</b>
+            </div>
+            <div className={styles.monoLine} data-modal-line>
+              {" "}
+              Total unique files : 1
+            </div>
+            <div className={styles.monoLine} data-modal-line>
+              {" "}
+              Total CSS variables : 1
+            </div>
+            <div className={styles.monoLine} data-modal-line>
+              Debug finished : 2025-08-14T14:00:43
+            </div>
+          </div>
+
+          <div className={styles.modalActions}>
+            <button className={styles.button} data-ok>
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ---------------------- Animations ---------------------- */
 function animateAutocomplete(tl: gsap.core.Timeline, container: HTMLElement) {
   const typing = container.querySelector("[data-typing]");
   const autocomplete = container.querySelector("[data-autocomplete]");
@@ -491,4 +763,123 @@ function animateSorting(tl: gsap.core.Timeline, container: HTMLElement) {
     { opacity: 0, x: 30 },
     { opacity: 1, x: 0, duration: 0.4, stagger: 0.08, ease: "power2.out" },
   );
+}
+function animateDynamicDocs(tl: gsap.core.Timeline, container: HTMLElement) {
+  const popup = container.querySelector("[class*=documentationPopup]");
+  const rows = popup?.querySelectorAll("[data-row]") || [];
+  const pointer = container.querySelector("[data-pointer]");
+
+  tl.set(pointer, { opacity: 1, x: -10, y: 10, scale: 1 })
+    // 1. Move pointer to center
+    .to(pointer, {
+      x: 0,
+      y: 0,
+      duration: 0.7,
+      ease: "power2.out",
+    })
+    // 2. Simulate click down (scale down, then up)
+    .to(pointer, {
+      scale: 0.8,
+      duration: 0.13,
+      ease: "power1.in",
+    })
+    .to(pointer, {
+      scale: 1,
+      duration: 0.13,
+      ease: "power1.out",
+    })
+    // 3. Fade out pointer as popover appears
+    .to(pointer, { opacity: 0, duration: 0.1 }, "+=0.1")
+    // Popover and rows
+    .fromTo(
+      popup,
+      { opacity: 0, scale: 0.85, transformOrigin: "top left" },
+      { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.3)" },
+      "-=0.2",
+    )
+    .fromTo(
+      rows,
+      { opacity: 0, y: 10 },
+      { opacity: 1, y: 0, duration: 0.5, stagger: 0.06 },
+      "+=0.15",
+    );
+}
+
+function animateImportSupport(tl: gsap.core.Timeline, container: HTMLElement) {
+  const items = container.querySelectorAll("[data-item]");
+  tl.fromTo(
+    items,
+    { opacity: 0, x: -20 },
+    { opacity: 1, x: 0, duration: 0.25, stagger: 0.08, ease: "power2.out" },
+  );
+}
+
+function animateDebugTools(tl: gsap.core.Timeline, container: HTMLElement) {
+  const menu = container.querySelector("[data-context-menu]");
+  const activeItem = container.querySelector("[data-menu-item]");
+  const toastStart = container.querySelector('[data-toast="start"]');
+  const toastDone = container.querySelector('[data-toast="done"]');
+  const backdrop = container.querySelector("[data-modal-backdrop]");
+  const modal = container.querySelector("[data-modal]");
+  const lines = modal?.querySelectorAll("[data-modal-line]") || [];
+  const okBtn = modal?.querySelector("[data-ok]") || null;
+
+  // Initial hidden states
+  gsap.set([toastStart, toastDone, backdrop, modal], { autoAlpha: 0 });
+  gsap.set(lines, { autoAlpha: 0, y: 6 });
+
+  tl.fromTo(
+    menu,
+    { autoAlpha: 0, scale: 0.96, transformOrigin: "top left" },
+    { autoAlpha: 1, scale: 1, duration: 0.25, ease: "power2.out" },
+  )
+    // Emulate highlight + click pulse on menu item
+    .to(
+      activeItem,
+      { backgroundColor: "hsl(240 22% 22%)", duration: 0.15 },
+      "+=0.05",
+    )
+    .to(activeItem, { scale: 0.98, duration: 0.08, ease: "power1.inOut" })
+    .to(activeItem, { scale: 1, duration: 0.08 }, "+=0.02")
+    // Hide menu
+    .to(menu, { autoAlpha: 0, duration: 0.2 }, "+=0.05")
+    // Show “started” toast
+    .fromTo(
+      toastStart,
+      { autoAlpha: 0, y: 10 },
+      { autoAlpha: 1, y: 0, duration: 0.25, ease: "power2.out" },
+    )
+    // Small delay to mimic work
+    .to({}, { duration: 0.45 })
+    // Show “finished” toast
+    .fromTo(
+      toastDone,
+      { autoAlpha: 0, y: 10 },
+      { autoAlpha: 1, y: 0, duration: 0.25, ease: "power2.out" },
+      "-=0.05",
+    )
+    // Modal with results
+    .fromTo(
+      backdrop,
+      { autoAlpha: 0 },
+      { autoAlpha: 1, duration: 0.15 },
+      "+=0.05",
+    )
+    .fromTo(
+      modal,
+      { autoAlpha: 0, scale: 0.96, y: -6 },
+      { autoAlpha: 1, scale: 1, y: 0, duration: 0.25, ease: "back.out(1.6)" },
+      "-=0.05",
+    )
+    .fromTo(
+      lines,
+      { autoAlpha: 0, y: 6 },
+      { autoAlpha: 1, y: 0, duration: 0.18, stagger: 0.04 },
+    )
+    .fromTo(
+      okBtn,
+      { autoAlpha: 0, y: 6 },
+      { autoAlpha: 1, y: 0, duration: 0.18 },
+      "-=0.08",
+    );
 }
