@@ -135,7 +135,7 @@ export const metadata: Metadata = {
     description:
       "Intelligent CSS custom properties support for JetBrains IDEs. Autocomplete, documentation, color swatches, and @import resolution.",
     images: [TWITTER_CARD_URL],
-    creator: "@litehode",
+    creator: "@stianlarsen_",
   },
 
   // Manifest for PWA features

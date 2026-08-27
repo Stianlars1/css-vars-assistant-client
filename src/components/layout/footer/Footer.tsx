@@ -158,7 +158,7 @@ export default async function Footer() {
 
           <div className={styles.social}>
             <Link
-              href="https://twitter.com/litehode"
+              href="https://twitter.com/stianlarsen_"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.socialLink}

@@ -25,7 +25,7 @@ export const jsonLd = {
         url: "https://github.com/stianlars1",
         email: "stian.larsen@mac.com",
         sameAs: [
-          "https://twitter.com/litehode",
+          "https://twitter.com/stianlarsen_",
           "https://github.com/stianlars1",
           "https://www.linkedin.com/in/stianlars1/",
         ],
