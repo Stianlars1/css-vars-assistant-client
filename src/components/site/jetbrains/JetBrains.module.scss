@@ -1,0 +1,293 @@
+.completion,
+.documentation {
+  --jb-surface: #2b2d30;
+  --jb-text: #bcbec4;
+  --jb-muted: #6f737a;
+  --jb-border: #696a6e;
+  --jb-blue: #548af7;
+  background: var(--jb-surface);
+  color: var(--jb-text);
+  border: 1px solid var(--jb-border);
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 1px #111315,
+    0 6px 16px #0005;
+  text-align: left;
+}
+.swatches {
+  display: inline-flex;
+  gap: 2px;
+  flex-shrink: 0;
+  align-items: center;
+  vertical-align: middle;
+  i {
+    display: block;
+    width: 12px;
+    height: 12px;
+  }
+  &[data-bordered="true"] i {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #f2f2f2;
+  }
+}
+.completion {
+  width: 566px;
+  max-width: 100%;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 16px;
+  font-weight: 400;
+  overflow: hidden;
+  > ul {
+    padding: 3px;
+    list-style: none;
+    margin: 0;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    min-height: 28px;
+    gap: 7px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    cursor: default;
+  }
+  li[aria-selected="true"] {
+    background: #43454a;
+  }
+  .empty {
+    color: var(--jb-text);
+    font:
+      13px var(--font-inter),
+      sans-serif;
+    min-height: 48px;
+  }
+}
+.suggestionName {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+  white-space: nowrap;
+  b {
+    color: var(--jb-blue);
+    font-weight: 400;
+  }
+}
+.suggestionDescription {
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--jb-muted);
+  flex: 1;
+  min-width: 0;
+  margin-left: -3px;
+}
+.suggestionValue {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-left: auto;
+  flex-shrink: 0;
+  white-space: nowrap;
+  color: var(--jb-muted);
+}
+.moon {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  font-size: 17px;
+  line-height: 1;
+}
+.completionFooter {
+  background: #393b40;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 9px;
+  height: 26px;
+  color: var(--jb-muted);
+  font:
+    12px var(--font-inter),
+    sans-serif;
+  > span {
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
+  }
+  > button {
+    color: var(--jb-blue);
+    border: 0;
+    padding: 0;
+    background: none;
+    font: inherit;
+    white-space: nowrap;
+  }
+  > svg {
+    margin-left: 16px;
+    color: var(--jb-text);
+  }
+}
+.documentation {
+  min-width: 0;
+  width: fit-content;
+  max-width: min(100%, 430px);
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  position: relative;
+  > header {
+    margin: 0 18px;
+    padding: 14px 0 10px;
+    border-bottom: 1px solid #393b40;
+    code {
+      overflow-wrap: anywhere;
+      font-family: var(--font-jetbrains-mono), monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: #dfe1e5;
+    }
+  }
+}
+.docBody {
+  padding: 20px 18px 14px;
+}
+.tableScroll {
+  overflow-x: auto;
+  padding-bottom: 1px;
+}
+.documentation table {
+  border-collapse: collapse;
+  white-space: nowrap;
+  width: max-content;
+  max-width: 100%;
+  th {
+    text-align: left;
+    font-weight: 700;
+    color: #dfe1e5;
+    padding: 0 6px 3px;
+    border-bottom: 1px solid #a0a0a0;
+  }
+  td {
+    padding: 6px 5px;
+    vertical-align: middle;
+  }
+  th:nth-child(2),
+  td:nth-child(2) {
+    padding-inline: 3px;
+  }
+  tr[data-primary="true"] {
+    font-weight: 700;
+  }
+}
+.cascadeNote {
+  margin-top: 15px;
+  font-size: 12px;
+  font-style: italic;
+  color: #8a8a8a;
+  line-height: 1.5;
+}
+.documentation .valueCell {
+  max-width: 220px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.docDescription {
+  margin-top: 12px;
+  color: #dfe1e5;
+  strong {
+    font-weight: 700;
+  }
+  p {
+    margin-top: 3px;
+  }
+}
+.contrastLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  color: #589df6;
+  font-size: 14px;
+  min-height: 20px;
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  svg {
+    color: var(--jb-text);
+  }
+}
+.docMore {
+  position: absolute;
+  bottom: 16px;
+  right: 11px;
+}
+.resolutionLegend {
+  margin: -9px 0 26px;
+  color: #dfe1e5;
+  font-size: 14px;
+  strong {
+    font-weight: 700;
+  }
+}
+.resolved {
+  color: #dfe1e5;
+}
+@media (max-width: 760px) {
+  .documentation .valueCell {
+    max-width: 140px;
+  }
+  .completion {
+    font-size: 13px;
+    li {
+      gap: 5px;
+      min-height: 30px;
+      padding-inline: 6px;
+    }
+  }
+  .suggestionName {
+    gap: 6px;
+  }
+  .suggestionValue {
+    font-size: 12px;
+    gap: 4px;
+  }
+  .suggestionDescription {
+    font-size: 12px;
+  }
+  .completionFooter {
+    font-size: 11px;
+    > svg {
+      margin-left: 4px;
+    }
+  }
+  .documentation {
+    font-size: 12px;
+  }
+  .documentation > header {
+    margin-inline: 14px;
+  }
+  .docBody {
+    padding: 22px 12px 16px;
+  }
+  .documentation table th {
+    padding-inline: 4px;
+  }
+  .documentation table td {
+    padding-inline: 3px;
+  }
+  .documentation .swatches[data-bordered="true"] i {
+    width: 16px;
+    height: 16px;
+  }
+  .cascadeNote {
+    font-size: 11px;
+  }
+  .resolutionLegend,
+  .contrastLink {
+    font-size: 12px;
+  }
+  .contrastLink {
+    max-width: calc(100% - 16px);
+  }
+}

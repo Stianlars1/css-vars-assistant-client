@@ -1,24 +1,22 @@
 import Link from "next/link";
-import styles from "./styles/notFound.module.scss";
-
-export default async function NotFound() {
+import { ArrowLeft } from "lucide-react";
+import styles from "@/components/site/ContentPage.module.scss";
+export default function NotFound() {
   return (
-    <>
-      <div className={styles.notFound}>
-        <h1 className={styles.title}>Not Found</h1>
-
-        <p className={styles.paragraph}>
-          The page you are looking for might have been removed, had its name
-          changed, or is temporarily unavailable.
-        </p>
-
-        <p className={styles.paragraph}>
-          You can go back to the previous page by clicking{" "}
-          <Link prefetch={true} href={"/"}>
-            here
-          </Link>
-        </p>
+    <div className={`site-container ${styles.page}`}>
+      <div className={styles.pageHeading}>
+        <span className="eyebrow">404 - Page not found</span>
+        <h1>
+          This one
+          <br />
+          <span>didn’t resolve.</span>
+        </h1>
+        <p>The page may have moved, or the address may be incorrect.</p>
+        <Link href="/" className="text-link">
+          <ArrowLeft size={15} />
+          Back to CSS Variables Assistant
+        </Link>
       </div>
-    </>
+    </div>
   );
 }

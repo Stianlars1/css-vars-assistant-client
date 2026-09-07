@@ -1,0 +1,27 @@
+:root {
+  --site-paper: hsl(var(--background));
+  --site-ink: hsl(var(--foreground));
+  --site-muted: hsl(var(--muted-foreground));
+  --site-line: hsl(var(--gray-6) / 0.7);
+  --site-blue: hsl(var(--accent-11));
+  --site-tint: hsl(var(--accent-3));
+  --site-white: hsl(var(--white));
+  --site-width: var(--width-xl);
+  --site-gutter: clamp(20px, 5vw, 80px);
+  --site-section: clamp(72px, 8vw, 120px);
+  --site-display: clamp(3.25rem, 6.6vw, 6rem);
+  --site-heading: clamp(2.5rem, 4vw, 3.625rem);
+  --editor-ground: #1b1c20;
+  --editor-surface: #24252a;
+  --editor-raised: #2b2d33;
+  --editor-line: #3d4048;
+  --editor-text: #e8e8ed;
+  --editor-muted: #a1a4af;
+  --editor-blue: #a6c5fa;
+  --editor-purple: #cab6f9;
+  --editor-green: #a7ceb2;
+  --editor-peach: #e9b7a0;
+  --motion-fast: 160ms;
+  --motion-panel: 220ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}

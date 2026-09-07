@@ -1,0 +1,85 @@
+.trigger {
+  appearance: none;
+  display: inline;
+  background: transparent;
+  border: 0;
+  border-radius: 2px;
+  color: inherit;
+  padding: 2px 0;
+  margin: -2px 0;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  &[aria-expanded="true"],
+  &:hover {
+    color: #dfe1e5;
+    text-decoration: underline;
+    text-decoration-color: #848891;
+    text-underline-offset: 4px;
+  }
+  &:focus-visible {
+    outline: 2px solid #548af7;
+    outline-offset: 3px;
+  }
+}
+.tooltip {
+  position: fixed;
+  z-index: 150;
+  width: max-content;
+  max-width: min(360px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  padding: 9px 12px;
+  border: 1px solid #696a6e;
+  border-radius: 4px;
+  background: #393b40;
+  color: #dfe1e5;
+  box-shadow:
+    0 0 0 1px #161719,
+    0 5px 13px #0006;
+  font:
+    13px/1.5 var(--font-inter),
+    sans-serif;
+  overflow-wrap: anywhere;
+  animation: reveal 160ms ease-out;
+}
+.chain {
+  font:
+    13px/1.5 var(--font-jetbrains-mono),
+    monospace;
+  strong {
+    font-weight: 700;
+  }
+  ol {
+    padding-left: 25px;
+    margin: 18px 0 20px;
+  }
+  li {
+    padding-left: 1px;
+  }
+  p {
+    margin-top: 20px;
+    font-size: 12px;
+  }
+}
+.down {
+  display: block;
+  padding-left: 17px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+.finalValue {
+  display: block;
+  color: #98fb98;
+}
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

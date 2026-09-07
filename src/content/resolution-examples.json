@@ -1,0 +1,643 @@
+{
+  "examples": [
+    {
+      "id": "scss-color",
+      "group": "imports",
+      "label": "Sass color",
+      "reference": "controls.$button-background",
+      "entry": "01-imports-and-math.scss",
+      "entryLine": 4,
+      "value": "#B8A4F4",
+      "valueType": "color",
+      "source": "_components.scss:3",
+      "steps": [
+        {
+          "text": "$button-background",
+          "color": "#DDA0DD"
+        },
+        {
+          "text": "$action-color",
+          "color": "#DDA0DD"
+        },
+        {
+          "text": "$palette-iris",
+          "color": "#DDA0DD"
+        }
+      ],
+      "legend": "($ = SCSS)",
+      "pixelEquivalent": null,
+      "color": "#B8A4F4",
+      "files": [
+        {
+          "path": "scss/_components.scss",
+          "line": 3
+        },
+        {
+          "path": "scss/_semantic.scss",
+          "line": 3
+        },
+        {
+          "path": "scss/_primitives.scss",
+          "line": 1
+        }
+      ],
+      "heading": "One color. Three source files.",
+      "description": "Follow the button token through its semantic alias to the original color."
+    },
+    {
+      "id": "less-color",
+      "group": "imports",
+      "label": "LESS color",
+      "reference": "@tile-background",
+      "entry": "03-less-imports.less",
+      "entryLine": 5,
+      "value": "#E9AC95",
+      "valueType": "color",
+      "source": "components.less:4",
+      "steps": [
+        {
+          "text": "@tile-background",
+          "color": "#FFB347"
+        },
+        {
+          "text": "@surface-warm",
+          "color": "#FFB347"
+        },
+        {
+          "text": "@palette-peach",
+          "color": "#FFB347"
+        }
+      ],
+      "legend": "(@ = LESS/SCSS)",
+      "pixelEquivalent": null,
+      "color": "#E9AC95",
+      "files": [
+        {
+          "path": "less/components.less",
+          "line": 4
+        },
+        {
+          "path": "less/semantic.less",
+          "line": 4
+        },
+        {
+          "path": "less/foundation.less",
+          "line": 2
+        }
+      ],
+      "heading": "Follow the same idea in LESS.",
+      "description": "Imported aliases retain the original color and show every reference along the way."
+    },
+    {
+      "id": "sass-color",
+      "group": "imports",
+      "label": "Indented Sass",
+      "reference": "$notice-fill",
+      "entry": "04-sass-aliases.sass",
+      "entryLine": 4,
+      "value": "#A8C9AF",
+      "valueType": "color",
+      "source": "_tokens.sass:3",
+      "steps": [
+        {
+          "text": "$notice-fill",
+          "color": "#DDA0DD"
+        },
+        {
+          "text": "$palette-mint",
+          "color": "#DDA0DD"
+        }
+      ],
+      "legend": "($ = SCSS)",
+      "pixelEquivalent": null,
+      "color": "#A8C9AF",
+      "files": [
+        {
+          "path": "sass/_tokens.sass",
+          "line": 3
+        },
+        {
+          "path": "sass/_foundation.sass",
+          "line": 1
+        }
+      ],
+      "heading": "A familiar trail, in Sass.",
+      "description": "Find the imported declaration behind the variable in your stylesheet."
+    },
+    {
+      "id": "scss-math",
+      "group": "calculations",
+      "label": "Sass spacing",
+      "reference": "controls.$button-padding",
+      "entry": "01-imports-and-math.scss",
+      "entryLine": 5,
+      "value": "24px",
+      "valueType": "size",
+      "source": "_components.scss:4",
+      "steps": [
+        {
+          "text": "$button-padding",
+          "color": "#DDA0DD"
+        },
+        {
+          "text": "$space-medium",
+          "color": "#DDA0DD"
+        },
+        {
+          "text": "$space-unit",
+          "color": "#DDA0DD"
+        },
+        {
+          "text": "(4px * 3) = 12px",
+          "color": "#90EE90"
+        },
+        {
+          "text": "(12px * 2) = 24px",
+          "color": "#90EE90"
+        }
+      ],
+      "legend": "($ = SCSS, = = calculation)",
+      "pixelEquivalent": null,
+      "color": null,
+      "files": [
+        {
+          "path": "scss/_components.scss",
+          "line": 4
+        },
+        {
+          "path": "scss/_semantic.scss",
+          "line": 4
+        },
+        {
+          "path": "scss/_primitives.scss",
+          "line": 2
+        }
+      ],
+      "heading": "Two calculations. One clear result.",
+      "description": "Start with 4px, multiply by three, then by two. Hover the value to see how it becomes 24px."
+    },
+    {
+      "id": "less-math",
+      "group": "calculations",
+      "label": "LESS spacing",
+      "reference": "@tile-padding",
+      "entry": "03-less-imports.less",
+      "entryLine": 4,
+      "value": "12px",
+      "valueType": "size",
+      "source": "components.less:3",
+      "steps": [
+        {
+          "text": "@tile-padding",
+          "color": "#FFB347"
+        },
+        {
+          "text": "@space-roomy",
+          "color": "#FFB347"
+        },
+        {
+          "text": "@space-seed",
+          "color": "#FFB347"
+        },
+        {
+          "text": "(6px * 4) = 24px",
+          "color": "#90EE90"
+        },
+        {
+          "text": "(24px / 2) = 12px",
+          "color": "#90EE90"
+        }
+      ],
+      "legend": "(@ = LESS/SCSS, = = calculation)",
+      "pixelEquivalent": null,
+      "color": null,
+      "files": [
+        {
+          "path": "less/components.less",
+          "line": 3
+        },
+        {
+          "path": "less/semantic.less",
+          "line": 3
+        },
+        {
+          "path": "less/foundation.less",
+          "line": 1
+        }
+      ],
+      "heading": "Every operation stays visible.",
+      "description": "Multiplication and division resolve through imported LESS variables."
+    },
+    {
+      "id": "scss-radius",
+      "group": "calculations",
+      "label": "Radius",
+      "reference": "controls.$button-radius",
+      "entry": "01-imports-and-math.scss",
+      "entryLine": 6,
+      "value": "8px",
+      "valueType": "size",
+      "source": "_components.scss:5",
+      "steps": [
+        {
+          "text": "$button-radius",
+          "color": "#DDA0DD"
+        },
+        {
+          "text": "$radius-control",
+          "color": "#DDA0DD"
+        },
+        {
+          "text": "$radius-base",
+          "color": "#DDA0DD"
+        },
+        {
+          "text": "(6px + 2) = 8px",
+          "color": "#90EE90"
+        }
+      ],
+      "legend": "($ = SCSS, = = calculation)",
+      "pixelEquivalent": null,
+      "color": null,
+      "files": [
+        {
+          "path": "scss/_components.scss",
+          "line": 5
+        },
+        {
+          "path": "scss/_semantic.scss",
+          "line": 5
+        },
+        {
+          "path": "scss/_primitives.scss",
+          "line": 3
+        }
+      ],
+      "heading": "A little more rounded.",
+      "description": "The radius carries its source and the addition that turns 6px into 8px."
+    },
+    {
+      "id": "scss-relative",
+      "group": "calculations",
+      "label": "Type size",
+      "reference": "controls.$button-font-size",
+      "entry": "01-imports-and-math.scss",
+      "entryLine": 7,
+      "value": "0.875rem",
+      "valueType": "size",
+      "source": "_components.scss:6",
+      "steps": [
+        {
+          "text": "$button-font-size",
+          "color": "#DDA0DD"
+        },
+        {
+          "text": "$type-label",
+          "color": "#DDA0DD"
+        },
+        {
+          "text": "$type-base",
+          "color": "#DDA0DD"
+        },
+        {
+          "text": "(1rem * 0.875) = 0.875rem",
+          "color": "#90EE90"
+        }
+      ],
+      "legend": "($ = SCSS, = = calculation)",
+      "pixelEquivalent": "14px",
+      "color": null,
+      "files": [
+        {
+          "path": "scss/_components.scss",
+          "line": 6
+        },
+        {
+          "path": "scss/_semantic.scss",
+          "line": 6
+        },
+        {
+          "path": "scss/_primitives.scss",
+          "line": 4
+        }
+      ],
+      "heading": "Keep the unit. See the scale.",
+      "description": "The resolved 0.875rem includes a 14px estimate, based on a 16px font size."
+    },
+    {
+      "id": "sass-relative",
+      "group": "calculations",
+      "label": "Sass rem",
+      "reference": "$notice-inset",
+      "entry": "04-sass-aliases.sass",
+      "entryLine": 5,
+      "value": "1.5rem",
+      "valueType": "size",
+      "source": "_tokens.sass:4",
+      "steps": [
+        {
+          "text": "$notice-inset",
+          "color": "#DDA0DD"
+        },
+        {
+          "text": "$space-tick",
+          "color": "#DDA0DD"
+        },
+        {
+          "text": "(0.5rem * 3) = 1.5rem",
+          "color": "#90EE90"
+        }
+      ],
+      "legend": "($ = SCSS, = = calculation)",
+      "pixelEquivalent": "24px",
+      "color": null,
+      "files": [
+        {
+          "path": "sass/_tokens.sass",
+          "line": 4
+        },
+        {
+          "path": "sass/_foundation.sass",
+          "line": 2
+        }
+      ],
+      "heading": "Relative units, resolved.",
+      "description": "The 1.5rem value includes a 24px estimate, based on a 16px font size."
+    },
+    {
+      "id": "css-calc",
+      "group": "css",
+      "label": "calc()",
+      "reference": "--panel-inset",
+      "entry": "02-css-values.css",
+      "entryLine": 4,
+      "value": "calc(8px * 3)",
+      "valueType": "other",
+      "source": "tokens.css:5",
+      "steps": [
+        {
+          "text": "var(--scale-step)",
+          "color": "#FF6347"
+        }
+      ],
+      "legend": "(var() = CSS variable reference, var(-- = CSS custom property reference)",
+      "pixelEquivalent": null,
+      "color": null,
+      "files": [
+        {
+          "path": "css/tokens.css",
+          "line": 5
+        },
+        {
+          "path": "css/foundation.css",
+          "line": 2
+        }
+      ],
+      "heading": "See inside the expression.",
+      "description": "Variable references resolve inside calc(). The CSS expression stays intact."
+    },
+    {
+      "id": "css-composite",
+      "group": "css",
+      "label": "Border",
+      "reference": "--panel-border",
+      "entry": "02-css-values.css",
+      "entryLine": 5,
+      "value": "1px solid #B8A4F4",
+      "valueType": "other",
+      "source": "tokens.css:6",
+      "steps": [
+        {
+          "text": "var(--action-iris)",
+          "color": "#FF6347"
+        },
+        {
+          "text": "var(--foundation-iris)",
+          "color": "#FF6347"
+        }
+      ],
+      "legend": "(var() = CSS variable reference, var(-- = CSS custom property reference)",
+      "pixelEquivalent": null,
+      "color": null,
+      "files": [
+        {
+          "path": "css/tokens.css",
+          "line": 6
+        },
+        {
+          "path": "css/tokens.css",
+          "line": 4
+        },
+        {
+          "path": "css/foundation.css",
+          "line": 3
+        }
+      ],
+      "heading": "The whole value stays together.",
+      "description": "Follow the color through its aliases while the border width and style stay in place."
+    },
+    {
+      "id": "css-fallback",
+      "group": "css",
+      "label": "Fallback",
+      "reference": "--panel-accent",
+      "entry": "02-css-values.css",
+      "entryLine": 6,
+      "value": "#B8A4F4",
+      "valueType": "color",
+      "source": "tokens.css:7",
+      "steps": [
+        {
+          "text": "var(--action-iris)",
+          "color": "#FF6347"
+        },
+        {
+          "text": "var(--foundation-iris)",
+          "color": "#FF6347"
+        }
+      ],
+      "legend": "(var() = CSS variable reference, var(-- = CSS custom property reference)",
+      "pixelEquivalent": null,
+      "color": "#B8A4F4",
+      "files": [
+        {
+          "path": "css/tokens.css",
+          "line": 7
+        },
+        {
+          "path": "css/tokens.css",
+          "line": 4
+        },
+        {
+          "path": "css/foundation.css",
+          "line": 3
+        }
+      ],
+      "heading": "Follow the fallback, too.",
+      "description": "When the optional accent is missing, the nested fallback resolves to the iris token."
+    },
+    {
+      "id": "css-relative",
+      "group": "css",
+      "label": "rem",
+      "reference": "--panel-font",
+      "entry": "02-css-values.css",
+      "entryLine": 7,
+      "value": "1.125rem",
+      "valueType": "size",
+      "source": "tokens.css:8",
+      "steps": [
+        {
+          "text": "var(--foundation-font)",
+          "color": "#FF6347"
+        }
+      ],
+      "legend": "(var() = CSS variable reference, var(-- = CSS custom property reference)",
+      "pixelEquivalent": "18px",
+      "color": null,
+      "files": [
+        {
+          "path": "css/tokens.css",
+          "line": 8
+        },
+        {
+          "path": "css/foundation.css",
+          "line": 4
+        }
+      ],
+      "heading": "A size with useful context.",
+      "description": "See the resolved rem value and its pixel estimate, based on a 16px font size."
+    },
+    {
+      "id": "css-clamp",
+      "group": "css",
+      "label": "clamp()",
+      "reference": "--panel-width",
+      "entry": "02-css-values.css",
+      "entryLine": 8,
+      "value": "clamp(16rem, calc(100vw - 8px), 48rem)",
+      "valueType": "other",
+      "source": "tokens.css:9",
+      "steps": [
+        {
+          "text": "var(--scale-step)",
+          "color": "#FF6347"
+        }
+      ],
+      "legend": "(var() = CSS variable reference, var(-- = CSS custom property reference)",
+      "pixelEquivalent": null,
+      "color": null,
+      "files": [
+        {
+          "path": "css/tokens.css",
+          "line": 9
+        },
+        {
+          "path": "css/foundation.css",
+          "line": 2
+        }
+      ],
+      "heading": "Keep the responsive formula.",
+      "description": "Inspect the substituted spacing token inside clamp() without losing the surrounding CSS."
+    }
+  ],
+  "files": {
+    "01-imports-and-math.scss": [
+      "@use \"./scss/components\" as controls;",
+      "",
+      ".button {",
+      "  background: controls.$button-background;",
+      "  padding: controls.$button-padding;",
+      "  border-radius: controls.$button-radius;",
+      "  font-size: controls.$button-font-size;",
+      "}"
+    ],
+    "02-css-values.css": [
+      "@import \"./css/tokens.css\";",
+      "",
+      ".panel {",
+      "  padding: var(--panel-inset);",
+      "  border: var(--panel-border);",
+      "  background: var(--panel-accent);",
+      "  font-size: var(--panel-font);",
+      "  width: var(--panel-width);",
+      "}"
+    ],
+    "03-less-imports.less": [
+      "@import \"./less/components.less\";",
+      "",
+      ".tile {",
+      "  padding: @tile-padding;",
+      "  background: @tile-background;",
+      "}"
+    ],
+    "04-sass-aliases.sass": [
+      "@use \"./sass/tokens\" as *",
+      "",
+      ".notice",
+      "  background: $notice-fill",
+      "  padding: $notice-inset"
+    ],
+    "css/foundation.css": [
+      ":root {",
+      "  --scale-step: 8px;",
+      "  --foundation-iris: #B8A4F4;",
+      "  --foundation-font: 1.125rem;",
+      "}"
+    ],
+    "css/tokens.css": [
+      "@import \"./foundation.css\";",
+      "",
+      ":root {",
+      "  --action-iris: var(--foundation-iris);",
+      "  --panel-inset: calc(var(--scale-step) * 3);",
+      "  --panel-border: 1px solid var(--action-iris);",
+      "  --panel-accent: var(--optional-accent, var(--action-iris));",
+      "  --panel-font: var(--foundation-font);",
+      "  --panel-width: clamp(16rem, calc(100vw - var(--scale-step)), 48rem);",
+      "}"
+    ],
+    "less/components.less": [
+      "@import \"./semantic.less\";",
+      "",
+      "@tile-padding: (@space-roomy / 2);",
+      "@tile-background: @surface-warm;"
+    ],
+    "less/foundation.less": ["@space-seed: 6px;", "@palette-peach: #E9AC95;"],
+    "less/semantic.less": [
+      "@import \"./foundation.less\";",
+      "",
+      "@space-roomy: (@space-seed * 4);",
+      "@surface-warm: @palette-peach;"
+    ],
+    "sass/_foundation.sass": ["$palette-mint: #A8C9AF", "$space-tick: 0.5rem"],
+    "sass/_tokens.sass": [
+      "@use \"./foundation\" as *",
+      "",
+      "$notice-fill: $palette-mint",
+      "$notice-inset: ($space-tick * 3)"
+    ],
+    "scss/_components.scss": [
+      "@use \"./semantic\" as *;",
+      "",
+      "$button-background: $action-color;",
+      "$button-padding: ($space-medium * 2);",
+      "$button-radius: $radius-control;",
+      "$button-font-size: $type-label;"
+    ],
+    "scss/_primitives.scss": [
+      "$palette-iris: #B8A4F4;",
+      "$space-unit: 4px;",
+      "$radius-base: 6px;",
+      "$type-base: 1rem;"
+    ],
+    "scss/_semantic.scss": [
+      "@use \"./primitives\" as *;",
+      "",
+      "$action-color: $palette-iris;",
+      "$space-medium: ($space-unit * 3);",
+      "$radius-control: ($radius-base + 2);",
+      "$type-label: ($type-base * 0.875);"
+    ]
+  }
+}

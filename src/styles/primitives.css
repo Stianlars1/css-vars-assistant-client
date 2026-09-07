@@ -1,0 +1,90 @@
+:root {
+  /* == Sizes ==*/
+  /* = heights = */
+  --nav-height: 65px;
+
+  /* = paddings =*/
+  --padding-sm: 16px;
+  --padding-md: 24px;
+  --padding-lg: 32px;
+  --site-padding: 16px;
+
+  --button-padding-sm: 4px 16px; /* px == */
+  --button-padding-md: 8px 18px; /* px == */
+
+  /*  Others  */
+  --radius: 8px;
+
+  /* = Widths = */
+  --width-l: 1024px;
+  --width-xl: 1280px;
+  --width-2xl: 1440px;
+  --max-width: var(--width-2xl);
+
+  --black: 240 10% 3.9%;
+  --white: 0 0% 100%;
+  --success: 122 39% 49%;
+  --success-foreground: 0 0% 100%;
+  --orange: 24.6 95% 53.1%;
+  --warning: 47.9 95.8% 53.1%;
+  --warning-foreground: 26 83.3% 14.1%;
+  --yellow: 47.9 95.8% 53.1%;
+  --blue: 221.2 83.2% 53.3%;
+  --blue-foreground: 210 40% 98%;
+  /*
+                      --error: 354 70 % 54 %;
+                      */
+  --error: 353 82% 96%;
+  --error-foreground: 354 69% 54%;
+
+  --link-color: 219 100% 40%;
+  --background: 0 9.1% 97.8%;
+  --foreground: 180 1.6% 12.4%;
+  --foreground-subtle: 200 1.2% 51.2%;
+  --card: 0 9.1% 97.8%;
+  --card-foreground: 180 1.6% 12.4%;
+  --popover: 220 13% 95.5%;
+  --popover-foreground: 180 1.6% 12.4%;
+  --primary: 221 91.2% 60%;
+  --primary-foreground: 220 20% 97.1%;
+  --secondary: 216 50% 96.1%;
+  --secondary-foreground: 220.5 62.6% 24.1%;
+  --muted: 220 13% 95.5%;
+  --muted-foreground: 210 1% 39.2%;
+  --accent: 219.5 100% 92.5%;
+  --accent-foreground: 220.5 62.6% 24.1%;
+  --destructive: 359.5 75.5% 71.2%;
+  --destructive-foreground: 0 0% 0%;
+  --border: 220 3% 80.2%;
+  --input: 220 3% 80.2%;
+  --ring: 220.8 75.1% 54.3%;
+
+  /* Accent Colors */
+  --accent-1: 220 20% 97.1%;
+  --accent-2: 216 50% 96.1%;
+  --accent-3: 219 66.7% 94.1%;
+  --accent-4: 219.5 100% 92.5%;
+  --accent-5: 217.8 100% 89.4%;
+  --accent-6: 219.2 100% 85.9%;
+  --accent-7: 219.1 88.1% 80.2%;
+  --accent-8: 220 84.2% 72.7%;
+  --accent-9: 221 91.2% 60%;
+  --accent-10: 220.8 75.1% 54.3%;
+  --accent-11: 221 71.3% 52.2%;
+  --accent-12: 220.5 62.6% 24.1%;
+  --accent-contrast: 0 0% 100%;
+  /* Gray Colors */
+  --gray-1: 200 17.6% 96.7%;
+  --gray-2: 220 13% 95.5%;
+  --gray-3: 200 7.3% 92%;
+  --gray-4: 220 5.5% 89.2%;
+  --gray-5: 210 5.9% 86.7%;
+  --gray-6: 210 2.4% 83.9%;
+  --gray-7: 220 3% 80.2%;
+  --gray-8: 200 2.2% 72.7%;
+  --gray-9: 200 1.3% 55.1%;
+  --gray-10: 200 1.2% 51.2%;
+  --gray-11: 210 1% 39.2%;
+  --gray-12: 180 1.6% 12.4%;
+  --gray-contrast: 180 1.6% 12.4%;
+}
