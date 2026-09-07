@@ -1,0 +1,32 @@
+.tabs {
+  display: flex;
+  gap: 3px;
+  flex-wrap: wrap;
+  button {
+    border: 0;
+    border-radius: 6px;
+    min-height: 40px;
+    padding: 9px 16px;
+    background: transparent;
+    color: var(--tab-muted, var(--site-muted));
+    font-size: 12px;
+    line-height: 1.3;
+  }
+  button:hover {
+    color: var(--tab-ink, var(--site-ink));
+    background: var(--tab-hover, hsl(var(--gray-3)));
+  }
+  button[aria-selected="true"] {
+    color: var(--tab-ink, var(--site-ink));
+    background: var(--tab-selected, var(--site-white));
+    box-shadow: 0 1px 3px #00000009;
+  }
+}
+@media (max-width: 480px) {
+  .tabs {
+    gap: 0;
+    button {
+      padding-inline: 12px;
+    }
+  }
+}

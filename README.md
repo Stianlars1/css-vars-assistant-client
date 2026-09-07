@@ -1,91 +1,41 @@
-<img width="150" height="150" src="https://raw.githubusercontent.com/Stianlars1/css-vars-assistant/refs/heads/main/src/main/resources/META-INF/pluginIcon.svg" /> <br/>
+# CSS Variables Assistant website
 
-# CSS Variables Assistant 🔧🎨
-![Downloads](https://img.shields.io/jetbrains/plugin/d/27392) ![Rating](https://img.shields.io/jetbrains/plugin/r/stars/27392) ![Version](https://img.shields.io/jetbrains/plugin/v/27392)
+The public website for [CSS Variables Assistant](https://www.css-variables-assistant.dev/), a free JetBrains plugin for stylesheet variable completion, documentation, themes and sources.
 
+## Local development
 
-If you find CSS Variables Assistant helpful, please consider rating it on [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/27392-css-variables-assistant/reviews) ★★★★★ 🙏.
-
-**Compatible IDEs:** WebStorm / IntelliJ Ultimate 2024.1+ (and 2025.1+)  
-**Author:** Stian Larsen  
-**Repo:** [github.com/Stianlars1/css-vars-assistant](https://github.com/Stianlars1/css-vars-assistant)
-
-**Links:**
-- [Official Plugin Website](https://www.css-variables-assistant.dev)
-- [Official JetBrains Marketplace page](https://plugins.jetbrains.com/plugin/27392-css-variables-assistant)
-- [Stian Larsen](https://stianlarsen.com)
-
-
-Supercharge your CSS custom properties and preprocessor variables in JetBrains IDEs with advanced autocomplete, documentation, and debugging tools.
----
-
-## Features
-
-- **Instant variable lookup:** Blazing-fast completions and documentation for `CSS`, `SCSS`, `SASS` and `LESS` variables.
-- **Smart autocomplete:** Context-aware suggestions for `var(--…)`, `@less`, and `$scss` with value/context-based sorting.
-- **Rich documentation popups:**
-    - **Customizable Columns:** Choose what you see (Context, Value, Source, etc.).
-    - **Resolution Chain:** A tooltip shows the full resolution path of a variable.
-    - Value tables (with px equivalents for rem/em/%/vh/vw/pt)
-    - Context labels (Default, Dark, min-width, etc.)
-    - Color swatches and contrast info
-    - Dynamic columns: *px Eq.*, *Hex*, *WCAG* appear only when relevant
-    - **CSS cascade compliance:** Shows the actual winning value first, following proper CSS cascade rules
-    - **Legend for derived variables:** Explains the ↗ symbol for variables resolved through imports
-- **JSDoc-style comments:** Auto-parsing and display of `@name`, `@description`, and `@example`.
-- **Advanced import resolution:** Follows and indexes imports across `CSS`, `SCSS`, `SASS` & `LESS`.
-- **Debugging tools:** Trace variable origins and import chains visually.
-- **Configurable sorting:** Completion list sorted by value _(ascending/descending)_.
-- **Works everywhere:** `CSS`, `SCSS`, `SASS`, `LESS`.
-
----
-
-## Configuration
-
-Open **Settings → Tools → CSS Variables Assistant**
-
-| Option | Effect                                                                        |
-|--------|-------------------------------------------------------------------------------|
-| **Show context values** | Display dark/light & media-query variants                                     |
-| **Allow IDE built-in completions** | Fall back to IntelliJ suggestions for misses                                  |
-| **Indexing scope** | *Project only* • *Project + imports* (experimental) • *Full global* (default) |
-| **Enable / disable docs table columns** | Customize your table view                                  |
-| **Max @import depth** | 1 – 20 (default 20)                                                           |
-| **Completion sorting** | Ascending or descending value order                                           |
-| **🔄 Re-index Now** | Flush caches and rebuild the variable index immediately                       |
-
----
-
-## 🐞 Debugging import chains
-
-Need to verify *exactly* which files your `@import`s resolve to?
-1. **Right-click** any *.css / .scss / .sass / .less* file in the Project view <br>
-   *or* inside the editor.
-2. Select **"Debug CSS Import Resolution"**.
-3. A dialog shows:
-    * full import tree (`@import` depth-limited)
-    * circular-reference warnings
-    * variable counts per file  
-      A copy is also written to the IDE Log for later inspection.
-
-> 💡 Tip You can keep the dialog open while you edit – rerun the action to refresh.
-
-## Troubleshooting
-
-| Symptom | Resolution |
-|---------|------------|
-| Variable shows `@lessVar` instead of real colour | Click **Re-index Now**, wait for *Updating indexes…* to finish. |
-| Completions missing after changing scope | Re-index or restart IDE (button normally suffices). |
-| Slow indexing | Use *Project + imports*, lower max-depth, exclude large folders. |
-| Need to see where a variable came from | Right-click file → **Debug CSS Import Resolution**. |
-
----
-
-## Building & Testing Locally
-
-```bash
-git clone https://github.com/stianlars1/css-vars-assistant.git
-cd css-vars-assistant
-./gradlew clean buildPlugin       # produces ZIP under build/distributions
-./gradlew runIde                  # start sandbox IDE
+```sh
+npm ci
+npm run dev -- --hostname 127.0.0.1 --port 3107
 ```
+
+Open http://127.0.0.1:3107. The app uses Next.js 15, React 19, TypeScript, SCSS Modules and locally bundled Geist fonts.
+
+## Checks
+
+```sh
+npm run lint
+npm run build
+```
+
+The build includes TypeScript checks. Browser verification covers the homepage, FAQ, changelog and not-found route, including navigation, token selections, language tabs, native FAQ disclosures, keyboard focus and reduced motion. Target viewports: 1440x900, 1280x720 and 390x844.
+
+## Structure
+
+- `src/components/site/`: shared website shell, sections and small interactive demonstrations.
+- `src/content/`: example token data, FAQ content and curated recent release summaries.
+- `src/styles/`: existing design primitives and website-specific aliases.
+- `src/app/`: routes, metadata and generated social preview.
+- `docs/design-locks/2026-09-07-website-redesign.md`: design direction, delegated decisions, references and verification record.
+
+## Keeping product content accurate
+
+`src/lib/config.ts` holds the current plugin version. Update it together with `src/content/releases.ts` when a public release is verified. Check product claims against the plugin's current README and behavior contract; the contract takes precedence over historical release highlights.
+
+`src/lib/marketplace.ts` fetches public download and rating data from JetBrains in parallel, with a 30-minute revalidation interval and a five-second timeout. Rating count is the sum of the actual votes; the displayed score is JetBrains' `meanRating`, rounded to one decimal. Unavailable or invalid metrics are omitted independently. `MarketplaceStats` renders the hero counters on the server. `MarketplaceCard` embeds the official lazy-loaded iframe, with a normal, keyboard-accessible Marketplace link around it to avoid the iframe's redirect limitation. No API key or widget wrapper script is needed.
+
+Illustrations use example data and are labeled accordingly. They demonstrate variable lookup and documentation, not a Sass/LESS compiler or browser cascade simulation.
+
+The Imports & sources demo lives in `src/components/site/resolution/`. Its 13 scenarios and source files are stored in `src/content/resolution-examples.json`, exported from the verified 1.9.4 documentation output and the local showcase fixtures. `NativeTooltip` and `ResolutionChain` are also shared with the existing documentation demos. Tooltips support hover, focus, tap-to-pin and Escape; the source trace runs only on request and respects reduced motion. The companion source explorer is part of the website explanation, while the documentation and tooltip reproduce the native UI. See `docs/design-locks/2026-09-07-imports-and-values.md` for reference evidence and QA.
+
+The existing Google Analytics integration reads `NEXT_PUBLIC_GA_MEASUREMENT_ID`; Vercel Analytics is retained. Public deployment is separate from local development.

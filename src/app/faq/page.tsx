@@ -1,113 +1,102 @@
-import { Metadata, ResolvingMetadata } from "next";
-import styles from "./page.module.scss";
-import { SectionHeader } from "@/components/sections/SectionHeader/SectionHeader";
-import { Heading3, Paragraph, Text } from "@/components/typography/Typography";
+import { siteMetadata } from "@/lib/siteMetadata";
 import Link from "next/link";
-import { GITHUB_DOCS_URL, GITHUB_ISSUES_URL, ROUTE_ROOT } from "@/lib/routes";
-import { ChevronLeft } from "lucide-react";
-import { StructuredDataFAQ } from "@/components/seo/StructuredData/StructuredDataFAQ";
-import { APP_NAME, HOST } from "@/lib/config";
+import { ArrowLeft, ArrowUpRight, Plus } from "lucide-react";
+import { faqs } from "@/content/faqs";
+import {
+  GITHUB_DOCS_URL,
+  GITHUB_ISSUES_URL,
+  JETBRAINS_MARKETPLACE_URL,
+} from "@/lib/routes";
+import { HOST } from "@/lib/config";
+import styles from "@/components/site/ContentPage.module.scss";
 
-export async function generateMetadata(
-  props: unknown,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const parentMeta = await parent;
-
-  return {
-    title: "FAQ - Frequently Asked Questions",
-    description:
-      "Common questions and solutions for CSS Variables Assistant plugin. Troubleshooting, configuration, and usage tips for JetBrains IDEs.",
-    alternates: { canonical: "/faq" },
-    openGraph: {
-      ...(parentMeta.openGraph as any),
-      title: `FAQ - ${APP_NAME}`,
-      description:
-        "Get answers to common questions about CSS Variables Assistant plugin installation, configuration, and troubleshooting.",
-      url: `${HOST}/faq`,
-    },
-  };
-}
-
-const faqs = [
-  {
-    question: "Why don't my CSS variables show up in autocomplete?",
-    answer:
-      "This usually happens when variables are newly added and the index hasn't updated. Go to Settings → Tools → CSS Variables Assistant and click the 'Re-index Variables' button. Wait for the indexing to complete before testing again.",
-  },
-  {
-    question: "Why aren't imported variables (@import) being suggested?",
-    answer:
-      "Check your indexing scope setting. Go to Settings → Tools → CSS Variables Assistant and change the scope to 'PROJECT + IMPORTS' or 'GLOBAL'. Apply the changes, then re-index variables from the same interface.",
-  },
-  {
-    question: "How can I debug which variables are being indexed?",
-    answer:
-      "Right-click any CSS file and select 'Debug CSS Import Resolution' from the context menu. This shows a full analysis report of recursively resolved imports and discovered variables with their file paths.",
-  },
-  {
-    question: "The plugin isn't working at all. What should I do?",
-    answer:
-      "Try this troubleshooting sequence: 1) Restart your IDE, 2) Go to Settings → Tools → CSS Variables Assistant and click 'Re-index Variables', 3) If still not working, try File → Invalidate Caches and Restart, then re-index variables again.",
-  },
-  {
-    question: "PROJECT + IMPORTS scope doesn't resolve correct values. Why?",
-    answer:
-      "This is an experimental feature currently being improved. For now, try changing the indexing scope to 'GLOBAL' in Settings → Tools → CSS Variables Assistant for more reliable variable resolution.",
-  },
-  {
-    question: "Which JetBrains IDEs are supported?",
-    answer:
-      "CSS Variables Assistant works with all JetBrains IDEs including IntelliJ IDEA, WebStorm, PyCharm, PhpStorm, RubyMine, GoLand, and CLion. Requires version 2025.1 or newer.",
-  },
-  {
-    question: "What file types are supported?",
-    answer:
-      "The plugin works in CSS, SCSS, SASS, LESS, JavaScript, TypeScript, JSX, and TSX files. It provides autocomplete inside var(--...) functions and preprocessor variable references.",
-  },
-  {
-    question: "How do I configure the variable sorting order?",
-    answer:
-      "Go to Settings → Tools → CSS Variables Assistant and look for the 'Completion sorting' option. You can choose between ascending or descending value-based sorting for logical variable organization.",
-  },
-];
+export const metadata = siteMetadata(
+  "FAQ & support",
+  "Installation, supported IDEs, stylesheet languages, themes, imports and settings for CSS Variables Assistant.",
+  "/faq",
+);
+const categories = [...new Set(faqs.map((faq) => faq.category))];
 
 export default function FAQPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    url: `${HOST}/faq`,
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  };
   return (
-    <>
-      <StructuredDataFAQ faqs={faqs} />
-
-      <Link href={ROUTE_ROOT} className={styles.backLink}>
-        <ChevronLeft size={18} /> Back to home
+    <div className={`site-container ${styles.page}`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+      <Link href="/" className={styles.back}>
+        <ArrowLeft size={14} />
+        Back to the plugin
       </Link>
-
-      <div className={styles.page}>
-        <SectionHeader
-          className={styles.header}
-          gradient="gradients.spectrum.vibrantSpectrum"
-          subtitle="Common questions and solutions for CSS Variables Assistant"
-        >
-          Frequently Asked Questions
-        </SectionHeader>
-
-        <div className={styles.faqList}>
-          {faqs.map((faq, index) => (
-            <article key={index} className={styles.faqItem}>
-              <Heading3 className={styles.question}>{faq.question}</Heading3>
-              <Paragraph className={styles.answer}>{faq.answer}</Paragraph>
-            </article>
+      <div className={styles.pageHeading}>
+        <span className="eyebrow">A little clarity</span>
+        <h1>
+          Good questions.
+          <br />
+          <span>Useful answers.</span>
+        </h1>
+        <p>
+          Getting started, finding your tokens, and making the plugin work for
+          you.
+        </p>
+      </div>
+      <div className={styles.contentLayout}>
+        <aside className={styles.sidebar}>
+          <nav aria-label="FAQ categories">
+            {categories.map((category, i) => (
+              <a key={category} href={`#category-${i}`}>
+                {category}
+              </a>
+            ))}
+          </nav>
+          <a href={JETBRAINS_MARKETPLACE_URL}>
+            Check IDE compatibility <ArrowUpRight size={13} />
+          </a>
+        </aside>
+        <div>
+          {categories.map((category, index) => (
+            <section
+              key={category}
+              id={`category-${index}`}
+              className={styles.faqGroup}
+              aria-labelledby={`faq-heading-${index}`}
+            >
+              <h2 id={`faq-heading-${index}`}>{category}</h2>
+              {faqs
+                .filter((faq) => faq.category === category)
+                .map((faq) => (
+                  <details key={faq.question} className={styles.faq}>
+                    <summary>
+                      {faq.question}
+                      <Plus size={18} aria-hidden="true" />
+                    </summary>
+                    <p>{faq.answer}</p>
+                  </details>
+                ))}
+            </section>
           ))}
-        </div>
-
-        <div className={styles.helpSection}>
-          <Heading3>Need More Help?</Heading3>
-          <Text>
-            If you can&apos;t find the answer you&apos;re looking for, check our{" "}
-            <Link href={GITHUB_DOCS_URL}>documentation</Link> or{" "}
-            <Link href={GITHUB_ISSUES_URL}>report an issue</Link> on GitHub.
-          </Text>
+          <div className={styles.help}>
+            <h2>Still have a question?</h2>
+            <p>
+              Take a look at the <a href={GITHUB_DOCS_URL}>documentation</a>, or{" "}
+              <a href={GITHUB_ISSUES_URL}>open an issue on GitHub</a> with a
+              small example. It helps make the plugin better for everyone.
+            </p>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -1,79 +1,84 @@
-// app/changelog/page.tsx  (server component)
-import fetchPlugin from "@/app/actions/fetchJetBrainsPlugin";
-import styles from "./page.module.scss";
-import { ChangeNotes } from "@/components/changeNotes/changeNotes";
-import StructuredDataChangelog from "@/components/seo/StructuredData/StructuredDataChangelog";
-import { Heading1, Paragraph } from "@/components/typography/Typography";
-import { ChevronLeft } from "lucide-react";
+import { siteMetadata } from "@/lib/siteMetadata";
 import Link from "next/link";
-import { ROUTE_ROOT } from "@/lib/routes";
-import { Metadata, ResolvingMetadata } from "next";
-import { APP_NAME } from "@/lib/config";
-import { OG_CHANGELOG_URL } from "@/lib/constants";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { releases } from "@/content/releases";
+import { GITHUB_REPO_URL } from "@/lib/routes";
+import styles from "@/components/site/ContentPage.module.scss";
 
-export const revalidate = 3600;
+export const metadata = siteMetadata(
+  "Changelog",
+  "What's new in CSS Variables Assistant. Release notes for completion, documentation, themes and imported variables.",
+  "/changelog",
+);
+const formatDate = (date: string) =>
+  new Intl.DateTimeFormat("en", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(date));
 
-export async function generateMetadata(
-  props: any,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const parentMeta = await parent;
-
-  return {
-    title: "Changelog",
-    description: "Latest updates and version history for our product",
-    alternates: {
-      canonical: "/changelog",
-    },
-    openGraph: {
-      ...(parentMeta.openGraph as any), // Inherit parent OpenGraph settings
-      images: [
-        {
-          url: OG_CHANGELOG_URL,
-          width: 1200,
-          height: 630,
-          alt: `${APP_NAME} - Product Changelog`,
-          type: "image/webp",
-        },
-      ],
-      title: `Product Changelog - ${APP_NAME}`,
-      description: "Stay updated with our latest features and improvements",
-    },
-  };
-}
-
-export default async function ChangelogPage() {
-  const changelogs = await fetchPlugin();
-
+export default function ChangelogPage() {
   return (
-    <>
-      {/* ⭐ SEO structured-data */}
-      <StructuredDataChangelog versions={changelogs} />
-
-      <Link href={ROUTE_ROOT} className={styles.backLink}>
-        <ChevronLeft size={18} className={styles.chevron} /> Back to home
+    <div className={`site-container ${styles.page}`}>
+      <Link href="/" className={styles.back}>
+        <ArrowLeft size={14} />
+        Back to the plugin
       </Link>
-      <div className={styles.page}>
-        <div className={styles.header}>
-          <Heading1 className={styles.title}>Changelog</Heading1>
-        </div>
-
-        {changelogs.length === 0 ? (
-          <Paragraph>No changelogs available at the moment.</Paragraph>
-        ) : (
-          <section className={styles.list}>
-            {changelogs.map((log) => (
-              <article
-                id={`v${log.version}`}
-                key={log.version}
-                className={styles.item}
-              >
-                <ChangeNotes html={log.changeNotesHtml} />
-              </article>
-            ))}
-          </section>
-        )}
+      <div className={styles.pageHeading}>
+        <span className="eyebrow">Always getting a little better</span>
+        <h1>
+          Small details.
+          <br />
+          <span>Better days.</span>
+        </h1>
+        <p>The latest updates to CSS Variables Assistant.</p>
       </div>
-    </>
+      <div className={styles.releases}>
+        {releases.map((release, index) => (
+          <article
+            id={`v${release.version}`}
+            key={release.version}
+            className={styles.release}
+          >
+            <div className={styles.releaseMeta}>
+              <span className={styles.version}>
+                v{release.version}
+                {index === 0 && <span>Latest</span>}
+              </span>
+              <time dateTime={release.date}>{formatDate(release.date)}</time>
+            </div>
+            <div className={styles.releaseBody}>
+              <span className="eyebrow">{release.label}</span>
+              <h2>{release.title}</h2>
+              <p>{release.description}</p>
+              <ul>
+                {release.changes.map((change) => (
+                  <li key={change}>{change}</li>
+                ))}
+              </ul>
+              {release.note && (
+                <p className={styles.releaseNote}>{release.note}</p>
+              )}
+              <a
+                href={`${GITHUB_REPO_URL}/releases/tag/v${release.version}`}
+                className="text-link"
+              >
+                Full release notes <ArrowUpRight size={14} />
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className={styles.history}>
+        <span>Looking for an earlier update?</span>
+        <a
+          href={`${GITHUB_REPO_URL}/blob/main/CHANGELOG.MD`}
+          className="text-link"
+        >
+          Read the complete changelog <ArrowUpRight size={15} />
+        </a>
+      </div>
+    </div>
   );
 }
