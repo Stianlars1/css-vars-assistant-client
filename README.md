@@ -14,9 +14,12 @@ Open http://127.0.0.1:3107. The app uses Next.js 15, React 19, TypeScript, SCSS 
 ## Checks
 
 ```sh
+npm test
 npm run lint
 npm run build
 ```
+
+Component regression tests cover reopening autocomplete after accepting a non-first suggestion, including keyboard confirmation, empty results and the active accessibility selection.
 
 The build includes TypeScript checks. Browser verification covers the homepage, FAQ, changelog and not-found route, including navigation, token selections, language tabs, native FAQ disclosures, keyboard focus and reduced motion. Target viewports: 1440x900, 1280x720 and 390x844.
 
