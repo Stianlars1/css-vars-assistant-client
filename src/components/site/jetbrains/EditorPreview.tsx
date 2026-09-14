@@ -30,9 +30,11 @@ export default function EditorPreview({
     item.name.toLowerCase().startsWith(query.toLowerCase()),
   );
   const accepted = query === token.name;
+  const selectedItem = items[selectedIndex];
 
   function accept(next: Token, suffix = "") {
     setQuery(next.name + suffix);
+    setSelectedIndex(0);
     onTokenChange(next);
     setVisible(false);
   }
@@ -111,18 +113,19 @@ export default function EditorPreview({
                   (event.ctrlKey && event.key === " ")
                 ) {
                   event.preventDefault();
+                  setSelectedIndex(0);
                   setVisible(true);
                   return;
                 }
                 if (mode !== "completion") return;
                 if (
                   visible &&
-                  items.length &&
+                  selectedItem &&
                   event.ctrlKey &&
                   event.key === "."
                 ) {
                   event.preventDefault();
-                  accept(items[selectedIndex], ".");
+                  accept(selectedItem, ".");
                   return;
                 }
                 if (
@@ -141,11 +144,11 @@ export default function EditorPreview({
                 }
                 if (
                   visible &&
-                  items.length &&
+                  selectedItem &&
                   (event.key === "Enter" || event.key === "Tab")
                 ) {
                   event.preventDefault();
-                  accept(items[selectedIndex]);
+                  accept(selectedItem);
                 }
               }}
             />
