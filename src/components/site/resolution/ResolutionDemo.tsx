@@ -174,21 +174,7 @@ export default function ResolutionDemo() {
   const example = resolutionExamples.find((item) => item.id === exampleId)!;
   const options = resolutionExamples.filter((item) => item.group === group);
   return (
-    <div className={styles.demo} id="imports-sources">
-      <div className={styles.intro}>
-        <div>
-          <span className="eyebrow">Imports, sources & calculations</span>
-          <h3>
-            Follow the value
-            <br />
-            <span>back home.</span>
-          </h3>
-        </div>
-        <p>
-          Behind every value is a story. Follow imported tokens to their
-          declarations, and see the steps that turn a reference into a result.
-        </p>
-      </div>
+    <div className={styles.demo}>
       <div className={styles.controls}>
         <SelectionTabs
           id="resolution"

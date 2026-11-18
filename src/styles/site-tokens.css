@@ -1,27 +1,130 @@
+/*
+ * The six live spectrum stops are registered as colors so they can
+ * transition. Picking a token in the hero editor rewrites them on <html>
+ * and every gradient on the page follows.
+ */
+@property --s1 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f8772b;
+}
+@property --s2 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e42c95;
+}
+@property --s3 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #6e28f5;
+}
+@property --s4 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #3b98fd;
+}
+@property --s5 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #2dc77f;
+}
+@property --s6 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #93ca42;
+}
+
 :root {
-  --site-paper: hsl(var(--background));
-  --site-ink: hsl(var(--foreground));
-  --site-muted: hsl(var(--muted-foreground));
-  --site-line: hsl(var(--gray-6) / 0.7);
-  --site-blue: hsl(var(--accent-11));
-  --site-tint: hsl(var(--accent-3));
-  --site-white: hsl(var(--white));
+  /* Spectrum: sampled from the logo ring. */
+  --spectrum-orange: #f8772b;
+  --spectrum-pink: #e42c95;
+  --spectrum-violet: #6e28f5;
+  --spectrum-blue: #3b98fd;
+  --spectrum-green: #2dc77f;
+  --spectrum-lime: #93ca42;
+
+  --accent: var(--s3);
+  --accent-ink: color-mix(in oklab, var(--accent) 58%, white);
+  --spectrum: linear-gradient(
+    45deg,
+    var(--s1) 0%,
+    var(--s2) 20%,
+    var(--s3) 40%,
+    var(--s4) 60%,
+    var(--s5) 80%,
+    var(--s6) 100%
+  );
+  --spectrum-line: linear-gradient(
+    90deg,
+    var(--s1),
+    var(--s2),
+    var(--s3),
+    var(--s4),
+    var(--s5),
+    var(--s6)
+  );
+  /* Section headings walk the spectrum from top to bottom of the page. */
+  --slice-1: linear-gradient(100deg, var(--s2), var(--s3));
+  --slice-2: linear-gradient(100deg, var(--s3), var(--s4));
+  --slice-3: linear-gradient(100deg, var(--s4), var(--s5));
+  --slice-4: linear-gradient(100deg, var(--s5), var(--s6));
+  --slice-marketplace: linear-gradient(45deg, #ff8b1a 0%, #fb0040 50%, #e703f6);
+
+  /* Canvas */
+  --canvas: #050505;
+  --surface: #0c0c0f;
+  --raised: #14141a;
+  --line: #24242c;
+  --line-strong: #34343f;
+  --ink: #ededf0;
+  --ink-soft: #a5a5b0;
+  --ink-faint: #74747f;
+
+  /* Names the interactive plugin demos already read. */
+  --site-paper: var(--canvas);
+  --site-ink: var(--ink);
+  --site-muted: var(--ink-soft);
+  --site-line: var(--line);
+  --site-blue: var(--accent-ink);
+  --site-tint: var(--raised);
+  --site-white: var(--raised);
+  --tab-hover: var(--raised);
+  --tab-selected: var(--line);
+
   --site-width: var(--width-xl);
-  --site-gutter: clamp(20px, 5vw, 80px);
-  --site-section: clamp(72px, 8vw, 120px);
-  --site-display: clamp(3.25rem, 6.6vw, 6rem);
-  --site-heading: clamp(2.5rem, 4vw, 3.625rem);
-  --editor-ground: #1b1c20;
+  --site-gutter: clamp(20px, 5vw, 64px);
+  --site-section: clamp(96px, 11vw, 168px);
+  --site-display: clamp(3.5rem, 7.6vw, 6.75rem);
+  --site-heading: clamp(2.5rem, 5vw, 4.25rem);
+  --radius-card: 20px;
+
+  --editor-ground: #1e1f22;
   --editor-surface: #24252a;
   --editor-raised: #2b2d33;
-  --editor-line: #3d4048;
+  --editor-line: #393b40;
   --editor-text: #e8e8ed;
   --editor-muted: #a1a4af;
   --editor-blue: #a6c5fa;
   --editor-purple: #cab6f9;
   --editor-green: #a7ceb2;
   --editor-peach: #e9b7a0;
+
+  --font-display: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono:
+    var(--font-jetbrains-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
   --motion-fast: 160ms;
   --motion-panel: 220ms;
+  --motion-spectrum: 700ms;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  transition:
+    --s1 var(--motion-spectrum) var(--ease-out),
+    --s2 var(--motion-spectrum) var(--ease-out),
+    --s3 var(--motion-spectrum) var(--ease-out),
+    --s4 var(--motion-spectrum) var(--ease-out),
+    --s5 var(--motion-spectrum) var(--ease-out),
+    --s6 var(--motion-spectrum) var(--ease-out);
 }

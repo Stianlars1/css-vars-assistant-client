@@ -3,7 +3,7 @@ import "./globals.css";
 import "@/components/site/ContentPage.module.scss";
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { geistMono, geistSans } from "@/fonts/geist/geist";
+import { geistSans } from "@/fonts/geist/geist";
 import { inter } from "@/fonts/inter/inter";
 import { jetbrainsMono } from "@/fonts/jetbrains-mono/jetbrains-mono";
 import { APP_NAME, HOST } from "@/lib/config";
@@ -13,13 +13,13 @@ import SiteHeader from "@/components/site/SiteHeader";
 import SiteFooter from "@/components/site/SiteFooter";
 
 const description =
-  "Find stylesheet variables, preview values, and see themes and sources in your JetBrains IDE. CSS, SCSS, Sass and LESS. Free and open source.";
+  "Autocomplete, quick documentation and color swatches for CSS custom properties in JetBrains IDEs. CSS, SCSS, Sass and LESS. Free and open source.";
 
 export const metadata: Metadata = {
   ...siteMetadata(APP_NAME, description, "/"),
   metadataBase: new URL(HOST),
   title: {
-    default: `${APP_NAME} - Know your tokens. Keep your flow.`,
+    default: `${APP_NAME} - CSS variable autocomplete for JetBrains IDEs`,
     template: `%s | ${APP_NAME}`,
   },
   applicationName: APP_NAME,
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#faf9f9",
-  colorScheme: "light",
+  themeColor: "#050505",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${geistSans.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body>
         <a href="#main-content" className="skip-link">

@@ -10,8 +10,8 @@ import styles from "./SiteChrome.module.scss";
 
 const links = [
   { href: "/#features", label: "Features" },
-  { href: "/faq", label: "FAQ" },
   { href: "/changelog", label: "Changelog" },
+  { href: "/faq", label: "FAQ" },
 ];
 
 export default function SiteHeader() {
@@ -36,10 +36,8 @@ export default function SiteHeader() {
           onClick={() => setOpen(false)}
           aria-label="CSS Variables Assistant home"
         >
-          <Image src="/logo.svg" width={34} height={34} alt="" priority />
-          <span>
-            CSS Variables<span className={styles.brandSecond}> Assistant</span>
-          </span>
+          <Image src="/logo.svg" width={36} height={36} alt="" priority />
+          <code>CSS Variables Assistant</code>
         </Link>
         <nav className={styles.desktopNav} aria-label="Main navigation">
           {links.map((link) => (
@@ -80,8 +78,9 @@ export default function SiteHeader() {
             {link.label}
           </Link>
         ))}
-        <InstallLink compact />
+        <InstallLink />
       </nav>
+      <span className={styles.progress} aria-hidden="true" />
     </header>
   );
 }

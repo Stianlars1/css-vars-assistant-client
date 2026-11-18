@@ -1,0 +1,188 @@
+.section {
+  padding-top: var(--site-section);
+}
+.resolutionHeading {
+  --paint: var(--slice-2);
+}
+.previewHeading {
+  --paint: var(--slice-3);
+}
+.installHeading {
+  --paint: var(--slice-marketplace);
+}
+.note {
+  margin-top: 28px;
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+}
+
+/* Screenshots */
+.previewTop {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(32px, 4vw, 48px);
+  > header {
+    margin-bottom: 0;
+  }
+}
+.previewControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  span {
+    margin-right: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+  }
+  button {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--ink);
+    &:hover:not(:disabled) {
+      border-color: var(--accent-ink);
+      background: var(--raised);
+    }
+    &:disabled {
+      opacity: 0.35;
+    }
+  }
+}
+.track {
+  --edge: max(var(--site-gutter), calc((100vw - var(--site-width)) / 2));
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 4px var(--edge) 12px;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--edge);
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &:focus-visible {
+    outline-offset: -2px;
+  }
+  li {
+    flex: 0 0 min(820px, 86vw);
+    scroll-snap-align: start;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-radius: 16px;
+    background: var(--editor-ground);
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Installation */
+.install {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px 72px;
+  align-items: start;
+}
+.steps {
+  list-style: none;
+  padding: 0;
+  counter-reset: step;
+  li {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    padding-block: 26px;
+    border-top: 1px solid var(--line);
+    &:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+    &::before {
+      content: counter(step);
+      grid-row: span 2;
+      font-family: var(--font-mono);
+      font-size: 1.375rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #ff5a2e;
+    }
+  }
+  h3 {
+    font-size: 1.1875rem;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    code {
+      font-size: 0.9em;
+    }
+  }
+  p {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 0.9688rem;
+    color: var(--ink-soft);
+  }
+  kbd {
+    padding: 2px 8px;
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    background: var(--raised);
+    font-size: 0.8125rem;
+    color: var(--ink);
+  }
+}
+.installAside {
+  display: grid;
+  gap: 28px;
+  justify-items: start;
+}
+.installActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 28px;
+}
+.faqLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  &:hover {
+    color: var(--ink);
+  }
+}
+
+@media (max-width: 900px) {
+  .install {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 760px) {
+  .previewTop {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .track {
+    gap: 12px;
+  }
+  .steps li {
+    grid-template-columns: 40px minmax(0, 1fr);
+    padding-block: 20px;
+  }
+}

@@ -1,0 +1,268 @@
+.features {
+  padding-top: var(--site-section);
+}
+.heading {
+  --paint: var(--slice-1);
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Each feature keeps the hue it had in v1. */
+.card {
+  --hue: var(--spectrum-pink);
+  --tab-ink: var(--ink);
+  --tab-muted: var(--ink-soft);
+  --tab-hover: color-mix(in oklab, var(--hue) 10%, var(--raised));
+  --tab-selected: color-mix(in oklab, var(--hue) 24%, var(--raised));
+  grid-column: span 5;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 0;
+  padding: 32px;
+  border: 1px solid color-mix(in oklab, var(--hue) 24%, var(--line));
+  border-radius: var(--radius-card);
+  background:
+    radial-gradient(
+      110% 70% at 0% 0%,
+      color-mix(in oklab, var(--hue) 15%, transparent),
+      transparent 62%
+    ),
+    var(--surface);
+  &[data-size="wide"] {
+    grid-column: span 7;
+  }
+  &[data-hue="blue"] {
+    --hue: var(--spectrum-blue);
+  }
+  &[data-hue="orange"] {
+    --hue: var(--spectrum-orange);
+  }
+  &[data-hue="green"] {
+    --hue: var(--spectrum-green);
+  }
+  > header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    h3 {
+      font-size: 1.375rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    p {
+      max-width: 58ch;
+      margin-top: 10px;
+      font-size: 0.9688rem;
+      color: var(--ink-soft);
+    }
+    code {
+      font-size: 0.875em;
+      color: var(--ink);
+    }
+  }
+}
+.icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: linear-gradient(
+    140deg,
+    var(--hue),
+    color-mix(in oklab, var(--hue) 55%, #000)
+  );
+  color: #fff;
+  box-shadow: 0 10px 24px -10px var(--hue);
+}
+
+.editorFrame,
+.demo {
+  margin-top: auto;
+}
+.editorFrame {
+  /* The editor fills whatever height the neighbouring card leaves it. */
+  flex: 1;
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--editor-line);
+  border-radius: 14px;
+  background: var(--editor-ground);
+  > * {
+    min-width: 0;
+  }
+}
+.demo {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+.docPanel {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid var(--editor-line);
+  border-radius: 14px;
+  background: var(--editor-ground);
+  > code {
+    font-size: 0.9375rem;
+    color: #bcbec4;
+    overflow-wrap: anywhere;
+  }
+}
+
+.sortPopup {
+  --row: 34px;
+  padding: 3px;
+  border: 1px solid #696a6e;
+  border-radius: 8px;
+  background: #2b2d30;
+  box-shadow:
+    0 0 0 1px #111315,
+    0 6px 16px #0005;
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  color: #bcbec4;
+  ul {
+    position: relative;
+    list-style: none;
+    padding: 0;
+  }
+  li {
+    position: absolute;
+    inset: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: var(--row);
+    padding: 0 10px;
+    border-radius: 4px;
+    transition: transform 460ms var(--ease-out);
+    > span:first-child {
+      flex: 0 0 9ch;
+    }
+    > span:last-child {
+      margin-left: auto;
+      color: #868a91;
+      font-variant-numeric: tabular-nums;
+    }
+  }
+  b {
+    font-weight: 400;
+    color: #548af7;
+  }
+  /* The value drawn to scale, so the order is visible at a glance. */
+  i {
+    height: 6px;
+    border-radius: 3px;
+    background: color-mix(in oklab, var(--hue) 85%, #fff);
+  }
+}
+
+.scopePanel {
+  overflow: hidden;
+  border: 1px solid var(--editor-line);
+  border-radius: 14px;
+  background: var(--editor-ground);
+  ul {
+    list-style: none;
+    padding: 8px;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    color: #bcbec4;
+    transition: opacity var(--motion-panel) var(--ease-out);
+    > svg {
+      color: color-mix(in oklab, var(--hue) 75%, #fff);
+    }
+    &[data-indexed="false"] {
+      opacity: 0.42;
+      > svg {
+        color: currentColor;
+      }
+    }
+  }
+  > p {
+    padding: 14px 20px;
+    border-top: 1px solid var(--editor-line);
+    background: #24262a;
+    font-size: 0.8125rem;
+    color: #9da1aa;
+    strong {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: color-mix(in oklab, var(--hue) 70%, #fff);
+    }
+  }
+}
+.scopePath {
+  min-width: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  overflow-wrap: anywhere;
+}
+.scopeNote {
+  display: grid;
+  flex-shrink: 0;
+  margin-left: auto;
+  text-align: right;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  small {
+    font-size: 0.75rem;
+    color: #868a91;
+  }
+}
+
+@media (max-width: 1000px) {
+  .card,
+  .card[data-size="wide"] {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 760px) {
+  .bento {
+    gap: 16px;
+  }
+  .card {
+    gap: 24px;
+    padding: 22px 18px;
+    > header {
+      flex-direction: column;
+      gap: 14px;
+      h3 {
+        font-size: 1.25rem;
+      }
+    }
+  }
+  .docPanel {
+    padding: 14px 12px;
+  }
+  .scopePanel li {
+    flex-wrap: wrap;
+    gap: 2px 10px;
+    padding-inline: 8px;
+  }
+  .scopePath {
+    flex: 1;
+  }
+  .scopeNote {
+    flex-basis: 100%;
+    display: flex;
+    gap: 8px;
+    margin-left: 24px;
+    text-align: left;
+  }
+}

@@ -1,15 +1,13 @@
-import Link from "next/link";
-import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
-import TokenDemo from "@/components/site/TokenDemo";
-import ContextFeatures from "@/components/site/ContextFeatures";
-import LanguageDemo from "@/components/site/LanguageDemo";
+import Hero from "@/components/site/hero/Hero";
+import Features from "@/components/site/features/Features";
+import Resolution from "@/components/site/Resolution";
+import Screenshots from "@/components/site/Screenshots";
 import Installation from "@/components/site/Installation";
-import InstallLink from "@/components/site/InstallLink";
-import MarketplaceStats from "@/components/site/MarketplaceStats";
+import { fetchPluginData } from "@/app/actions/plugin/fetchPluginData";
 import { getMarketplaceStats } from "@/lib/marketplace";
 import { APP_NAME, CURRENT_VERSION, HOST } from "@/lib/config";
 import { GITHUB_REPO_URL, JETBRAINS_MARKETPLACE_URL } from "@/lib/routes";
-import styles from "@/components/site/Home.module.scss";
+import { JETBRAINS_PLUGINS_HREF } from "@/lib/urls";
 
 const software = {
   "@context": "https://schema.org",
@@ -34,7 +32,15 @@ const software = {
 export const revalidate = 1800;
 
 export default async function Home() {
-  const marketplaceStats = await getMarketplaceStats();
+  const [marketplaceStats, pluginInfo] = await Promise.all([
+    getMarketplaceStats(),
+    fetchPluginData(),
+  ]);
+  const screenshots =
+    pluginInfo?.pluginData.screens.map(
+      (screen) => `${JETBRAINS_PLUGINS_HREF}${screen.url}`,
+    ) ?? [];
+
   return (
     <>
       <script
@@ -43,61 +49,11 @@ export default async function Home() {
           __html: JSON.stringify(software).replace(/</g, "\\u003c"),
         }}
       />
-      <section
-        className={`site-container ${styles.hero}`}
-        aria-labelledby="hero-heading"
-      >
-        <Link href="/changelog#v1.9.4" className={styles.release}>
-          <span>
-            <i />v{CURRENT_VERSION}
-          </span>
-          Small update. Clearer insights.
-          <ArrowUpRight size={12} />
-        </Link>
-        <div className={styles.heroIntro}>
-          <h1 id="hero-heading">
-            Know your tokens.
-            <br />
-            <span>Keep your flow.</span>
-          </h1>
-          <div className={styles.heroAside}>
-            <p>
-              Find the right variable. See its value, theme, and source. All
-              without leaving your JetBrains editor.
-            </p>
-            <div>
-              <InstallLink />
-              <a href="#preview" className="text-link">
-                Explore <ArrowDown size={14} />
-              </a>
-            </div>
-            <span className={styles.freeNote}>
-              <Check size={12} />
-              Free & open source. Built for your IDE.
-            </span>
-          </div>
-        </div>
-        <MarketplaceStats stats={marketplaceStats} />
-        <TokenDemo />
-      </section>
-      <div className={`site-container ${styles.compatibility}`}>
-        <div>
-          For JetBrains IDEs with
-          <br />
-          JavaScript and CSS support.
-        </div>
-        <ul aria-label="Supported IDEs">
-          <li>WebStorm</li>
-          <li>IntelliJ IDEA Ultimate</li>
-          <li>PhpStorm</li>
-          <li>PyCharm Professional</li>
-          <li>GoLand</li>
-          <li>RubyMine</li>
-        </ul>
-      </div>
-      <ContextFeatures />
-      <LanguageDemo />
-      <Installation />
+      <Hero stats={marketplaceStats} />
+      <Features />
+      <Resolution />
+      {screenshots.length > 0 && <Screenshots images={screenshots} />}
+      <Installation pluginInfo={pluginInfo} />
     </>
   );
 }

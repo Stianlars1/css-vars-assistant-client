@@ -5,13 +5,8 @@ export default function NotFound() {
   return (
     <div className={`site-container ${styles.page}`}>
       <div className={styles.pageHeading}>
-        <span className="eyebrow">404 - Page not found</span>
-        <h1>
-          This one
-          <br />
-          <span>didn’t resolve.</span>
-        </h1>
-        <p>The page may have moved, or the address may be incorrect.</p>
+        <h1 className="spectrum-text">This one didn’t resolve</h1>
+        <p>404. The page may have moved, or the address may be incorrect.</p>
         <Link href="/" className="text-link">
           <ArrowLeft size={15} />
           Back to CSS Variables Assistant
