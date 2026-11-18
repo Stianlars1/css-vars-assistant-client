@@ -1,11 +1,14 @@
 .header {
-  border-bottom: 1px solid var(--site-line);
-  position: relative;
-  z-index: 20;
-  background: var(--site-paper);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: color-mix(in oklab, var(--canvas) 76%, transparent);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid var(--line);
 }
 .headerInner {
-  height: 88px;
+  height: 68px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -14,129 +17,250 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 11px;
-  font-size: 15px;
-  font-weight: 560;
-  letter-spacing: -0.025em;
+  gap: 12px;
+  min-height: 44px;
+  code {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
 }
+
+/* The page's position in the spectrum: fills as you scroll. */
+.progress {
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 2px;
+  background: var(--spectrum-line);
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
+}
+@supports (animation-timeline: scroll()) {
+  .progress {
+    animation: reveal linear both;
+  }
+  /* Its own rule on purpose: the CSS minifier folds animation-timeline into
+     the animation shorthand when they share one, and browsers reject that. */
+  .header .progress {
+    animation-timeline: scroll(root block);
+  }
+}
+@keyframes reveal {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
 .desktopNav {
   display: flex;
   align-items: center;
-  gap: 32px;
-  font-size: 13px;
+  gap: 28px;
+  font-size: 0.875rem;
   > a:not(.install) {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
-    color: var(--site-muted);
+    color: var(--ink-soft);
     &:hover,
     &[aria-current] {
-      color: var(--site-ink);
+      color: var(--ink);
     }
   }
 }
+
 .install {
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
-  gap: 18px;
+  gap: 10px;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
-  padding: 12px 20px;
-  border-radius: var(--radius);
-  background: var(--site-ink);
-  color: var(--site-white);
-  font-size: 13px;
-  font-weight: 500;
+  min-height: 52px;
+  padding: 0 26px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--canvas);
+  font-size: 0.9375rem;
+  font-weight: 600;
   white-space: nowrap;
-  &:hover {
-    background: var(--site-blue);
+  /* A spectrum halo that shows on hover and focus. */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    z-index: -2;
+    border-radius: inherit;
+    background: var(--spectrum-line);
+    opacity: 0;
+    transition: opacity var(--motion-panel) var(--ease-out);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--ink);
+  }
+  &:hover::before,
+  &:focus-visible::before {
+    opacity: 1;
+  }
+  &:focus-visible {
+    outline-offset: 6px;
+    border-radius: 999px;
+  }
+  &:active {
+    transform: translateY(1px);
   }
 }
-.desktopNav .install {
+.installCompact {
   min-height: 40px;
-  padding: 10px 15px;
-  gap: 14px;
-  font-size: 12px;
+  padding: 0 18px;
+  font-size: 0.8125rem;
 }
+
 .menuButton {
   display: none;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  border: 1px solid var(--site-line);
-  border-radius: var(--radius);
   width: 44px;
   height: 44px;
-  color: var(--site-ink);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  color: var(--ink);
 }
 .mobileNav {
   display: none;
 }
+
 .footer {
-  padding: 68px 0 24px;
-  border-top: 1px solid var(--site-line);
+  margin-top: var(--site-section);
+  padding: 72px 0 28px;
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--surface), var(--canvas) 70%);
 }
 .footerTop {
-  display: flex;
-  gap: 56px;
-  justify-content: space-between;
-  padding-bottom: 72px;
-  p {
-    margin-top: 24px;
-    color: var(--site-muted);
-    font-size: 12px;
-  }
-  nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 64px;
-    align-content: start;
-    font-size: 13px;
-    a {
-      min-height: 40px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      &:hover {
-        color: var(--site-blue);
-      }
-    }
-  }
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
+  gap: 48px 40px;
+  padding-bottom: 64px;
 }
 .footerBrand {
-  font-size: 28px;
-  line-height: 1.25;
-  letter-spacing: -0.04em;
-  span {
-    color: var(--site-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  > a:first-child {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    code {
+      font-size: 1.0625rem;
+      font-weight: 700;
+    }
+  }
+  p {
+    max-width: 34ch;
+    color: var(--ink-soft);
+    font-size: 0.9375rem;
   }
 }
-.footerBottom {
-  border-top: 1px solid var(--site-line);
-  padding-top: 22px;
+.footerMeta {
   display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  font-size: 12px;
-  color: var(--site-muted);
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  > * {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 32px;
+    padding: 0 12px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--ink-soft);
+  }
+  a:hover {
+    color: var(--ink);
+    border-color: var(--accent-ink);
+  }
+}
+.footerColumn {
+  h2 {
+    margin-bottom: 14px;
+    font-family: var(--font-sans-primary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+  }
+  li {
+    display: flex;
+    align-items: center;
+    min-height: 36px;
+  }
   a {
     display: inline-flex;
     align-items: center;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    gap: 3px;
+    gap: 6px;
+    min-height: 36px;
+    white-space: nowrap;
+    &:hover {
+      color: var(--ink);
+    }
+  }
+}
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px 32px;
+  flex-wrap: wrap;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+  a {
+    color: var(--ink-soft);
+    &:hover {
+      color: var(--ink);
+    }
+  }
+  nav {
+    display: flex;
+    gap: 24px;
+    a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .footerTop {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .footerBrand {
+    grid-column: 1 / -1;
   }
 }
 @media (max-width: 760px) {
   .headerInner {
-    height: 76px;
+    height: 60px;
   }
-  .brand {
-    font-size: 14px;
-    gap: 8px;
-  }
-  .brandSecond {
-    display: block;
+  .brand code {
+    font-size: 0.8125rem;
   }
   .desktopNav {
     display: none;
@@ -149,28 +273,27 @@
     inset: 100% 0 auto;
     display: grid;
     gap: 4px;
-    padding: 16px var(--site-gutter) 24px;
-    background: var(--site-paper);
-    border-bottom: 1px solid var(--site-line);
-    box-shadow: 0 20px 30px #0000000c;
+    padding: 12px var(--site-gutter) 24px;
+    background: var(--canvas);
+    border-bottom: 1px solid var(--line);
     > a:not(.install) {
-      padding-block: 12px;
-      font-size: 16px;
+      display: flex;
+      align-items: center;
+      min-height: 48px;
+      font-size: 1rem;
     }
-  }
-  .footerTop {
-    flex-direction: column;
-    gap: 36px;
-    padding-bottom: 40px;
-    nav {
-      column-gap: 24px;
+    .install {
+      margin-top: 12px;
+      min-height: 48px;
+      font-size: 0.9375rem;
     }
-  }
-  .footerBottom {
-    flex-direction: column;
-    gap: 12px;
   }
   .footer {
-    padding-top: 48px;
+    padding-top: 56px;
+  }
+  .footerTop {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 24px;
+    padding-bottom: 48px;
   }
 }

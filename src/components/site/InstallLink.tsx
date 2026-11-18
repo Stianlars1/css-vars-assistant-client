@@ -1,5 +1,5 @@
-import { ArrowUpRight } from "lucide-react";
 import { JETBRAINS_MARKETPLACE_URL } from "@/lib/routes";
+import { cx } from "@/lib/utils/cx";
 import styles from "./SiteChrome.module.scss";
 
 export default function InstallLink({
@@ -8,9 +8,13 @@ export default function InstallLink({
   compact?: boolean;
 }) {
   return (
-    <a className={styles.install} href={JETBRAINS_MARKETPLACE_URL}>
-      {compact ? "Get the plugin" : "Install from Marketplace"}
-      <ArrowUpRight size={16} aria-hidden="true" />
+    <a
+      className={cx(styles.install, compact && styles.installCompact)}
+      href={JETBRAINS_MARKETPLACE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {compact ? "Install" : "Get from Marketplace"}
     </a>
   );
 }

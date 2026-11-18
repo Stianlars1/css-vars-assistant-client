@@ -9,7 +9,7 @@ npm ci
 npm run dev -- --hostname 127.0.0.1 --port 3107
 ```
 
-Open http://127.0.0.1:3107. The app uses Next.js 15, React 19, TypeScript, SCSS Modules and locally bundled Geist fonts.
+Open http://127.0.0.1:3107. The app uses Next.js 15, React 19, TypeScript, SCSS Modules and locally bundled Geist and JetBrains Mono fonts.
 
 ## Checks
 
@@ -19,7 +19,7 @@ npm run lint
 npm run build
 ```
 
-Component regression tests cover reopening autocomplete after accepting a non-first suggestion, including keyboard confirmation, empty results and the active accessibility selection.
+Component regression tests cover reopening autocomplete after accepting a non-first suggestion, including keyboard confirmation, empty results and the active accessibility selection. `tests/HeroEditor.test.tsx` covers the hero editor: previewing, committing and restoring the page accent.
 
 The build includes TypeScript checks. Browser verification covers the homepage, FAQ, changelog and not-found route, including navigation, token selections, language tabs, native FAQ disclosures, keyboard focus and reduced motion. Target viewports: 1440x900, 1280x720 and 390x844.
 
@@ -27,15 +27,16 @@ The build includes TypeScript checks. Browser verification covers the homepage, 
 
 - `src/components/site/`: shared website shell, sections and small interactive demonstrations.
 - `src/content/`: example token data, FAQ content and curated recent release summaries.
-- `src/styles/`: existing design primitives and website-specific aliases.
+- `src/styles/`: design primitives and the site tokens. `site-tokens.css` holds the spectrum (`--spectrum-*`) and the six live gradient stops (`--s1` to `--s6`) that the hero editor rewrites.
 - `src/app/`: routes, metadata and generated social preview.
-- `docs/design-locks/2026-09-07-website-redesign.md`: design direction, delegated decisions, references and verification record.
+- `docs/design-locks/2026-11-18-spectrum-redesign.md`: the current design direction and why it replaced the September one.
+- `docs/design-locks/2026-09-07-website-redesign.md`: the previous (light) direction, kept for history.
 
 ## Keeping product content accurate
 
 `src/lib/config.ts` holds the current plugin version. Update it together with `src/content/releases.ts` when a public release is verified. Check product claims against the plugin's current README and behavior contract; the contract takes precedence over historical release highlights.
 
-`src/lib/marketplace.ts` fetches public download and rating data from JetBrains in parallel, with a 30-minute revalidation interval and a five-second timeout. Rating count is the sum of the actual votes; the displayed score is JetBrains' `meanRating`, rounded to one decimal. Unavailable or invalid metrics are omitted independently. `MarketplaceStats` renders the hero counters on the server. `MarketplaceCard` embeds the official lazy-loaded iframe, with a normal, keyboard-accessible Marketplace link around it to avoid the iframe's redirect limitation. No API key or widget wrapper script is needed.
+`src/lib/marketplace.ts` fetches public download and rating data from JetBrains in parallel, with a 30-minute revalidation interval and a five-second timeout. Rating count is the sum of the actual votes; the displayed score is JetBrains' `meanRating`, rounded to one decimal. Unavailable or invalid metrics are omitted independently. The hero renders those counters on the server. The installation section and the screenshot gallery read the plugin record through `fetchPluginData` and render the site's own `JetBrainsPluginCard`. No API key or widget script is needed.
 
 Illustrations use example data and are labeled accordingly. They demonstrate variable lookup and documentation, not a Sass/LESS compiler or browser cascade simulation.
 

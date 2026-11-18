@@ -41,12 +41,7 @@ export default function FAQPage() {
         Back to the plugin
       </Link>
       <div className={styles.pageHeading}>
-        <span className="eyebrow">A little clarity</span>
-        <h1>
-          Good questions.
-          <br />
-          <span>Useful answers.</span>
-        </h1>
+        <h1 className="spectrum-text">Questions, answered</h1>
         <p>
           Getting started, finding your tokens, and making the plugin work for
           you.

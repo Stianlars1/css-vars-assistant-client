@@ -1,0 +1,205 @@
+.hero {
+  position: relative;
+}
+
+/* v1's two glows, now painted from the live stops. */
+.glow {
+  position: absolute;
+  inset: -69px 0 -80px;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      58% 60% at 8% 58%,
+      color-mix(in oklab, var(--s3) 30%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      44% 70% at 58% 0%,
+      color-mix(in oklab, var(--s5) 22%, transparent),
+      transparent 70%
+    );
+  mask-image: linear-gradient(180deg, #000 60%, transparent);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.94fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+  padding-block: clamp(64px, 9vw, 128px) clamp(72px, 9vw, 120px);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.title {
+  font-size: clamp(3.5rem, 6.1vw, 5.5rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  text-wrap: unset;
+  > span {
+    display: block;
+    white-space: nowrap;
+  }
+}
+.lede {
+  max-width: 44ch;
+  margin-top: 28px;
+  font-size: 1.1875rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 28px;
+  margin-top: 36px;
+}
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 0;
+  margin-top: 56px;
+  > div {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 4px;
+    padding-inline: 28px;
+    border-left: 1px solid var(--line-strong);
+    &:first-child {
+      padding-left: 0;
+      border-left: 0;
+    }
+  }
+  dt {
+    font-size: 0.8125rem;
+    color: var(--ink-faint);
+    a:hover {
+      color: var(--ink);
+    }
+  }
+  dd {
+    font-family: var(--font-mono);
+    font-size: 1.375rem;
+    font-weight: 700;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+    span {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--ink-faint);
+    }
+  }
+}
+
+/* The editor keeps v1's tilt at rest and straightens when you reach for it. */
+.stage {
+  --rx: 19deg;
+  --ry: -15deg;
+  --rz: 4deg;
+  position: relative;
+  min-width: 0;
+  perspective: 1400px;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 8% 4% -6%;
+    z-index: -1;
+    border-radius: 40%;
+    background: color-mix(in oklab, var(--accent) 55%, transparent);
+    filter: blur(80px);
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  &:hover,
+  &:focus-within {
+    --rx: 0deg;
+    --ry: 0deg;
+    --rz: 0deg;
+  }
+}
+.stage .window {
+  min-height: 396px;
+  padding-bottom: 46px;
+  border: 1px solid color-mix(in oklab, var(--accent) 72%, #000);
+  border-radius: 15px;
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--accent) 22%, transparent),
+    0 50px 90px -40px color-mix(in oklab, var(--accent) 60%, transparent);
+  transform: rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--rz));
+  transform-origin: 50% 50%;
+  transition: transform 600ms var(--ease-out);
+  will-change: transform;
+}
+.stage:hover .window {
+  transition-duration: 220ms;
+}
+.comment {
+  color: #7a7e85;
+}
+.popup {
+  position: absolute;
+  top: 150px;
+  left: 100px;
+  right: 18px;
+  z-index: 2;
+}
+
+@media (max-width: 1100px) {
+  .inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 72px;
+    padding-top: 56px;
+  }
+  .title {
+    font-size: clamp(2.6rem, 12.4vw, 5.5rem);
+  }
+  .stage {
+    --rx: 0deg;
+    --ry: 0deg;
+    --rz: 0deg;
+    max-width: 680px;
+  }
+}
+@media (hover: none) {
+  .stage {
+    --rx: 0deg;
+    --ry: 0deg;
+    --rz: 0deg;
+  }
+}
+@media (max-width: 760px) {
+  .lede {
+    font-size: 1.0625rem;
+  }
+  .stats {
+    flex-wrap: nowrap;
+    margin-top: 44px;
+    > div {
+      padding-inline: 14px;
+    }
+    dt {
+      font-size: 0.75rem;
+    }
+    dd {
+      font-size: 1.0625rem;
+    }
+  }
+  .stage .window {
+    min-height: 372px;
+    padding-bottom: 38px;
+  }
+  .popup {
+    top: 146px;
+    left: 10px;
+    right: 10px;
+  }
+}

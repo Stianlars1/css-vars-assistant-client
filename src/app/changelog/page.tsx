@@ -26,12 +26,7 @@ export default function ChangelogPage() {
         Back to the plugin
       </Link>
       <div className={styles.pageHeading}>
-        <span className="eyebrow">Always getting a little better</span>
-        <h1>
-          Small details.
-          <br />
-          <span>Better days.</span>
-        </h1>
+        <h1 className="spectrum-text">Changelog</h1>
         <p>The latest updates to CSS Variables Assistant.</p>
       </div>
       <div className={styles.releases}>
@@ -49,7 +44,7 @@ export default function ChangelogPage() {
               <time dateTime={release.date}>{formatDate(release.date)}</time>
             </div>
             <div className={styles.releaseBody}>
-              <span className="eyebrow">{release.label}</span>
+              <span className={styles.releaseLabel}>{release.label}</span>
               <h2>{release.title}</h2>
               <p>{release.description}</p>
               <ul>
